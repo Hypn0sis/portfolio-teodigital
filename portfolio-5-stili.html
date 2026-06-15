@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeoDigital — Portfolio 5 Stili</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Anton&display=swap');
+  
+  *{margin:0;padding:0;box-sizing:border-box}
+  
+  body{
+    background:#f5f3ef;
+    font-family:Inter,sans-serif;
+    color:#1a1a1a;
+    padding:40px 20px;
+  }
+  
+  .container{
+    max-width:1100px;
+    margin:0 auto;
+  }
+  
+  header{
+    text-align:center;
+    margin-bottom:50px;
+  }
+  
+  header h1{
+    font-size:2.5rem;
+    font-weight:800;
+    letter-spacing:-1px;
+    margin-bottom:4px;
+  }
+  
+  header h1 span{color:#c73e3e}
+  
+  header .sub{
+    color:#888;
+    font-size:0.95rem;
+    margin-bottom:4px;
+  }
+  
+  header .ref{
+    color:#aaa;
+    font-size:0.75rem;
+    margin-top:6px;
+  }
+  header .ref a{color:#aaa}
+
+  .style-selector{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+  }
+  
+  .style-btn{
+    padding:10px 20px;
+    border:2px solid #ddd;
+    background:white;
+    border-radius:10px;
+    font-family:Inter,sans-serif;
+    font-size:0.82rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:all .2s;
+  }
+  .style-btn:hover{border-color:#c73e3e;color:#c73e3e}
+  .style-btn.active{border-color:#c73e3e;background:#c73e3e;color:white}
+
+  .mockup-wrapper{
+    position:relative;
+    background:#fff;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+    min-height:600px;
+  }
+  .mockup{display:none;padding:0}
+  .mockup.active{display:block}
+
+  /* ====== 1. MODERNO ====== */
+  .m1{
+    font-family:Inter,sans-serif;
+    color:#1a1a1a;
+    background:#fafaf9;
+    min-height:600px;
+  }
+  .m1 .hero{
+    padding:80px 60px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .m1 .hero-content h2{
+    font-family:'DM Serif Display',serif;
+    font-size:3rem;font-weight:400;line-height:1.15;margin-bottom:20px;
+  }
+  .m1 .hero-content h2 em{font-style:italic;color:#c73e3e}
+  .m1 .hero-content p{color:#666;line-height:1.7;font-size:1.05rem;margin-bottom:30px}
+  .m1 .hero-img{
+    background:#e8e4de;
+    border-radius:16px;height:320px;
+    display:flex;align-items:center;justify-content:center;
+    color:#999;
+  }
+  .m1 .btn{
+    display:inline-block;padding:12px 32px;
+    background:#1a1a1a;color:white;text-decoration:none;
+    border-radius:8px;font-weight:600;font-size:0.9rem;
+  }
+  .m1 .features{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e8e4de;
+  }
+  .m1 .feature{background:#fafaf9;padding:40px;text-align:center}
+  .m1 .feature-icon{font-size:2rem;margin-bottom:12px}
+  .m1 .feature h3{font-size:1rem;font-weight:600;margin-bottom:8px}
+  .m1 .feature p{color:#888;font-size:0.85rem;line-height:1.6}
+  .m1 .footer{text-align:center;padding:30px;color:#999;font-size:0.85rem}
+
+  /* ====== 2. CALDO ====== */
+  .m2{
+    font-family:'DM Serif Display',serif;
+    color:#2d1f14;
+    background:#faf3ed;
+    min-height:600px;
+  }
+  .m2 .hero{
+    padding:80px 60px 60px;
+    text-align:center;
+    background:linear-gradient(180deg,#faf3ed 0%,#f0e4d6 100%);
+  }
+  .m2 .hero h2{font-size:3.2rem;font-weight:400;line-height:1.15;margin-bottom:12px}
+  .m2 .hero h2 span{color:#b85c2a}
+  .m2 .hero .subtitle{
+    font-family:Inter,sans-serif;font-size:1.05rem;color:#8b6f5a;
+    max-width:440px;margin:0 auto 30px;line-height:1.7;
+  }
+  .m2 .hero-img{
+    width:100%;max-width:600px;height:200px;margin:0 auto;
+    background:#dccfc1;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    color:#a0856e;
+  }
+  .m2 .btn{
+    display:inline-block;padding:14px 40px;
+    background:#b85c2a;color:white;text-decoration:none;
+    border-radius:30px;font-family:Inter,sans-serif;font-weight:600;font-size:0.9rem;
+  }
+  .m2 .features{
+    display:grid;grid-template-columns:repeat(3,1fr);
+  }
+  .m2 .feature{
+    background:#faf3ed;padding:40px 30px;text-align:center;
+  }
+  .m2 .feature h3{
+    font-family:Inter,sans-serif;font-size:0.95rem;font-weight:600;
+    letter-spacing:.5px;text-transform:uppercase;color:#2d1f14;margin-bottom:8px;
+  }
+  .m2 .feature p{font-family:Inter,sans-serif;color:#8b6f5a;font-size:0.85rem;line-height:1.6}
+  .m2 .footer{text-align:center;padding:30px;font-family:Inter,sans-serif;color:#a0856e;font-size:0.85rem}
+
+  /* ====== 3. VIVACE ====== */
+  .m3{
+    font-family:'Space Grotesk',sans-serif;
+    color:#1a1a2e;
+    background:#f8f9ff;
+    min-height:600px;
+  }
+  .m3 .hero{
+    padding:60px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;
+    background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:white;
+  }
+  .m3 .hero h2{
+    font-size:2.8rem;font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:16px;
+  }
+  .m3 .hero h2 .accent{
+    background:linear-gradient(135deg,#e94560,#f77f00);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .m3 .hero p{color:#a0aec0;font-size:1rem;line-height:1.7;margin-bottom:28px}
+  .m3 .hero-img{
+    background:#2a2a4a;border-radius:16px;height:280px;
+    display:flex;align-items:center;justify-content:center;color:#4a4a6a;
+    border:1px solid #3a3a5a;
+  }
+  .m3 .btn{
+    display:inline-block;padding:12px 32px;
+    background:linear-gradient(135deg,#e94560,#f77f00);color:white;
+    text-decoration:none;border-radius:8px;font-weight:600;font-size:0.9rem;
+  }
+  .m3 .features{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#e2e8f0;
+  }
+  .m3 .feature{background:#f8f9ff;padding:40px;text-align:center}
+  .m3 .feature-icon{font-size:2rem;margin-bottom:12px}
+  .m3 .feature h3{
+    font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;
+  }
+  .m3 .feature p{color:#718096;font-size:0.85rem;line-height:1.6}
+  .m3 .footer{text-align:center;padding:30px;color:#718096;font-size:0.85rem}
+
+  /* ====== 4. EDITORIALE (ispirato Cutler & Co, Fiola DC) ====== */
+  .m4{
+    font-family:'Cormorant Garamond',serif;
+    color:#1a1a1a;
+    background:#ffffff;
+    min-height:600px;
+  }
+  .m4 .hero{
+    padding:0;
+    display:grid;grid-template-columns:1fr 1fr;
+  }
+  .m4 .hero-text{
+    padding:80px 60px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .m4 .hero-text .label{
+    font-family:Inter,sans-serif;
+    font-size:0.7rem;text-transform:uppercase;letter-spacing:3px;
+    color:#999;margin-bottom:20px;
+  }
+  .m4 .hero-text h2{
+    font-size:3.5rem;font-weight:400;line-height:1.1;
+    margin-bottom:24px;font-style:italic;
+  }
+  .m4 .hero-text p{
+    font-family:Inter,sans-serif;
+    color:#777;font-size:0.9rem;line-height:1.8;
+    margin-bottom:30px;
+  }
+  .m4 .hero-img{
+    min-height:400px;
+    background:#e8e4de;
+    display:flex;align-items:center;justify-content:center;
+    color:#bbb;
+    font-family:Inter,sans-serif;
+    font-size:0.9rem;
+  }
+  .m4 .btn{
+    display:inline-block;padding:14px 36px;
+    border:1px solid #1a1a1a;color:#1a1a1a;
+    text-decoration:none;font-family:Inter,sans-serif;
+    font-weight:500;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;
+    transition:all .2s;
+  }
+  .m4 .btn:hover{background:#1a1a1a;color:white}
+  .m4 .features{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid #eee;
+  }
+  .m4 .feature{
+    padding:50px 40px;
+    border-left:1px solid #eee;
+  }
+  .m4 .feature:first-child{border-left:none}
+  .m4 .feature h3{
+    font-family:Inter,sans-serif;
+    font-size:0.7rem;text-transform:uppercase;letter-spacing:2px;
+    color:#999;margin-bottom:12px;
+  }
+  .m4 .feature p{
+    font-family:Inter,sans-serif;
+    color:#666;font-size:0.85rem;line-height:1.7;
+  }
+  .m4 .footer{
+    text-align:center;padding:30px;
+    border-top:1px solid #eee;
+    color:#bbb;font-size:0.8rem;
+  }
+
+  /* ====== 5. POP (ispirato Ma'ono, Streetbird, Dhamaka) ====== */
+  .m5{
+    font-family:Inter,sans-serif;
+    min-height:600px;
+    background:#fffde7;
+  }
+  .m5 .hero{
+    padding:60px;
+    text-align:center;
+    background:linear-gradient(135deg,#ffd600 0%,#ff6f00 50%,#e91e63 100%);
+    color:#1a1a1a;
+    position:relative;
+    overflow:hidden;
+  }
+  .m5 .hero::after{
+    content:'';
+    position:absolute;top:-50%;left:-50%;
+    width:200%;height:200%;
+    background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 50%);
+    pointer-events:none;
+  }
+  .m5 .hero .label{
+    font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;
+    color:#1a1a1a;opacity:.6;margin-bottom:16px;
+  }
+  .m5 .hero h2{
+    font-family:'Anton',sans-serif;
+    font-size:4rem;text-transform:uppercase;line-height:1;
+    letter-spacing:-2px;margin-bottom:12px;
+    color:#1a1a1a;
+  }
+  .m5 .hero p{
+    max-width:400px;margin:0 auto 28px;
+    color:#1a1a1a;opacity:.8;font-size:0.95rem;line-height:1.6;
+  }
+  .m5 .btn{
+    display:inline-block;padding:14px 40px;
+    background:#1a1a1a;color:#ffd600;
+    text-decoration:none;border-radius:30px;
+    font-weight:700;font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;
+    position:relative;
+  }
+  .m5 .features{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:0;background:#1a1a1a;
+  }
+  .m5 .feature{
+    padding:40px 30px;text-align:center;
+    background:#fffde7;
+    transition:all .2s;
+  }
+  .m5 .feature-icon{font-size:2rem;margin-bottom:8px}
+  .m5 .feature h3{
+    font-family:'Anton',sans-serif;
+    font-size:1.1rem;text-transform:uppercase;
+    letter-spacing:1px;margin-bottom:6px;
+    color:#e91e63;
+  }
+  .m5 .feature p{color:#666;font-size:0.85rem;line-height:1.6}
+  .m5 .footer{
+    text-align:center;padding:24px;
+    background:#1a1a1a;color:#ffd600;font-size:0.85rem;font-weight:600;
+  }
+
+  @media(max-width:700px){
+    .m1 .hero,.m3 .hero,.m4 .hero{grid-template-columns:1fr;padding:40px 24px}
+    .m1 .features,.m2 .features,.m3 .features,.m4 .features,.m5 .features{grid-template-columns:1fr}
+    .m2 .hero,.m5 .hero{padding:50px 24px}
+    .m4 .hero-text{padding:50px 24px}
+    .m4 .hero-img{min-height:200px}
+    .m5 .hero h2{font-size:2.8rem}
+    header h1{font-size:1.8rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Teo<span>Digital</span></h1>
+    <p class="sub">Lo stesso concetto, 5 stili diversi. Ogni sito è unico come la tua attività.</p>
+    <p class="ref">Ispirato da siti reali: Cutler & Co · Fiola DC · Ma'ono · Streetbird · Dhamaka</p>
+  </header>
+
+  <div class="style-selector">
+    <button class="style-btn" onclick="showStyle(1)">✦ Moderno</button>
+    <button class="style-btn" onclick="showStyle(2)">✦ Caldo</button>
+    <button class="style-btn active" onclick="showStyle(3)">✦ Vivace</button>
+    <button class="style-btn" onclick="showStyle(4)">✦ Editoriale</button>
+    <button class="style-btn" onclick="showStyle(5)">✦ POP</button>
+  </div>
+
+  <div class="mockup-wrapper">
+    <!-- 1. MODERNO -->
+    <div class="mockup" id="style1">
+      <div class="m1">
+        <div class="hero">
+          <div class="hero-content">
+            <h2>La tua <em>botega</em><br>sul web.</h2>
+            <p>Un sito essenziale, elegante, che funziona su ogni dispositivo. Foto grandi, contatti in evidenza, ordinazioni online. Niente fronzoli, tutto ciò che serve.</p>
+            <a href="#" class="btn">Scopri il sito →</a>
+          </div>
+          <div class="hero-img">📸 Foto attività</div>
+        </div>
+        <div class="features">
+          <div class="feature"><div class="feature-icon">📱</div><h3>Mobile First</h3><p>Perfetto su telefono, tablet e computer. I tuoi clienti ti trovano subito.</p></div>
+          <div class="feature"><div class="feature-icon">📍</div><h3>Google Maps</h3><p>Orari, indirizzo, recensioni. Tutto quello che serve per venirti a trovare.</p></div>
+          <div class="feature"><div class="feature-icon">📞</div><h3>Contatti veloce</h3><p>Un click per chiamare, WhatsApp o mandare una mail. Niente ricerche inutili.</p></div>
+        </div>
+        <div class="footer">© 2026 — Sito realizzato da TeoDigital</div>
+      </div>
+    </div>
+
+    <!-- 2. CALDO -->
+    <div class="mockup" id="style2">
+      <div class="m2">
+        <div class="hero">
+          <h2>La stessa <span>passione</span><br>da sempre.</h2>
+          <p class="subtitle">Da generazioni portiamo avanti il nostro mestiere. Ora anche online, con lo stesso calore e la stessa cura di sempre.</p>
+          <div class="hero-img">📸 Foto bottega</div><br>
+          <a href="#" class="btn">Entra in bottega →</a>
+        </div>
+        <div class="features">
+          <div class="feature"><h3>📍 Dove siamo</h3><p>ORARI, INDIRIZZO, MAPPA — tutto quello che serve per trovarci</p></div>
+          <div class="feature"><h3>📞 Contattaci</h3><p>TELEFONO, WHATSAPP, EMAIL — rispondiamo sempre</p></div>
+          <div class="feature"><h3>📸 Seguici</h3><p>INSTAGRAM, FACEBOOK — i nostri prodotti ogni giorno</p></div>
+        </div>
+        <div class="footer">© 2026 — Sito realizzato da TeoDigital</div>
+      </div>
+    </div>
+
+    <!-- 3. VIVACE -->
+    <div class="mockup" id="style3">
+      <div class="m3">
+        <div class="hero">
+          <div>
+            <h2>Il tuo <span class="accent">brand</span><br>prende vita.</h2>
+            <p>Un sito moderno, social integrato, pensato per farti trovare dai tuoi clienti. Non un biglietto da visita, ma la tua vetrina sempre aperta.</p>
+            <a href="#" class="btn">Scopri di più →</a>
+          </div>
+          <div class="hero-img">📸 Gallery immagini</div>
+        </div>
+        <div class="features">
+          <div class="feature"><div class="feature-icon">⚡</div><h3>Super veloce</h3><p>Carica in un secondo. I clienti non aspettano.</p></div>
+          <div class="feature"><div class="feature-icon">🔄</div><h3>Social sync</h3><p>Feed Instagram live sul sito. I tuoi post diventano contenuto.</p></div>
+          <div class="feature"><div class="feature-icon">📊</div><h3>Visibilità</h3><p>SEO, Google My Business, recensioni. Ti trovano tutti.</p></div>
+        </div>
+        <div class="footer">© 2026 — Sito realizzato da TeoDigital</div>
+      </div>
+    </div>
+
+    <!-- 4. EDITORIALE → ispirato Cutler & Co, Fiola DC -->
+    <div class="mockup" id="style4">
+      <div class="m4">
+        <div class="hero">
+          <div class="hero-text">
+            <div class="label">— Dal 1989</div>
+            <h2>La nostra storia,<br>il vostro tavolo.</h2>
+            <p>Un racconto visivo della nostra tradizione. Fotografie senza tempo, spazi generosi, atmosfera raccontata attraverso le immagini. Il sito non dice, mostra.</p>
+            <a href="#" class="btn">Scopri la storia</a>
+          </div>
+          <div class="hero-img">📸 Copertina editoriale</div>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <h3>📍 Posizione</h3>
+            <p>Via Roma 12 · Venite a trovarci. Aperti dal martedì alla domenica con orario continuato.</p>
+          </div>
+          <div class="feature">
+            <h3>📞 Contatto</h3>
+            <p>02 1234567 · info@attività.it · Rispondiamo sempre, anche la domenica.</p>
+          </div>
+          <div class="feature">
+            <h3>📸 Instagram</h3>
+            <p>@attività · I nostri piatti, i nostri prodotti, la nostra giornata. Raccontata ogni giorno.</p>
+          </div>
+        </div>
+        <div class="footer">© 2026 — Sito realizzato da TeoDigital · Ispirato al design editoriale di Cutler & Co</div>
+      </div>
+    </div>
+
+    <!-- 5. POP → ispirato Ma'ono, Streetbird -->
+    <div class="mockup" id="style5">
+      <div class="m5">
+        <div class="hero">
+          <div class="label">🔥 Dal 2024</div>
+          <h2>NOI SIAMO<br>QUI.</h2>
+          <p>Il posto giusto, il miglior prodotto, l'atmosfera che cerchi. Ti aspettiamo. Senza troppe storie.</p>
+          <a href="#" class="btn">Vieni a trovarci →</a>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">📍</div>
+            <h3>Dove siamo</h3>
+            <p>VIA ROMA 12 · APERTI MAR-DOM · PARCHEGGIO FACILE</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📞</div>
+            <h3>Chiamaci</h3>
+            <p>02 1234567 · ANCHE SU WHATSAPP · RISPONDIAMO SUBITO</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📸</div>
+            <h3>Seguici</h3>
+            <p>@ATTIVITÀ · POST FRESCHI TUTTI I GIORNI · IG TV</p>
+          </div>
+        </div>
+        <div class="footer">© 2026 — TeoDigital · Ispirato al design bold di Ma'ono & Streetbird</div>
+      </div>
+    </div>
+
+  </div>
+  
+  <div style="text-align:center;margin-top:20px;color:#999;font-size:0.85rem">
+    <p>👆 Clicca i bottoni per cambiare stile · <span style="color:#c73e3e">Apri sul telefono o tablet per mostrare ai clienti</span></p>
+  </div>
+</div>
+
+<script>
+function showStyle(n){
+  document.querySelectorAll('.mockup').forEach(m => m.classList.remove('active'));
+  document.getElementById('style'+n).classList.add('active');
+  document.querySelectorAll('.style-btn').forEach((b,i) => {
+    b.classList.toggle('active', i+1 === n);
+  });
+}
+</script>
+</body>
+</html>

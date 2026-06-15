@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeoDigital — Portfolio Settori</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Anton&display=swap');
+  
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:#0d0d0d;
+    font-family:Inter,sans-serif;
+    color:#fff;
+    padding:30px 16px;
+  }
+  .container{max-width:1200px;margin:0 auto}
+
+  header{
+    text-align:center;margin-bottom:30px;
+  }
+  header h1{
+    font-size:2.2rem;font-weight:800;letter-spacing:-1px;
+  }
+  header h1 span{color:#c73e3e}
+  header p{color:#666;font-size:0.9rem;max-width:500px;margin:4px auto 0}
+
+  /* CATEGORY TABS */
+  .cat-tabs{
+    display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+    margin-bottom:30px;
+  }
+  .cat-btn{
+    padding:10px 22px;
+    border:1px solid #333;background:#1a1a1a;color:#888;
+    border-radius:10px;
+    font-family:Inter,sans-serif;font-size:0.82rem;font-weight:600;
+    cursor:pointer;transition:all .2s;
+  }
+  .cat-btn:hover{border-color:#c73e3e;color:#c73e3e}
+  .cat-btn.active{background:#c73e3e;border-color:#c73e3e;color:#fff}
+
+  /* CATEGORY CONTENT: grid of 5 cards */
+  .cat-content{display:none}
+  .cat-content.active{display:block}
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:14px;
+  }
+
+  .card{
+    position:relative;
+    border-radius:14px;
+    overflow:hidden;
+    background:#1a1a1a;
+    cursor:pointer;
+    transition:all .3s;
+    border:1px solid #222;
+    aspect-ratio:3/4;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    border-color:#c73e3e;
+    box-shadow:0 12px 40px rgba(199,62,62,.15);
+  }
+
+  .card-preview{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.75rem;
+    color:#555;
+    position:relative;
+    overflow:hidden;
+    min-height:160px;
+  }
+  .card-preview .bg{position:absolute;inset:0}
+  .card-preview .label{position:relative;z-index:1;padding:12px;text-align:center}
+
+  .card-footer{
+    padding:12px 14px;
+    border-top:1px solid #222;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .card-footer .name{
+    font-size:0.8rem;font-weight:600;color:#fff;
+  }
+  .card-footer .num{
+    font-size:0.7rem;color:#666;
+    background:#222;padding:2px 8px;border-radius:4px;
+  }
+
+  .style-tag{
+    display:inline-block;
+    font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+    padding:3px 8px;border-radius:4px;
+  }
+
+  /* Overlay modal for full preview */
+  .overlay{
+    display:none;
+    position:fixed;inset:0;
+    background:rgba(0,0,0,.92);
+    z-index:100;
+    overflow-y:auto;
+    padding:20px;
+    backdrop-filter:blur(10px);
+  }
+  .overlay.open{display:block}
+
+  .overlay-inner{
+    max-width:900px;
+    margin:30px auto;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+  }
+  .overlay-close{
+    position:fixed;top:20px;right:30px;
+    font-size:2rem;color:#fff;cursor:pointer;
+    background:#c73e3e;width:44px;height:44px;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:700;border:none;z-index:110;
+    transition:all .2s;
+  }
+  .overlay-close:hover{background:#fff;color:#1a1a1a}
+
+  .overlay-header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 24px;
+    background:#1a1a1a;
+    color:white;
+    border-bottom:1px solid #333;
+  }
+  .overlay-header h3{font-size:1rem;font-weight:600}
+  .overlay-header .cat-lbl{
+    color:#888;font-size:0.8rem;
+  }
+
+  /* ===== MOCKUP STYLES (reduced for cards) ===== */
+
+  /* Style colors for preview dots */
+  .s-bg-moderno{background:linear-gradient(135deg,#fafaf9,#e8e4de)}
+  .s-bg-caldo{background:linear-gradient(135deg,#faf3ed,#dccfc1)}
+  .s-bg-vivace{background:linear-gradient(135deg,#1a1a2e,#16213e)}
+  .s-bg-editoriale{background:linear-gradient(135deg,#ffffff,#e8e4de)}
+  .s-bg-pop{background:linear-gradient(135deg,#ffd600,#ff6f00)}
+  
+  .s-tag-moderno{background:#1a1a1a;color:#fff}
+  .s-tag-caldo{background:#b85c2a;color:#fff}
+  .s-tag-vivace{background:linear-gradient(135deg,#e94560,#f77f00);color:#fff}
+  .s-tag-editoriale{background:#1a1a1a;color:#fff;border:1px solid #555}
+  .s-tag-pop{background:#e91e63;color:#fff}
+
+  .preview-icon{
+    font-size:2.5rem;margin-bottom:8px;display:block;
+  }
+
+  /* Full mockup styles inside overlay */
+  .full-mockup{display:none;padding:0}
+  .full-mockup.active{display:block}
+
+  /* STYLE 1: MODERNO (full version) */
+  .fm1{
+    font-family:Inter,sans-serif;
+    color:#1a1a1a;
+    background:#fafaf9;
+  }
+  .fm1 .hero{
+    padding:60px 50px;
+    display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
+  }
+  .fm1 .hero-content h2{
+    font-family:'DM Serif Display',serif;
+    font-size:2.5rem;font-weight:400;line-height:1.15;margin-bottom:16px;
+  }
+  .fm1 .hero-content h2 em{font-style:italic;color:#c73e3e}
+  .fm1 .hero-content p{color:#666;line-height:1.7;font-size:0.95rem;margin-bottom:24px}
+  .fm1 .hero-img{
+    background:#e8e4de;border-radius:12px;height:260px;
+    display:flex;align-items:center;justify-content:center;color:#999;
+  }
+  .fm1 .btn{
+    display:inline-block;padding:12px 32px;
+    background:#1a1a1a;color:white;text-decoration:none;
+    border-radius:8px;font-weight:600;font-size:0.85rem;
+  }
+  .fm1 .features{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e8e4de;
+  }
+  .fm1 .feature{background:#fafaf9;padding:32px;text-align:center}
+  .fm1 .feature-icon{font-size:1.8rem;margin-bottom:10px}
+  .fm1 .feature h3{font-size:0.9rem;font-weight:600;margin-bottom:6px}
+  .fm1 .feature p{color:#888;font-size:0.8rem;line-height:1.5}
+
+  /* STYLE 2: CALDO */
+  .fm2{
+    font-family:'DM Serif Display',serif;
+    color:#2d1f14;background:#faf3ed;
+  }
+  .fm2 .hero{
+    padding:60px 50px 40px;text-align:center;
+    background:linear-gradient(180deg,#faf3ed 0%,#f0e4d6 100%);
+  }
+  .fm2 .hero h2{font-size:2.8rem;font-weight:400;line-height:1.15;margin-bottom:10px}
+  .fm2 .hero h2 span{color:#b85c2a}
+  .fm2 .hero .subtitle{
+    font-family:Inter,sans-serif;font-size:0.95rem;color:#8b6f5a;
+    max-width:400px;margin:0 auto 24px;line-height:1.6;
+  }
+  .fm2 .hero-img{
+    max-width:500px;height:160px;margin:0 auto;
+    background:#dccfc1;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;color:#a0856e;
+  }
+  .fm2 .btn{
+    display:inline-block;padding:12px 36px;background:#b85c2a;color:white;
+    text-decoration:none;border-radius:30px;font-family:Inter,sans-serif;font-weight:600;font-size:0.85rem;
+  }
+  .fm2 .features{
+    display:grid;grid-template-columns:repeat(3,1fr);
+  }
+  .fm2 .feature{background:#faf3ed;padding:32px 24px;text-align:center}
+  .fm2 .feature h3{
+    font-family:Inter,sans-serif;font-size:0.85rem;font-weight:600;
+    letter-spacing:.5px;text-transform:uppercase;color:#2d1f14;margin-bottom:6px;
+  }
+  .fm2 .feature p{font-family:Inter,sans-serif;color:#8b6f5a;font-size:0.8rem;line-height:1.5}
+
+  /* STYLE 3: VIVACE */
+  .fm3{
+    font-family:'Space Grotesk',sans-serif;color:#1a1a2e;background:#f8f9ff;
+  }
+  .fm3 .hero{
+    padding:50px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;
+    background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:white;
+  }
+  .fm3 .hero h2{font-size:2.4rem;font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:12px}
+  .fm3 .hero h2 .accent{
+    background:linear-gradient(135deg,#e94560,#f77f00);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .fm3 .hero p{color:#a0aec0;font-size:0.9rem;line-height:1.6;margin-bottom:22px}
+  .fm3 .hero-img{
+    background:#2a2a4a;border-radius:12px;height:220px;
+    display:flex;align-items:center;justify-content:center;color:#4a4a6a;border:1px solid #3a3a5a;
+  }
+  .fm3 .btn{
+    display:inline-block;padding:10px 28px;
+    background:linear-gradient(135deg,#e94560,#f77f00);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:0.85rem;
+  }
+  .fm3 .features{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#e2e8f0;
+  }
+  .fm3 .feature{background:#f8f9ff;padding:32px;text-align:center}
+  .fm3 .feature-icon{font-size:1.8rem;margin-bottom:10px}
+  .fm3 .feature h3{
+    font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;
+  }
+  .fm3 .feature p{color:#718096;font-size:0.8rem;line-height:1.5}
+
+  /* STYLE 4: EDITORIALE */
+  .fm4{
+    font-family:'Cormorant Garamond',serif;color:#1a1a1a;background:#fff;
+  }
+  .fm4 .hero{display:grid;grid-template-columns:1fr 1fr}
+  .fm4 .hero-text{
+    padding:60px 50px;display:flex;flex-direction:column;justify-content:center;
+  }
+  .fm4 .hero-text .label{
+    font-family:Inter,sans-serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:3px;color:#999;margin-bottom:16px;
+  }
+  .fm4 .hero-text h2{font-size:2.8rem;font-weight:400;line-height:1.1;margin-bottom:20px;font-style:italic}
+  .fm4 .hero-text p{
+    font-family:Inter,sans-serif;color:#777;font-size:0.85rem;line-height:1.7;margin-bottom:24px;
+  }
+  .fm4 .hero-img{
+    min-height:320px;background:#e8e4de;
+    display:flex;align-items:center;justify-content:center;color:#bbb;font-family:Inter,sans-serif;font-size:0.85rem;
+  }
+  .fm4 .btn{
+    display:inline-block;padding:12px 32px;border:1px solid #1a1a1a;color:#1a1a1a;
+    text-decoration:none;font-family:Inter,sans-serif;font-weight:500;font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;
+  }
+  .fm4 .features{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #eee}
+  .fm4 .feature{padding:40px 32px;border-left:1px solid #eee}
+  .fm4 .feature:first-child{border-left:none}
+  .fm4 .feature h3{font-family:Inter,sans-serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:2px;color:#999;margin-bottom:10px}
+  .fm4 .feature p{font-family:Inter,sans-serif;color:#666;font-size:0.8rem;line-height:1.6}
+
+  /* STYLE 5: POP */
+  .fm5{
+    font-family:Inter,sans-serif;background:#fffde7;
+  }
+  .fm5 .hero{
+    padding:50px;text-align:center;background:linear-gradient(135deg,#ffd600 0%,#ff6f00 50%,#e91e63 100%);color:#1a1a1a;
+  }
+  .fm5 .hero .label{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:#1a1a1a;opacity:.6;margin-bottom:12px}
+  .fm5 .hero h2{
+    font-family:'Anton',sans-serif;font-size:3.5rem;text-transform:uppercase;line-height:1;letter-spacing:-2px;margin-bottom:10px;color:#1a1a1a;
+  }
+  .fm5 .hero p{max-width:360px;margin:0 auto 22px;color:#1a1a1a;opacity:.8;font-size:0.9rem;line-height:1.5}
+  .fm5 .btn{
+    display:inline-block;padding:12px 36px;background:#1a1a1a;color:#ffd600;text-decoration:none;border-radius:30px;font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;
+  }
+  .fm5 .features{display:grid;grid-template-columns:repeat(3,1fr)}
+  .fm5 .feature{padding:32px 24px;text-align:center;background:#fffde7}
+  .fm5 .feature-icon{font-size:1.8rem;margin-bottom:6px}
+  .fm5 .feature h3{
+    font-family:'Anton',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;color:#e91e63;
+  }
+  .fm5 .feature p{color:#666;font-size:0.8rem;line-height:1.5}
+
+  .overlay-mockup{display:none}
+  .overlay-mockup.active{display:block}
+
+  .style-nav{
+    display:flex;justify-content:center;gap:8px;margin:16px 0 0;
+  }
+  .style-nav-btn{
+    padding:6px 14px;border:1px solid #333;background:#1a1a1a;color:#888;
+    border-radius:6px;font-size:0.7rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;
+  }
+  .style-nav-btn.active{background:#c73e3e;border-color:#c73e3e;color:#fff}
+  .style-nav-btn:hover{border-color:#c73e3e;color:#c73e3e}
+
+  @media(max-width:700px){
+    .card-grid{grid-template-columns:repeat(2,1fr)}
+    .fm1 .hero,.fm3 .hero,.fm4 .hero{grid-template-columns:1fr;padding:30px 20px}
+    .fm1 .features,.fm2 .features,.fm3 .features,.fm4 .features,.fm5 .features{grid-template-columns:1fr}
+    .fm2 .hero,.fm5 .hero{padding:40px 20px}
+    .fm4 .hero-img{min-height:180px}
+    .fm5 .hero h2{font-size:2.2rem}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Teo<span>Digital</span></h1>
+  <p>Portfolio per settore · 5 design per ogni attività</p>
+</header>
+
+<div class="cat-tabs">
+  <button class="cat-btn active" onclick="showCategory('macelleria')">🥩 Macelleria</button>
+  <button class="cat-btn" onclick="showCategory('panificio')">🥖 Panificio</button>
+  <button class="cat-btn" onclick="showCategory('pasticceria')">🍰 Pasticceria</button>
+  <button class="cat-btn" onclick="showCategory('ristorante')">🍝 Ristorante</button>
+  <button class="cat-btn" onclick="showCategory('parrucchiere')">💇 Parrucchiere</button>
+</div>
+
+<div id="cat-macelleria" class="cat-content active"></div>
+<div id="cat-panificio" class="cat-content"></div>
+<div id="cat-pasticceria" class="cat-content"></div>
+<div id="cat-ristorante" class="cat-content"></div>
+<div id="cat-parrucchiere" class="cat-content"></div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay">
+  <button class="overlay-close" onclick="closeOverlay()">✕</button>
+  <div class="overlay-inner" id="overlayInner"></div>
+</div>
+
+</div>
+
+<script>
+const content = {
+  macelleria: {
+    icon: '🥩',
+    title: 'Macelleria',
+    hero: 'Carni selezionate, passione artigianale.',
+    subtitle: 'Dal banco al web. Racconta la qualità del tuo prodotto con un sito che riflette la tua tradizione.',
+    styles: [
+      {id:'m1', name:'Moderno', icon:'🥩', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'Carn\'è la nostra <em>passione</em>.', heroS:'Tagli freschi, allevamenti selezionati, competenza artigianale. Il nostro banco, ora anche online.'},
+      {id:'m2', name:'Caldo', icon:'🥩', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'La stessa <span>qualità</span><br>da tre generazioni.', heroS:'La tradizione del nostro banco. Ora anche online, con lo stesso calore e la stessa cura.'},
+      {id:'m3', name:'Vivace', icon:'🥩', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'Carne <span class="accent">vera</span>.<br>Zero storie.', heroS:'No foto ritoccate. Solo carne di qualità, allevatori selezionati, taglio artigianale.'},
+      {id:'m4', name:'Editoriale', icon:'🥩', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'La nostra macelleria,<br>la vostra tavola.', heroS:'Un racconto visivo della tradizione macellaia. Fotografie che parlano di qualità, cura e competenza.'},
+      {id:'m5', name:'POP', icon:'🥩', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'CARNE<br>DA FAVOLA.', heroS:'La macelleria che non ti aspetti. Look audace, contenuti social, presenza che colpisce.'}
+    ]
+  },
+  panificio: {
+    icon: '🥖',
+    title: 'Panificio',
+    hero: 'Forno, tradizione, profumi di una volta.',
+    subtitle: 'Il pane di ieri, il sito di oggi. Racconta la tua arte bianca con un sito che profuma di buono.',
+    styles: [
+      {id:'p1', name:'Moderno', icon:'🥖', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'Il <em>profumo</em> del<br>pane appena sfornato.', heroS:'Lievito madre, farine selezionate, lavorazione lenta. Il nostro forno, ora anche sul web.'},
+      {id:'p2', name:'Caldo', icon:'🥖', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'Forno dal <span>1958</span>.<br>Sempre qui.', heroS:'Da tre quarti di secolo sforniamo pane. La stessa ricetta, lo stesso amore per la pasta madre.'},
+      {id:'p3', name:'Vivace', icon:'🥖', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'<span class="accent">Forno</span><br>24/7? No,<br>quasi.', heroS:'Il pane buono non ha orari. Ma il nostro sito sì: sempre aperto. Scopri i nostri prodotti artigianali.'},
+      {id:'p4', name:'Editoriale', icon:'🥖', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'Lievito madre,<br>storia viva.', heroS:'Ogni pagnotta racconta una storia di farina, acqua e tempo. Il nostro pane è fatto di pazienza e competenza.'},
+      {id:'p5', name:'POP', icon:'🥖', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'FORNO<br>DA MATTI.', heroS:'Dalla pietra al piatto. Lievitazione lenta, ingredienti veri, forme che ricordano il sapore di una volta.'}
+    ]
+  },
+  pasticceria: {
+    icon: '🍰',
+    title: 'Pasticceria',
+    hero: 'Dolcezza artigianale, ogni giorno.',
+    subtitle: 'I tuoi capolavori di pasticceria meritano una vetrina all\'altezza. Elegante, golosa, professionale.',
+    styles: [
+      {id:'ps1', name:'Moderno', icon:'🍰', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'Il <em>dolce</em> che<br>cercavi.', heroS:'Pasticceria artigianale, ingredienti selezionati, creatività senza confini. Ogni dessert è un capolavoro.'},
+      {id:'ps2', name:'Caldo', icon:'🍰', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'Dolcezze di <span>casa</span><br>da sempre.', heroS:'Ricette della nonna, materie prime eccellenti, la cura che solo la pasticceria artigianale sa dare.'},
+      {id:'ps3', name:'Vivace', icon:'🍰', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'<span class="accent">Sugar</span><br>rush<br>autorizzato.', heroS:'Dolci che fanno girare la testa. Letteralmente. Pasticceria moderna per palati contemporanei.'},
+      {id:'ps4', name:'Editoriale', icon:'🍰', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'Dessert come<br>opere d\'arte.', heroS:'La pasticceria è un\'arte che si gusta con gli occhi prima che con il palato. Ogni foto racconta la nostra creatività.'},
+      {id:'ps5', name:'POP', icon:'🍰', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'DOLCI<br>CHIC.', heroS:'Pasticceria d\'autore, servizio impeccabile, location da sogno. Per chi non si accontenta del solito.'}
+    ]
+  },
+  ristorante: {
+    icon: '🍝',
+    title: 'Ristorante',
+    hero: 'La tua cucina, la nostra tecnologia.',
+    subtitle: 'Un sito che fa venire fame. Menù, prenotazioni, foto che parlano. Il tuo ristorante raccontato al meglio.',
+    styles: [
+      {id:'r1', name:'Moderno', icon:'🍝', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'La <em>tua</em> cucina,<br>a portata di click.', heroS:'Menù digitale, prenotazioni online, foto che fanno venire fame. Il tuo ristorante sempre aperto sul web.'},
+      {id:'r2', name:'Caldo', icon:'🍝', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'Cucina di <span>casa</span><br>dal 1972.', heroS:'Ricette della tradizione, ingredienti del territorio, l\'accoglienza di una volta. La nostra storia in tavola.'},
+      {id:'r3', name:'Vivace', icon:'🍝', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'<span class="accent">Food</span><br>is the<br>new rock.', heroS:'Piatti che spaccano, atmosfera che trascina. Il ristorante per chi ama mangiare bene e stare bene.'},
+      {id:'r4', name:'Editoriale', icon:'🍝', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'La nostra tavola,<br>la vostra storia.', heroS:'Un racconto per immagini della nostra filosofia culinaria. Ogni piatto è un\'esperienza, ogni ingrediente una scelta.'},
+      {id:'r5', name:'POP', icon:'🍝', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'CHEF<br>MODELLO.', heroS:'Cucina che emoziona, servizio che conquista. Non venite per mangiare. Venite per vivere un\'esperienza.'}
+    ]
+  },
+  parrucchiere: {
+    icon: '💇',
+    title: 'Parrucchiere / Estetica',
+    hero: 'Il tuo look merita un sito all\'altezza.',
+    subtitle: 'Professionalità, stile, tendenze. Racconta il tuo salone con immagini che ispirano e prenotazioni facili.',
+    styles: [
+      {id:'pr1', name:'Moderno', icon:'💇', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'Il tuo <em>stile</em>,<br>la nostra arte.', heroS:'Taglio, colore, trattamenti. Professionalità e tendenze in un ambiente curato. Il tuo salone, online.'},
+      {id:'pr2', name:'Caldo', icon:'💇', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'Bellezza <span>autentica</span>,<br>da sempre.', heroS:'Trattamenti personalizzati, prodotti selezionati, l\'atmosfera accogliente di un salone che mette a proprio agio.'},
+      {id:'pr3', name:'Vivace', icon:'💇', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'<span class="accent">New</span><br>look<br>alert.', heroS:'Tendenze, colori audaci, tagli che fanno parlare. Il salone per chi ama osare con stile.'},
+      {id:'pr4', name:'Editoriale', icon:'💇', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'Eleganza senza<br>tempo.', heroS:'Un racconto visivo della nostra filosofia. Taglio, colore, benessere. Ogni servizio è un\'esperienza di stile.'},
+      {id:'pr5', name:'POP', icon:'💇', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'STILE<br>IN SEDIA.', heroS:'Look da copertina, trattamento da star. Per chi vuole apparire al meglio, ogni giorno. Salone premium a portata di click.'}
+    ]
+  }
+};
+
+function buildCards(catId, data){
+  const container = document.getElementById('cat-' + catId);
+  let html = '<div class="card-grid">';
+  data.styles.forEach((s, i) => {
+    html += `<div class="card" onclick="openOverlay('${catId}', ${i})">
+      <div class="card-preview">
+        <div class="bg ${s.bg}"></div>
+        <div class="label">
+          <span class="preview-icon">${s.icon}</span>
+          <span class="style-tag ${s.tag}">${s.name}</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="name">${s.name}</span>
+        <span class="num">${i+1}/5</span>
+      </div>
+    </div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function buildOverlayContent(catId, styleIdx){
+  const data = content[catId];
+  const s = data.styles[styleIdx];
+  let navBtns = '';
+  data.styles.forEach((_, i) => {
+    const isActive = i === styleIdx ? 'active' : '';
+    const sName = data.styles[i].name;
+    navBtns += `<button class="style-nav-btn ${isActive}" onclick="openOverlay('${catId}', ${i})">${sName}</button>`;
+  });
+
+  return `
+    <div class="overlay-header">
+      <div>
+        <h3>${data.icon} ${s.name} · ${data.title}</h3>
+        <div class="cat-lbl">Stile ${styleIdx+1} di 5</div>
+      </div>
+    </div>
+    <div class="full-mockup active" id="mockup-${catId}-${styleIdx}">
+      <div class="fm${styleIdx+1}">
+        <div class="hero">
+          <div class="hero-content">
+            <h2>${s.heroT}</h2>
+            <p>${s.heroS}</p>
+            <span class="btn">Scopri di più →</span>
+          </div>
+          <div class="hero-img">📸 Foto ${data.title.toLowerCase()}</div>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">📱</div>
+            <h3>Mobile First</h3>
+            <p>Perfetto su telefono, tablet e computer.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📍</div>
+            <h3>Dove trovarti</h3>
+            <p>Orari, indirizzo, recensioni. Tutto a portata di click.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📞</div>
+            <h3>Contatto diretto</h3>
+            <p>Chiama, WhatsApp o mail. Un click e sei in contatto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="style-nav">${navBtns}</div>
+  `;
+}
+
+function showCategory(catId){
+  document.querySelectorAll('.cat-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('cat-' + catId).classList.add('active');
+  document.querySelectorAll('.cat-btn').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('onclick').includes(catId));
+  });
+}
+
+function openOverlay(catId, idx){
+  const overlay = document.getElementById('overlay');
+  const inner = document.getElementById('overlayInner');
+  inner.innerHTML = buildOverlayContent(catId, idx);
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeOverlay(){
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('overlayInner').innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+// Build all categories
+Object.keys(content).forEach(cat => buildCards(cat, content[cat]));
+</script>
+</body>
+</html>
