@@ -3,340 +3,273 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TeoDigital — Portfolio Settori</title>
+<title>TeoDigital — Portfolio</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Anton&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Anton&display=swap');
   
   *{margin:0;padding:0;box-sizing:border-box}
   body{
-    background:#0d0d0d;
-    font-family:Inter,sans-serif;
-    color:#fff;
-    padding:30px 16px;
+    font-family:Inter,sans-serif;background:#0a0a0a;color:#eee;
+    padding:24px 16px 60px;
   }
   .container{max-width:1200px;margin:0 auto}
 
-  header{
-    text-align:center;margin-bottom:30px;
+  header{text-align:center;margin-bottom:30px}
+  header h1{font-size:2rem;font-weight:800;letter-spacing:-1px;color:#fff}
+  header h1 span{color:#e04545}
+  header p{color:#666;font-size:0.85rem;margin-top:4px}
+  header .back{
+    display:inline-block;margin-top:8px;font-size:0.75rem;color:#555;
+    text-decoration:none;
   }
-  header h1{
-    font-size:2.2rem;font-weight:800;letter-spacing:-1px;
-  }
-  header h1 span{color:#c73e3e}
-  header p{color:#666;font-size:0.9rem;max-width:500px;margin:4px auto 0}
+  header .back:hover{color:#e04545}
 
-  /* CATEGORY TABS */
+  /* TABS */
   .cat-tabs{
-    display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
-    margin-bottom:30px;
+    display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:28px;
   }
   .cat-btn{
-    padding:10px 22px;
-    border:1px solid #333;background:#1a1a1a;color:#888;
-    border-radius:10px;
-    font-family:Inter,sans-serif;font-size:0.82rem;font-weight:600;
+    padding:10px 20px;border:1px solid #222;background:#121212;color:#777;
+    border-radius:8px;font-family:Inter,sans-serif;font-size:0.8rem;font-weight:600;
     cursor:pointer;transition:all .2s;
   }
-  .cat-btn:hover{border-color:#c73e3e;color:#c73e3e}
-  .cat-btn.active{background:#c73e3e;border-color:#c73e3e;color:#fff}
+  .cat-btn:hover{border-color:#e04545;color:#e04545}
+  .cat-btn.active{background:#e04545;border-color:#e04545;color:#fff}
 
-  /* CATEGORY CONTENT: grid of 5 cards */
   .cat-content{display:none}
   .cat-content.active{display:block}
 
+  /* CARD GRID */
   .card-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:14px;
+    display:grid;grid-template-columns:repeat(5,1fr);gap:12px;
   }
-
   .card{
-    position:relative;
-    border-radius:14px;
-    overflow:hidden;
-    background:#1a1a1a;
-    cursor:pointer;
-    transition:all .3s;
-    border:1px solid #222;
-    aspect-ratio:3/4;
-    display:flex;flex-direction:column;
+    position:relative;border-radius:12px;overflow:hidden;
+    background:#121212;cursor:pointer;transition:all .3s;
+    aspect-ratio:3/4;display:flex;flex-direction:column;
+    border:1px solid #1e1e1e;
   }
   .card:hover{
     transform:translateY(-4px);
-    border-color:#c73e3e;
-    box-shadow:0 12px 40px rgba(199,62,62,.15);
+    border-color:#e04545;
+    box-shadow:0 12px 40px rgba(224,69,69,.1);
   }
+  .card .cp{
+    flex:1;display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .card .cp-bg{position:absolute;inset:0;transition:transform .4s}
+  .card:hover .cp-bg{transform:scale(1.08)}
+  .card .cp-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+  .card .cp-content{position:relative;z-index:2;text-align:center;padding:16px}
+  .card .cp-icon{font-size:2rem;margin-bottom:6px;display:block}
+  .card .style-tag{
+    display:inline-block;padding:4px 10px;border-radius:4px;
+    font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  }
+  .card .cf{
+    padding:12px 14px;border-top:1px solid #1e1e1e;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .card .cf-name{font-size:0.78rem;font-weight:600;color:#fff}
+  .card .cf-num{font-size:0.6rem;color:#555;background:#1a1a1a;padding:2px 8px;border-radius:4px}
 
-  .card-preview{
-    flex:1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:0.75rem;
-    color:#555;
-    position:relative;
-    overflow:hidden;
-    min-height:160px;
-  }
-  .card-preview .bg{position:absolute;inset:0}
-  .card-preview .label{position:relative;z-index:1;padding:12px;text-align:center}
+  /* Style tag colors */
+  .st-moderno{background:#1a1a1a;color:#fff}
+  .st-caldo{background:#b85c2a;color:#fff}
+  .st-vivace{background:linear-gradient(135deg,#e94560,#f77f00);color:#fff}
+  .st-editoriale{background:#fff;color:#1a1a1a}
+  .st-pop{background:#e91e63;color:#fff}
 
-  .card-footer{
-    padding:12px 14px;
-    border-top:1px solid #222;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-  }
-  .card-footer .name{
-    font-size:0.8rem;font-weight:600;color:#fff;
-  }
-  .card-footer .num{
-    font-size:0.7rem;color:#666;
-    background:#222;padding:2px 8px;border-radius:4px;
-  }
-
-  .style-tag{
-    display:inline-block;
-    font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
-    padding:3px 8px;border-radius:4px;
-  }
-
-  /* Overlay modal for full preview */
+  /* OVERLAY */
   .overlay{
-    display:none;
-    position:fixed;inset:0;
-    background:rgba(0,0,0,.92);
-    z-index:100;
-    overflow-y:auto;
-    padding:20px;
-    backdrop-filter:blur(10px);
+    display:none;position:fixed;inset:0;
+    background:rgba(0,0,0,.94);z-index:1000;
+    overflow-y:auto;padding:16px;
+    backdrop-filter:blur(20px);
   }
   .overlay.open{display:block}
 
-  .overlay-inner{
-    max-width:900px;
-    margin:30px auto;
-    border-radius:20px;
-    overflow:hidden;
-    position:relative;
-  }
+  .overlay-inner{max-width:960px;margin:20px auto;border-radius:16px;overflow:hidden;background:#121212}
   .overlay-close{
-    position:fixed;top:20px;right:30px;
-    font-size:2rem;color:#fff;cursor:pointer;
-    background:#c73e3e;width:44px;height:44px;
-    border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-weight:700;border:none;z-index:110;
+    position:fixed;top:16px;right:20px;z-index:1100;
+    width:44px;height:44px;border-radius:50%;
+    background:#e04545;border:none;color:#fff;
+    font-size:1.3rem;font-weight:700;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
     transition:all .2s;
   }
   .overlay-close:hover{background:#fff;color:#1a1a1a}
 
   .overlay-header{
     display:flex;justify-content:space-between;align-items:center;
-    padding:16px 24px;
-    background:#1a1a1a;
-    color:white;
-    border-bottom:1px solid #333;
+    padding:16px 24px;background:#121212;border-bottom:1px solid #1e1e1e;
   }
-  .overlay-header h3{font-size:1rem;font-weight:600}
-  .overlay-header .cat-lbl{
-    color:#888;font-size:0.8rem;
+  .overlay-header h3{font-size:1rem;font-weight:600;color:#fff}
+  .overlay-header .ol{color:#666;font-size:0.75rem}
+
+  /* Mockup sections - all share image overlays */
+  .mockup-hero{
+    position:relative;overflow:hidden;min-height:420px;
+    display:flex;align-items:center;
+  }
+  .mockup-hero .mh-bg{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    transition:transform 6s ease;
+  }
+  .mockup-hero:hover .mh-bg{transform:scale(1.03)}
+  .mockup-hero .mh-shade{position:absolute;inset:0}
+  .mockup-hero .mh-content{
+    position:relative;z-index:2;padding:60px 50px;width:100%;
   }
 
-  /* ===== MOCKUP STYLES (reduced for cards) ===== */
-
-  /* Style colors for preview dots */
-  .s-bg-moderno{background:linear-gradient(135deg,#fafaf9,#e8e4de)}
-  .s-bg-caldo{background:linear-gradient(135deg,#faf3ed,#dccfc1)}
-  .s-bg-vivace{background:linear-gradient(135deg,#1a1a2e,#16213e)}
-  .s-bg-editoriale{background:linear-gradient(135deg,#ffffff,#e8e4de)}
-  .s-bg-pop{background:linear-gradient(135deg,#ffd600,#ff6f00)}
-  
-  .s-tag-moderno{background:#1a1a1a;color:#fff}
-  .s-tag-caldo{background:#b85c2a;color:#fff}
-  .s-tag-vivace{background:linear-gradient(135deg,#e94560,#f77f00);color:#fff}
-  .s-tag-editoriale{background:#1a1a1a;color:#fff;border:1px solid #555}
-  .s-tag-pop{background:#e91e63;color:#fff}
-
-  .preview-icon{
-    font-size:2.5rem;margin-bottom:8px;display:block;
-  }
-
-  /* Full mockup styles inside overlay */
-  .full-mockup{display:none;padding:0}
-  .full-mockup.active{display:block}
-
-  /* STYLE 1: MODERNO (full version) */
-  .fm1{
-    font-family:Inter,sans-serif;
-    color:#1a1a1a;
-    background:#fafaf9;
-  }
-  .fm1 .hero{
-    padding:60px 50px;
-    display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
-  }
-  .fm1 .hero-content h2{
-    font-family:'DM Serif Display',serif;
-    font-size:2.5rem;font-weight:400;line-height:1.15;margin-bottom:16px;
-  }
-  .fm1 .hero-content h2 em{font-style:italic;color:#c73e3e}
-  .fm1 .hero-content p{color:#666;line-height:1.7;font-size:0.95rem;margin-bottom:24px}
-  .fm1 .hero-img{
-    background:#e8e4de;border-radius:12px;height:260px;
-    display:flex;align-items:center;justify-content:center;color:#999;
-  }
-  .fm1 .btn{
-    display:inline-block;padding:12px 32px;
-    background:#1a1a1a;color:white;text-decoration:none;
-    border-radius:8px;font-weight:600;font-size:0.85rem;
-  }
-  .fm1 .features{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e8e4de;
-  }
-  .fm1 .feature{background:#fafaf9;padding:32px;text-align:center}
-  .fm1 .feature-icon{font-size:1.8rem;margin-bottom:10px}
-  .fm1 .feature h3{font-size:0.9rem;font-weight:600;margin-bottom:6px}
-  .fm1 .feature p{color:#888;font-size:0.8rem;line-height:1.5}
-
-  /* STYLE 2: CALDO */
-  .fm2{
-    font-family:'DM Serif Display',serif;
-    color:#2d1f14;background:#faf3ed;
-  }
-  .fm2 .hero{
-    padding:60px 50px 40px;text-align:center;
-    background:linear-gradient(180deg,#faf3ed 0%,#f0e4d6 100%);
-  }
-  .fm2 .hero h2{font-size:2.8rem;font-weight:400;line-height:1.15;margin-bottom:10px}
-  .fm2 .hero h2 span{color:#b85c2a}
-  .fm2 .hero .subtitle{
-    font-family:Inter,sans-serif;font-size:0.95rem;color:#8b6f5a;
-    max-width:400px;margin:0 auto 24px;line-height:1.6;
-  }
-  .fm2 .hero-img{
-    max-width:500px;height:160px;margin:0 auto;
-    background:#dccfc1;border-radius:10px;
-    display:flex;align-items:center;justify-content:center;color:#a0856e;
-  }
-  .fm2 .btn{
-    display:inline-block;padding:12px 36px;background:#b85c2a;color:white;
-    text-decoration:none;border-radius:30px;font-family:Inter,sans-serif;font-weight:600;font-size:0.85rem;
-  }
-  .fm2 .features{
+  .mockup-features{
     display:grid;grid-template-columns:repeat(3,1fr);
   }
-  .fm2 .feature{background:#faf3ed;padding:32px 24px;text-align:center}
-  .fm2 .feature h3{
-    font-family:Inter,sans-serif;font-size:0.85rem;font-weight:600;
-    letter-spacing:.5px;text-transform:uppercase;color:#2d1f14;margin-bottom:6px;
-  }
-  .fm2 .feature p{font-family:Inter,sans-serif;color:#8b6f5a;font-size:0.8rem;line-height:1.5}
+  .mockup-features .mf-card{padding:36px 28px;text-align:center;border-left:1px solid}
+  .mockup-features .mf-card:first-child{border-left:none}
 
-  /* STYLE 3: VIVACE */
-  .fm3{
-    font-family:'Space Grotesk',sans-serif;color:#1a1a2e;background:#f8f9ff;
+  .mockup-cta{text-align:center;padding:50px 28px}
+
+  /* ===== STYLE 1: MODERNO ===== */
+  .fm-moderno{
+    font-family:Inter,sans-serif;
   }
-  .fm3 .hero{
-    padding:50px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;
-    background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:white;
+  .fm-moderno .mh-shade{
+    background:linear-gradient(135deg,rgba(250,250,249,.92) 0%,rgba(250,250,249,.6) 100%);
   }
-  .fm3 .hero h2{font-size:2.4rem;font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:12px}
-  .fm3 .hero h2 .accent{
+  .fm-moderno .mh-content{color:#1a1a1a}
+  .fm-moderno .mh-content h2{
+    font-family:'DM Serif Display',serif;font-size:2.8rem;font-weight:400;line-height:1.1;
+    margin-bottom:12px;
+  }
+  .fm-moderno .mh-content em{font-style:italic;color:#e04545}
+  .fm-moderno .mh-content p{color:#666;font-size:0.95rem;max-width:420px;line-height:1.6;margin-bottom:20px}
+  .fm-moderno .mh-content .btn{display:inline-block;padding:12px 30px;background:#1a1a1a;color:white;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.85rem}
+  .fm-moderno .mf-card{background:#fafaf9;border-left-color:#eee;color:#1a1a1a}
+  .fm-moderno .mf-card h3{font-size:0.85rem;font-weight:600;margin-bottom:6px}
+  .fm-moderno .mf-card p{color:#888;font-size:0.8rem;line-height:1.5}
+  .fm-moderno .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
+  .fm-moderno .mockup-cta{background:#fafaf9;color:#1a1a1a}
+
+  /* ===== STYLE 2: CALDO ===== */
+  .fm-caldo{
+    font-family:'DM Serif Display',serif;
+  }
+  .fm-caldo .mh-shade{
+    background:linear-gradient(135deg,rgba(250,243,237,.93) 0%,rgba(240,228,214,.7) 100%);
+  }
+  .fm-caldo .mh-content{color:#2d1f14}
+  .fm-caldo .mh-content h2{font-size:3rem;font-weight:400;line-height:1.08;margin-bottom:10px}
+  .fm-caldo .mh-content h2 span{color:#b85c2a}
+  .fm-caldo .mh-content p{
+    font-family:Inter,sans-serif;color:#8b6f5a;font-size:0.9rem;max-width:420px;line-height:1.6;margin-bottom:20px
+  }
+  .fm-caldo .mh-content .btn{
+    display:inline-block;padding:12px 34px;background:#b85c2a;color:#fff;
+    border-radius:30px;font-family:Inter,sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;
+  }
+  .fm-caldo .mf-card{background:#faf3ed;color:#2d1f14;border-left-color:#dccfc1}
+  .fm-caldo .mf-card h3{font-family:Inter,sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;color:#b85c2a}
+  .fm-caldo .mf-card p{font-family:Inter,sans-serif;color:#8b6f5a;font-size:0.8rem;line-height:1.5}
+  .fm-caldo .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
+  .fm-caldo .mockup-cta{background:#faf3ed;color:#2d1f14}
+
+  /* ===== STYLE 3: VIVACE ===== */
+  .fm-vivace{
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .fm-vivace .mh-shade{
+    background:linear-gradient(135deg,rgba(26,26,46,.94) 0%,rgba(22,33,62,.85) 100%);
+  }
+  .fm-vivace .mh-content{color:#fff}
+  .fm-vivace .mh-content h2{font-size:2.8rem;font-weight:700;line-height:1.05;letter-spacing:-1px;margin-bottom:12px}
+  .fm-vivace .mh-content .accent{
     background:linear-gradient(135deg,#e94560,#f77f00);
     -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   }
-  .fm3 .hero p{color:#a0aec0;font-size:0.9rem;line-height:1.6;margin-bottom:22px}
-  .fm3 .hero-img{
-    background:#2a2a4a;border-radius:12px;height:220px;
-    display:flex;align-items:center;justify-content:center;color:#4a4a6a;border:1px solid #3a3a5a;
+  .fm-vivace .mh-content p{color:#a0aec0;font-size:0.9rem;max-width:400px;line-height:1.6;margin-bottom:20px}
+  .fm-vivace .mh-content .btn{
+    display:inline-block;padding:12px 28px;
+    background:linear-gradient(135deg,#e94560,#f77f00);color:#fff;border-radius:8px;
+    font-weight:600;font-size:0.85rem;text-decoration:none;
   }
-  .fm3 .btn{
-    display:inline-block;padding:10px 28px;
-    background:linear-gradient(135deg,#e94560,#f77f00);color:white;text-decoration:none;border-radius:8px;font-weight:600;font-size:0.85rem;
-  }
-  .fm3 .features{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#e2e8f0;
-  }
-  .fm3 .feature{background:#f8f9ff;padding:32px;text-align:center}
-  .fm3 .feature-icon{font-size:1.8rem;margin-bottom:10px}
-  .fm3 .feature h3{
-    font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;
-  }
-  .fm3 .feature p{color:#718096;font-size:0.8rem;line-height:1.5}
+  .fm-vivace .mf-card{background:#1a1a2e;color:#fff;border-left-color:#2a2a4a}
+  .fm-vivace .mf-card h3{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;color:#e94560}
+  .fm-vivace .mf-card p{color:#a0aec0;font-size:0.8rem;line-height:1.5}
+  .fm-vivace .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
+  .fm-vivace .mockup-cta{background:#16213e;color:#fff}
 
-  /* STYLE 4: EDITORIALE */
-  .fm4{
-    font-family:'Cormorant Garamond',serif;color:#1a1a1a;background:#fff;
+  /* ===== STYLE 4: EDITORIALE ===== */
+  .fm-editoriale{
+    font-family:'Cormorant Garamond',serif;
   }
-  .fm4 .hero{display:grid;grid-template-columns:1fr 1fr}
-  .fm4 .hero-text{
-    padding:60px 50px;display:flex;flex-direction:column;justify-content:center;
+  .fm-editoriale .mockup-hero{min-height:480px}
+  .fm-editoriale .mh-shade{
+    background:linear-gradient(90deg,rgba(255,255,255,.95) 0%,rgba(200,200,200,.3) 50%,transparent 100%);
   }
-  .fm4 .hero-text .label{
-    font-family:Inter,sans-serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:3px;color:#999;margin-bottom:16px;
+  .fm-editoriale .mh-content{color:#1a1a1a;max-width:450px}
+  .fm-editoriale .mh-content .sup{
+    font-family:Inter,sans-serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:3px;color:#999;margin-bottom:14px;display:block;
   }
-  .fm4 .hero-text h2{font-size:2.8rem;font-weight:400;line-height:1.1;margin-bottom:20px;font-style:italic}
-  .fm4 .hero-text p{
-    font-family:Inter,sans-serif;color:#777;font-size:0.85rem;line-height:1.7;margin-bottom:24px;
-  }
-  .fm4 .hero-img{
-    min-height:320px;background:#e8e4de;
-    display:flex;align-items:center;justify-content:center;color:#bbb;font-family:Inter,sans-serif;font-size:0.85rem;
-  }
-  .fm4 .btn{
+  .fm-editoriale .mh-content h2{font-size:3.2rem;font-style:italic;font-weight:400;line-height:1.05;margin-bottom:16px}
+  .fm-editoriale .mh-content p{font-family:Inter,sans-serif;color:#777;font-size:0.85rem;line-height:1.7;margin-bottom:24px}
+  .fm-editoriale .mh-content .btn{
     display:inline-block;padding:12px 32px;border:1px solid #1a1a1a;color:#1a1a1a;
-    text-decoration:none;font-family:Inter,sans-serif;font-weight:500;font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;
+    font-family:Inter,sans-serif;font-size:0.7rem;font-weight:500;text-transform:uppercase;letter-spacing:2px;text-decoration:none;
   }
-  .fm4 .features{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #eee}
-  .fm4 .feature{padding:40px 32px;border-left:1px solid #eee}
-  .fm4 .feature:first-child{border-left:none}
-  .fm4 .feature h3{font-family:Inter,sans-serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:2px;color:#999;margin-bottom:10px}
-  .fm4 .feature p{font-family:Inter,sans-serif;color:#666;font-size:0.8rem;line-height:1.6}
+  .fm-editoriale .mf-card{background:#fff;color:#1a1a1a;border-left-color:#eee}
+  .fm-editoriale .mf-card h3{font-family:Inter,sans-serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:#999;margin-bottom:8px}
+  .fm-editoriale .mf-card p{font-family:Inter,sans-serif;color:#888;font-size:0.78rem;line-height:1.6}
+  .fm-editoriale .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
+  .fm-editoriale .mockup-cta{background:#fff;color:#1a1a1a}
 
-  /* STYLE 5: POP */
-  .fm5{
-    font-family:Inter,sans-serif;background:#fffde7;
+  /* ===== STYLE 5: POP ===== */
+  .fm-pop{
+    font-family:Inter,sans-serif;
   }
-  .fm5 .hero{
-    padding:50px;text-align:center;background:linear-gradient(135deg,#ffd600 0%,#ff6f00 50%,#e91e63 100%);color:#1a1a1a;
+  .fm-pop .mh-shade{
+    background:linear-gradient(135deg,rgba(255,214,0,.88) 0%,rgba(255,111,0,.75) 50%,rgba(233,30,99,.6) 100%);
   }
-  .fm5 .hero .label{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:#1a1a1a;opacity:.6;margin-bottom:12px}
-  .fm5 .hero h2{
-    font-family:'Anton',sans-serif;font-size:3.5rem;text-transform:uppercase;line-height:1;letter-spacing:-2px;margin-bottom:10px;color:#1a1a1a;
+  .fm-pop .mh-content{color:#1a1a1a;text-align:center}
+  .fm-pop .mh-content .sup{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;opacity:.6;margin-bottom:10px;display:block}
+  .fm-pop .mh-content h2{
+    font-family:'Anton',sans-serif;font-size:4rem;text-transform:uppercase;line-height:1;letter-spacing:-2px;margin-bottom:10px;
   }
-  .fm5 .hero p{max-width:360px;margin:0 auto 22px;color:#1a1a1a;opacity:.8;font-size:0.9rem;line-height:1.5}
-  .fm5 .btn{
-    display:inline-block;padding:12px 36px;background:#1a1a1a;color:#ffd600;text-decoration:none;border-radius:30px;font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;
+  .fm-pop .mh-content p{max-width:380px;margin:0 auto 22px;opacity:.8;font-size:0.9rem;line-height:1.5}
+  .fm-pop .mh-content .btn{
+    display:inline-block;padding:14px 40px;background:#1a1a1a;color:#ffd600;
+    border-radius:30px;font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;text-decoration:none;
   }
-  .fm5 .features{display:grid;grid-template-columns:repeat(3,1fr)}
-  .fm5 .feature{padding:32px 24px;text-align:center;background:#fffde7}
-  .fm5 .feature-icon{font-size:1.8rem;margin-bottom:6px}
-  .fm5 .feature h3{
-    font-family:'Anton',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;color:#e91e63;
-  }
-  .fm5 .feature p{color:#666;font-size:0.8rem;line-height:1.5}
-
-  .overlay-mockup{display:none}
-  .overlay-mockup.active{display:block}
+  .fm-pop .mf-card{background:#fffde7;color:#1a1a1a;border-left-color:#ffe082}
+  .fm-pop .mf-card h3{font-family:'Anton',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;color:#e91e63}
+  .fm-pop .mf-card p{color:#666;font-size:0.8rem;line-height:1.5}
+  .fm-pop .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
+  .fm-pop .mockup-cta{background:#fffde7;color:#1a1a1a}
 
   .style-nav{
-    display:flex;justify-content:center;gap:8px;margin:16px 0 0;
+    display:flex;justify-content:center;gap:8px;padding:16px;flex-wrap:wrap;
   }
   .style-nav-btn{
-    padding:6px 14px;border:1px solid #333;background:#1a1a1a;color:#888;
+    padding:7px 16px;border:1px solid #333;background:transparent;color:#888;
     border-radius:6px;font-size:0.7rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;
+    transition:all .2s;
   }
-  .style-nav-btn.active{background:#c73e3e;border-color:#c73e3e;color:#fff}
-  .style-nav-btn:hover{border-color:#c73e3e;color:#c73e3e}
+  .style-nav-btn.active{background:#e04545;border-color:#e04545;color:#fff}
+  .style-nav-btn:hover{border-color:#e04545;color:#e04545}
 
-  @media(max-width:700px){
+  @media(max-width:800px){
     .card-grid{grid-template-columns:repeat(2,1fr)}
-    .fm1 .hero,.fm3 .hero,.fm4 .hero{grid-template-columns:1fr;padding:30px 20px}
-    .fm1 .features,.fm2 .features,.fm3 .features,.fm4 .features,.fm5 .features{grid-template-columns:1fr}
-    .fm2 .hero,.fm5 .hero{padding:40px 20px}
-    .fm4 .hero-img{min-height:180px}
-    .fm5 .hero h2{font-size:2.2rem}
+    .mockup-hero .mh-content{padding:40px 24px}
+    .mockup-features{grid-template-columns:1fr}
+    .mockup-features .mf-card{border-left:none;border-top:1px solid}
+    .fm-pop .mh-content h2{font-size:2.5rem}
+    .fm-moderno .mh-content h2,.fm-vivace .mh-content h2,.fm-editoriale .mh-content h2,.fm-caldo .mh-content h2{font-size:2rem}
+  }
+  @media(max-width:500px){
+    .card-grid{grid-template-columns:1fr 1fr}
+    .overlay-close{top:10px;right:10px}
   }
 </style>
 </head>
@@ -345,24 +278,18 @@
 
 <header>
   <h1>Teo<span>Digital</span></h1>
-  <p>Portfolio per settore · 5 design per ogni attività</p>
+  <p>Portfolio · 5 settori, 5 stili ciascuno</p>
+  <a href="index.html" class="back">← Torna alla home</a>
 </header>
 
-<div class="cat-tabs">
-  <button class="cat-btn active" onclick="showCategory('macelleria')">🥩 Macelleria</button>
-  <button class="cat-btn" onclick="showCategory('panificio')">🥖 Panificio</button>
-  <button class="cat-btn" onclick="showCategory('pasticceria')">🍰 Pasticceria</button>
-  <button class="cat-btn" onclick="showCategory('ristorante')">🍝 Ristorante</button>
-  <button class="cat-btn" onclick="showCategory('parrucchiere')">💇 Parrucchiere</button>
-</div>
+<div class="cat-tabs" id="catTabs"></div>
 
-<div id="cat-macelleria" class="cat-content active"></div>
-<div id="cat-panificio" class="cat-content"></div>
-<div id="cat-pasticceria" class="cat-content"></div>
-<div id="cat-ristorante" class="cat-content"></div>
-<div id="cat-parrucchiere" class="cat-content"></div>
+<div class="cat-content" id="contentMacelleria"></div>
+<div class="cat-content" id="contentPanificio"></div>
+<div class="cat-content" id="contentPasticceria"></div>
+<div class="cat-content" id="contentRistorante"></div>
+<div class="cat-content" id="contentParrucchiere"></div>
 
-<!-- OVERLAY -->
 <div class="overlay" id="overlay">
   <button class="overlay-close" onclick="closeOverlay()">✕</button>
   <div class="overlay-inner" id="overlayInner"></div>
@@ -371,170 +298,189 @@
 </div>
 
 <script>
-const content = {
+// IMAGE MAP — same background per category, used by all styles
+const IMGS = {
+  macelleria: 'https://images.unsplash.com/photo-1763033035770-e83f50e8e8b1?w=960&h=640&fit=crop&auto=format',
+  panificio: 'https://images.unsplash.com/photo-1515182629504-727d7753751f?w=960&h=640&fit=crop&auto=format',
+  pasticceria: 'https://images.unsplash.com/photo-1722518252691-1182e2e80a2a?w=960&h=640&fit=crop&auto=format',
+  ristorante: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=960&h=640&fit=crop&auto=format',
+  parrucchiere: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=960&h=640&fit=crop&auto=format'
+};
+
+const CATS = {
+  macelleria: { label:'🥩 Macelleria', icon:'🥩' },
+  panificio: { label:'🥖 Panificio', icon:'🥖' },
+  pasticceria: { label:'🍰 Pasticceria', icon:'🍰' },
+  ristorante: { label:'🍝 Ristorante', icon:'🍝' },
+  parrucchiere: { label:'💇 Parrucchiere', icon:'💇' }
+};
+
+const STYLES = [
+  { id:'moderno', label:'Moderno', cl:'fm-moderno', tagCl:'st-moderno', icon:'✦' },
+  { id:'caldo', label:'Caldo', cl:'fm-caldo', tagCl:'st-caldo', icon:'✦' },
+  { id:'vivace', label:'Vivace', cl:'fm-vivace', tagCl:'st-vivace', icon:'✦' },
+  { id:'editoriale', label:'Editoriale', cl:'fm-editoriale', tagCl:'st-editoriale', icon:'✦' },
+  { id:'pop', label:'POP', cl:'fm-pop', tagCl:'st-pop', icon:'✦' }
+];
+
+// CONTENT PER CATEGORY × STYLE
+const CONTENT = {
   macelleria: {
-    icon: '🥩',
-    title: 'Macelleria',
-    hero: 'Carni selezionate, passione artigianale.',
-    subtitle: 'Dal banco al web. Racconta la qualità del tuo prodotto con un sito che riflette la tua tradizione.',
-    styles: [
-      {id:'m1', name:'Moderno', icon:'🥩', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'Carn\'è la nostra <em>passione</em>.', heroS:'Tagli freschi, allevamenti selezionati, competenza artigianale. Il nostro banco, ora anche online.'},
-      {id:'m2', name:'Caldo', icon:'🥩', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'La stessa <span>qualità</span><br>da tre generazioni.', heroS:'La tradizione del nostro banco. Ora anche online, con lo stesso calore e la stessa cura.'},
-      {id:'m3', name:'Vivace', icon:'🥩', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'Carne <span class="accent">vera</span>.<br>Zero storie.', heroS:'No foto ritoccate. Solo carne di qualità, allevatori selezionati, taglio artigianale.'},
-      {id:'m4', name:'Editoriale', icon:'🥩', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'La nostra macelleria,<br>la vostra tavola.', heroS:'Un racconto visivo della tradizione macellaia. Fotografie che parlano di qualità, cura e competenza.'},
-      {id:'m5', name:'POP', icon:'🥩', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'CARNE<br>DA FAVOLA.', heroS:'La macelleria che non ti aspetti. Look audace, contenuti social, presenza che colpisce.'}
+    name:'Macelleria',
+    data:[
+      { h2:'Il <em>taglio</em> giusto,<br>da sempre.', p:'Carni selezionate, allevamenti a km 0, competenza artigianale. Il nostro banco, ora anche online con lo stesso standard di qualità.', features:['🔪 Taglio artigianale','🐄 Allevamenti selezionati','📍 Dove trovarci'] },
+      { h2:'La stessa <span>qualità</span><br>da tre generazioni.', p:'Tradizione di famiglia, passione per la carne buona. Dal banco al web con lo stesso calore e la stessa cura.', features:['👨‍👩‍👧‍👦 Famiglia dal 1970','🥩 Carne certificata','📞 Contattaci'] },
+      { h2:'Carne <span class="accent">vera</span>.<br>Zero storie.', p:'Niente foto ritoccate. Solo carne di qualità, allevatori selezionati, taglio artigianale. Quello che vedi è quello che mangi.', features:['🔥 Direttamente dal produttore','📱 Ordina online','⭐ Recensioni vere'] },
+      { h2:'La nostra macelleria,<br>la <em>vostra tavola</em>.', p:'Un racconto visivo della tradizione macellaia. Fotografie che parlano di qualità, cura e competenza. Dal banco al piatto.', features:['📸 Gallery prodotti','🍖 Tagli su ordinazione','📍 Visitateci'] },
+      { h2:'CARNE<br>DA FAVOLA.', p:'La macelleria che non ti aspetti. Look audace, contenuti social, presenza che colpisce. Carne di qualità, servizio moderno.', features:['💪 Proteine di qualità','📱 IG e Social','🚚 Consegna a casa'] },
     ]
   },
   panificio: {
-    icon: '🥖',
-    title: 'Panificio',
-    hero: 'Forno, tradizione, profumi di una volta.',
-    subtitle: 'Il pane di ieri, il sito di oggi. Racconta la tua arte bianca con un sito che profuma di buono.',
-    styles: [
-      {id:'p1', name:'Moderno', icon:'🥖', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'Il <em>profumo</em> del<br>pane appena sfornato.', heroS:'Lievito madre, farine selezionate, lavorazione lenta. Il nostro forno, ora anche sul web.'},
-      {id:'p2', name:'Caldo', icon:'🥖', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'Forno dal <span>1958</span>.<br>Sempre qui.', heroS:'Da tre quarti di secolo sforniamo pane. La stessa ricetta, lo stesso amore per la pasta madre.'},
-      {id:'p3', name:'Vivace', icon:'🥖', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'<span class="accent">Forno</span><br>24/7? No,<br>quasi.', heroS:'Il pane buono non ha orari. Ma il nostro sito sì: sempre aperto. Scopri i nostri prodotti artigianali.'},
-      {id:'p4', name:'Editoriale', icon:'🥖', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'Lievito madre,<br>storia viva.', heroS:'Ogni pagnotta racconta una storia di farina, acqua e tempo. Il nostro pane è fatto di pazienza e competenza.'},
-      {id:'p5', name:'POP', icon:'🥖', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'FORNO<br>DA MATTI.', heroS:'Dalla pietra al piatto. Lievitazione lenta, ingredienti veri, forme che ricordano il sapore di una volta.'}
+    name:'Panificio',
+    data:[
+      { h2:'Il <em>profumo</em> del<br>pane appena fatto.', p:'Lievito madre, farine selezionate, lavorazione lenta. Il nostro forno, ora anche sul web. Ogni giorno sforniamo freschezza.', features:['🍞 Lievito madre','🌾 Farine bio','📍 Forno in sede'] },
+      { h2:'Forno dal <span>1958</span>.<br>Sempre qui.', p:'Da tre quarti di secolo sforniamo pane per la nostra città. La stessa ricetta, lo stesso amore per la pasta madre.', features:['📜 Storia e tradizione','🔥 Cottura a legna','👨‍🍳 Artigiani del pane'] },
+      { h2:'<span class="accent">Forno</span><br>24/7? No,<br>quasi.', p:'Il pane buono non ha orari, ma il nostro sito è sempre aperto. Scopri i nostri prodotti artigianali e passa in forno.', features:['🥖 Tutti i prodotti','🕐 Orari del forno','📱 Resta connesso'] },
+      { h2:'Lievito madre,<br><em>storia viva</em>.', p:'Ogni pagnotta racconta una storia di farina, acqua e tempo. Il nostro pane è fatto di pazienza, competenza e ingredienti veri.', features:['🌾 Dalla farina al pane','📸 Il nostro lavoro','📍 Vieni a trovarci'] },
+      { h2:'FORNO<br>DA MATTI.', p:'Dalla pietra al piatto. Lievitazione lenta, ingredienti veri, forme che ricordano il sapore di una volta. Il pane come deve essere.', features:['🔥 Cottura tradizionale','🥇 Ingredienti selezionati','📱 Seguici'] },
     ]
   },
   pasticceria: {
-    icon: '🍰',
-    title: 'Pasticceria',
-    hero: 'Dolcezza artigianale, ogni giorno.',
-    subtitle: 'I tuoi capolavori di pasticceria meritano una vetrina all\'altezza. Elegante, golosa, professionale.',
-    styles: [
-      {id:'ps1', name:'Moderno', icon:'🍰', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'Il <em>dolce</em> che<br>cercavi.', heroS:'Pasticceria artigianale, ingredienti selezionati, creatività senza confini. Ogni dessert è un capolavoro.'},
-      {id:'ps2', name:'Caldo', icon:'🍰', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'Dolcezze di <span>casa</span><br>da sempre.', heroS:'Ricette della nonna, materie prime eccellenti, la cura che solo la pasticceria artigianale sa dare.'},
-      {id:'ps3', name:'Vivace', icon:'🍰', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'<span class="accent">Sugar</span><br>rush<br>autorizzato.', heroS:'Dolci che fanno girare la testa. Letteralmente. Pasticceria moderna per palati contemporanei.'},
-      {id:'ps4', name:'Editoriale', icon:'🍰', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'Dessert come<br>opere d\'arte.', heroS:'La pasticceria è un\'arte che si gusta con gli occhi prima che con il palato. Ogni foto racconta la nostra creatività.'},
-      {id:'ps5', name:'POP', icon:'🍰', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'DOLCI<br>CHIC.', heroS:'Pasticceria d\'autore, servizio impeccabile, location da sogno. Per chi non si accontenta del solito.'}
+    name:'Pasticceria',
+    data:[
+      { h2:'Il <em>dolce</em> che<br>cercavi.', p:'Pasticceria artigianale, ingredienti selezionati, creatività senza confini. Ogni dessert è un capolavoro di gusto ed estetica.', features:['🍰 Dolci artigianali','🌿 Ingredienti freschi','📍 La vetrina'] },
+      { h2:'Dolcezze di <span>casa</span><br>da sempre.', p:'Ricette della nonna, materie prime eccellenti, la cura che solo la pasticceria artigianale sa dare. Il gusto di una volta.', features:['👵 Ricette tradizionali','🎂 Torte su ordinazione','☕ Colazione in sede'] },
+      { h2:'<span class="accent">Sugar</span><br>rush<br>autorizzato.', p:'Dolci che fanno girare la testa. Letteralmente. Pasticceria moderna per palati contemporanei. Ogni morso è un\'emozione.', features:['🌈 Colori e gusto','📱 IG-friendly','🎉 Eventi e catering'] },
+      { h2:'Dessert come<br><em>opere d\'arte</em>.', p:'La pasticceria è un\'arte che si gusta con gli occhi prima che con il palato. Ogni foto racconta la nostra creatività e passione.', features:['📸 Gallery fotografica','🍫 Cioccolato artigianale','📍 Dove siamo'] },
+      { h2:'DOLCI<br>CHIC.', p:'Pasticceria d\'autore, servizio impeccabile, location da sogno. Per chi non si accontenta del solito dolce.', features:['⭐ Alta pasticceria','🥂 Eventi esclusivi','📱 Prenota online'] },
     ]
   },
   ristorante: {
-    icon: '🍝',
-    title: 'Ristorante',
-    hero: 'La tua cucina, la nostra tecnologia.',
-    subtitle: 'Un sito che fa venire fame. Menù, prenotazioni, foto che parlano. Il tuo ristorante raccontato al meglio.',
-    styles: [
-      {id:'r1', name:'Moderno', icon:'🍝', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'La <em>tua</em> cucina,<br>a portata di click.', heroS:'Menù digitale, prenotazioni online, foto che fanno venire fame. Il tuo ristorante sempre aperto sul web.'},
-      {id:'r2', name:'Caldo', icon:'🍝', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'Cucina di <span>casa</span><br>dal 1972.', heroS:'Ricette della tradizione, ingredienti del territorio, l\'accoglienza di una volta. La nostra storia in tavola.'},
-      {id:'r3', name:'Vivace', icon:'🍝', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'<span class="accent">Food</span><br>is the<br>new rock.', heroS:'Piatti che spaccano, atmosfera che trascina. Il ristorante per chi ama mangiare bene e stare bene.'},
-      {id:'r4', name:'Editoriale', icon:'🍝', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'La nostra tavola,<br>la vostra storia.', heroS:'Un racconto per immagini della nostra filosofia culinaria. Ogni piatto è un\'esperienza, ogni ingrediente una scelta.'},
-      {id:'r5', name:'POP', icon:'🍝', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'CHEF<br>MODELLO.', heroS:'Cucina che emoziona, servizio che conquista. Non venite per mangiare. Venite per vivere un\'esperienza.'}
+    name:'Ristorante',
+    data:[
+      { h2:'La <em>tua</em> cucina,<br>a portata di click.', p:'Menù digitale, prenotazioni online, foto che fanno venire fame. Il tuo ristorante sempre aperto sul web, anche fuori orario.', features:['🍝 Menù digitale','📅 Prenota online','⭐ Recensioni'] },
+      { h2:'Cucina di <span>casa</span><br>dal 1972.', p:'Ricette della tradizione, ingredienti del territorio, l\'accoglienza di una volta. La nostra storia raccontata in ogni piatto.', features:['🌿 A km 0','🍷 Carta dei vini','👨‍🍳 Chef Gianni'] },
+      { h2:'<span class="accent">Food</span><br>is the<br>new rock.', p:'Piatti che spaccano, atmosfera che trascina. Il ristorante per chi ama mangiare bene e stare bene. Musica, gusto, divertimento.', features:['🎵 Atmosfera unica','🍔 Menu contemporaneo','📱 IG @ristorante'] },
+      { h2:'La nostra tavola,<br><em>la vostra storia</em>.', p:'Un racconto per immagini della nostra filosofia culinaria. Ogni piatto è un\'esperienza, ogni ingrediente una scelta consapevole.', features:['📸 Food photography','🌱 Filosofia green','📍 Dove trovarci'] },
+      { h2:'CHEF<br>MODELLO.', p:'Cucina che emoziona, servizio che conquista. Non venite per mangiare. Venite per vivere un\'esperienza culinaria unica.', features:['⭐ Stelle e premi','🥇 Chef a domicilio','📱 Seguici su IG'] },
     ]
   },
   parrucchiere: {
-    icon: '💇',
-    title: 'Parrucchiere / Estetica',
-    hero: 'Il tuo look merita un sito all\'altezza.',
-    subtitle: 'Professionalità, stile, tendenze. Racconta il tuo salone con immagini che ispirano e prenotazioni facili.',
-    styles: [
-      {id:'pr1', name:'Moderno', icon:'💇', bg:'s-bg-moderno', tag:'s-tag-moderno', heroT:'Il tuo <em>stile</em>,<br>la nostra arte.', heroS:'Taglio, colore, trattamenti. Professionalità e tendenze in un ambiente curato. Il tuo salone, online.'},
-      {id:'pr2', name:'Caldo', icon:'💇', bg:'s-bg-caldo', tag:'s-tag-caldo', heroT:'Bellezza <span>autentica</span>,<br>da sempre.', heroS:'Trattamenti personalizzati, prodotti selezionati, l\'atmosfera accogliente di un salone che mette a proprio agio.'},
-      {id:'pr3', name:'Vivace', icon:'💇', bg:'s-bg-vivace', tag:'s-tag-vivace', heroT:'<span class="accent">New</span><br>look<br>alert.', heroS:'Tendenze, colori audaci, tagli che fanno parlare. Il salone per chi ama osare con stile.'},
-      {id:'pr4', name:'Editoriale', icon:'💇', bg:'s-bg-editoriale', tag:'s-tag-editoriale', heroT:'Eleganza senza<br>tempo.', heroS:'Un racconto visivo della nostra filosofia. Taglio, colore, benessere. Ogni servizio è un\'esperienza di stile.'},
-      {id:'pr5', name:'POP', icon:'💇', bg:'s-bg-pop', tag:'s-tag-pop', heroT:'STILE<br>IN SEDIA.', heroS:'Look da copertina, trattamento da star. Per chi vuole apparire al meglio, ogni giorno. Salone premium a portata di click.'}
+    name:'Parrucchiere / Estetica',
+    data:[
+      { h2:'Il tuo <em>stile</em>,<br>la nostra arte.', p:'Taglio, colore, trattamenti. Professionalità e tendenze in un ambiente curato. Il tuo salone, ora anche online con un sito all\'altezza.', features:['💇 Taglio e colore','✨ Trattamenti premium','📍 Dove siamo'] },
+      { h2:'Bellezza <span>autentica</span>,<br>da sempre.', p:'Trattamenti personalizzati, prodotti selezionati, l\'atmosfera accogliente di un salone che mette a proprio agio. Da 40 anni.', features:['🌟 Conservazione','🧴 Prodotti bio','📞 Prenota'] },
+      { h2:'<span class="accent">New</span><br>look<br>alert.', p:'Tendenze, colori audaci, tagli che fanno parlare. Il salone per chi ama osare con stile. Raccontalo con un sito moderno.', features:['🌈 Colorazioni trend','📱 IG gallery','✂️ Tagli moda'] },
+      { h2:'Eleganza<br><em>senza tempo</em>.', p:'Un racconto visivo della nostra filosofia. Taglio, colore, benessere. Ogni servizio è un\'esperienza di stile e cura personale.', features:['📸 Portfolio lavori','💆 Benessere','📍 Contatti'] },
+      { h2:'STILE<br>IN SEDIA.', p:'Look da copertina, trattamento da star. Per chi vuole apparire al meglio, ogni giorno. Salone premium a portata di click.', features:['⭐ Trattamento vip','📱 Seguici','💎 Prodotti esclusivi'] },
     ]
   }
 };
 
-function buildCards(catId, data){
-  const container = document.getElementById('cat-' + catId);
+function buildCards(catId){
+  const el = document.getElementById('content' + catId.charAt(0).toUpperCase() + catId.slice(1));
+  const data = CONTENT[catId].data;
+  const img = IMGS[catId];
   let html = '<div class="card-grid">';
-  data.styles.forEach((s, i) => {
+  data.forEach((s, i) => {
+    const sty = STYLES[i];
     html += `<div class="card" onclick="openOverlay('${catId}', ${i})">
-      <div class="card-preview">
-        <div class="bg ${s.bg}"></div>
-        <div class="label">
-          <span class="preview-icon">${s.icon}</span>
-          <span class="style-tag ${s.tag}">${s.name}</span>
+      <div class="cp">
+        <div class="cp-bg" style="background:url('${img}') center/cover"></div>
+        <div class="cp-overlay"></div>
+        <div class="cp-content">
+          <span class="cp-icon">${CATS[catId].icon}</span>
+          <span class="style-tag ${sty.tagCl}">${sty.label}</span>
         </div>
       </div>
-      <div class="card-footer">
-        <span class="name">${s.name}</span>
-        <span class="num">${i+1}/5</span>
+      <div class="cf">
+        <span class="cf-name">${sty.label}</span>
+        <span class="cf-num">${i+1}/5</span>
       </div>
     </div>`;
   });
   html += '</div>';
-  container.innerHTML = html;
+  el.innerHTML = html;
 }
 
-function buildOverlayContent(catId, styleIdx){
-  const data = content[catId];
-  const s = data.styles[styleIdx];
-  let navBtns = '';
-  data.styles.forEach((_, i) => {
-    const isActive = i === styleIdx ? 'active' : '';
-    const sName = data.styles[i].name;
-    navBtns += `<button class="style-nav-btn ${isActive}" onclick="openOverlay('${catId}', ${i})">${sName}</button>`;
-  });
+function buildMockup(catId, idx){
+  const d = CONTENT[catId].data[idx];
+  const sty = STYLES[idx];
+  const img = IMGS[catId];
+  const catName = CONTENT[catId].name;
+  
+  // Features from data
+  const fts = d.features.map(f => 
+    `<div class="mf-card"><span class="mf-icon">${f.split(' ')[0]}</span><h3>${f.slice(2)}</h3><p>Scopri di più sul nostro servizio.</p></div>`
+  ).join('');
 
-  return `
-    <div class="overlay-header">
-      <div>
-        <h3>${data.icon} ${s.name} · ${data.title}</h3>
-        <div class="cat-lbl">Stile ${styleIdx+1} di 5</div>
+  return `<div class="fm-${sty.id}">
+    <div class="mockup-hero">
+      <div class="mh-bg" style="background-image:url('${img}')"></div>
+      <div class="mh-shade"></div>
+      <div class="mh-content">
+        <h2>${d.h2}</h2>
+        <p>${d.p}</p>
+        <span class="btn">Scopri di più →</span>
       </div>
     </div>
-    <div class="full-mockup active" id="mockup-${catId}-${styleIdx}">
-      <div class="fm${styleIdx+1}">
-        <div class="hero">
-          <div class="hero-content">
-            <h2>${s.heroT}</h2>
-            <p>${s.heroS}</p>
-            <span class="btn">Scopri di più →</span>
-          </div>
-          <div class="hero-img">📸 Foto ${data.title.toLowerCase()}</div>
-        </div>
-        <div class="features">
-          <div class="feature">
-            <div class="feature-icon">📱</div>
-            <h3>Mobile First</h3>
-            <p>Perfetto su telefono, tablet e computer.</p>
-          </div>
-          <div class="feature">
-            <div class="feature-icon">📍</div>
-            <h3>Dove trovarti</h3>
-            <p>Orari, indirizzo, recensioni. Tutto a portata di click.</p>
-          </div>
-          <div class="feature">
-            <div class="feature-icon">📞</div>
-            <h3>Contatto diretto</h3>
-            <p>Chiama, WhatsApp o mail. Un click e sei in contatto.</p>
-          </div>
-        </div>
-      </div>
+    <div class="mockup-features">
+      ${fts}
     </div>
-    <div class="style-nav">${navBtns}</div>
-  `;
+    <div class="mockup-cta">
+      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px;opacity:.6">📍 [Indirizzo] · 📞 [Telefono] · 📱 @[social]</p>
+      <p style="font-size:0.7rem;opacity:.3">Questo è un esempio di come potrebbe apparire il tuo sito.</p>
+    </div>
+  </div>`;
 }
+
+function buildNav(catId, idx){
+  const sty = STYLES;
+  return sty.map((s, i) => 
+    `<button class="style-nav-btn ${i===idx?'active':''}" onclick="openOverlay('${catId}', ${i})">${s.label}</button>`
+  ).join('');
+}
+
+// Build tabs
+const tabIds = Object.keys(CATS);
+tabIds.forEach((id, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'cat-btn' + (i===0?' active':'');
+  btn.textContent = CATS[id].label;
+  btn.setAttribute('onclick', `showCategory('${id}')`);
+  document.getElementById('catTabs').appendChild(btn);
+});
 
 function showCategory(catId){
   document.querySelectorAll('.cat-content').forEach(c => c.classList.remove('active'));
-  document.getElementById('cat-' + catId).classList.add('active');
+  document.getElementById('content' + catId.charAt(0).toUpperCase() + catId.slice(1)).classList.add('active');
   document.querySelectorAll('.cat-btn').forEach(b => {
-    b.classList.toggle('active', b.getAttribute('onclick').includes(catId));
+    const catKey = tabIds.find(id => b.textContent.includes(CATS[id].label.slice(2)));
+    b.classList.toggle('active', catKey === catId);
   });
 }
 
 function openOverlay(catId, idx){
-  const overlay = document.getElementById('overlay');
-  const inner = document.getElementById('overlayInner');
-  inner.innerHTML = buildOverlayContent(catId, idx);
-  overlay.classList.add('open');
+  const html = `
+    <div class="overlay-header">
+      <div><h3>${CATS[catId].icon} ${STYLES[idx].label} · ${CONTENT[catId].name}</h3><div class="ol">Stile ${idx+1} di 5</div></div>
+    </div>
+    <div class="om-content">${buildMockup(catId, idx)}</div>
+    <div class="style-nav">${buildNav(catId, idx)}</div>
+  `;
+  document.getElementById('overlayInner').innerHTML = html;
+  document.getElementById('overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function closeOverlay(){
   document.getElementById('overlay').classList.remove('open');
-  document.getElementById('overlayInner').innerHTML = '';
   document.body.style.overflow = '';
 }
 
-// Build all categories
-Object.keys(content).forEach(cat => buildCards(cat, content[cat]));
+// Init
+Object.keys(CATS).forEach(cat => buildCards(cat));
+showCategory('macelleria');
 </script>
 </body>
 </html>

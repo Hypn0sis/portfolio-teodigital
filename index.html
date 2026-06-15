@@ -3,378 +3,353 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TeoDigital — Siti web per attività locali</title>
+<title>TeoDigital — Siti web professionali per attività locali</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@500;600;700&display=swap');
-
+  @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=DM+Serif+Display:ital@0;1&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  
-  :root{
-    --red:#c73e3e;
-    --dark:#0d0d0d;
-    --gray:#1a1a1a;
-    --text:#e8e4de;
-    --muted:#777;
-  }
-
   body{
     font-family:Inter,sans-serif;
-    background:var(--dark);
-    color:var(--text);
+    background:#0a0a0a;color:#eee;
     overflow-x:hidden;
+  }
+
+  :root{
+    --red:#e04545;
+    --dark:#0a0a0a;
+    --card:#121212;
+    --border:#1e1e1e;
+    --muted:#888;
   }
 
   /* NAV */
   nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;
-    padding:0 24px;
-    backdrop-filter:blur(20px);
-    background:rgba(13,13,13,.85);
-    border-bottom:1px solid rgba(255,255,255,.06);
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:0 28px;
+    background:rgba(10,10,10,.88);
+    backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--border);
   }
   .nav-inner{
     max-width:1200px;margin:0 auto;
-    display:flex;justify-content:space-between;align-items:center;
-    height:60px;
+    display:flex;justify-content:space-between;align-items:center;height:64px;
   }
-  .logo{
-    font-size:1.3rem;font-weight:800;letter-spacing:-.5px;
-    color:#fff;text-decoration:none;
-  }
+  .logo{font-size:1.3rem;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.5px}
   .logo span{color:var(--red)}
-  .nav-links{display:flex;gap:24px;align-items:center}
+  .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{
-    color:var(--muted);text-decoration:none;
-    font-size:0.8rem;font-weight:500;transition:color .2s;
+    color:var(--muted);text-decoration:none;font-size:0.82rem;font-weight:500;
+    transition:color .2s;
   }
   .nav-links a:hover{color:#fff}
   .nav-cta{
-    background:var(--red);color:#fff;padding:8px 20px;
-    border-radius:6px;font-weight:600;font-size:0.8rem;
-    text-decoration:none;transition:all .2s;
+    background:var(--red);color:#fff;padding:8px 22px;border-radius:6px;
+    font-weight:600;font-size:0.82rem;text-decoration:none;transition:opacity .2s;
   }
-  .nav-cta:hover{background:#b82e2e}
+  .nav-cta:hover{opacity:.9}
 
-  /* HERO */
+  /* HERO — fullscreen with stock photo */
   .hero{
     min-height:100vh;
     display:flex;align-items:center;
-    padding:120px 24px 80px;
     position:relative;
     overflow:hidden;
   }
-  .hero::before{
-    content:'';
-    position:absolute;top:-30%;right:-20%;
-    width:600px;height:600px;
-    background:radial-gradient(circle,rgba(199,62,62,.08) 0%,transparent 70%);
-    pointer-events:none;
+  .hero-bg{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(135deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.6) 40%,rgba(10,10,10,.3) 100%),
+      url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop&auto=format') center/cover no-repeat;
+    transform:scale(1.05);
+    transition:transform 8s ease;
   }
+  .hero:hover .hero-bg{transform:scale(1)}
   .hero-inner{
-    max-width:1100px;margin:0 auto;
-    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+    max-width:1100px;margin:0 auto;padding:140px 28px 80px;
+    position:relative;z-index:2;
     width:100%;
-    position:relative;
   }
-  .hero-left h1{
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    padding:6px 16px 6px 6px;border-radius:30px;
+    font-size:0.72rem;color:#aaa;margin-bottom:28px;
+    backdrop-filter:blur(4px);
+  }
+  .hero-badge .dot{
+    width:22px;height:22px;border-radius:50%;
+    background:var(--red);display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:0.55rem;font-weight:700;
+  }
+  .hero h1{
     font-family:'DM Serif Display',serif;
-    font-size:3.8rem;font-weight:400;line-height:1.05;
-    color:#fff;
-    margin-bottom:24px;
+    font-size:4.2rem;font-weight:400;line-height:1.04;color:#fff;
+    margin-bottom:20px;max-width:800px;
   }
-  .hero-left h1 em{
-    font-style:italic;
-    color:var(--red);
-  }
-  .hero-left .sub{
+  .hero h1 em{font-style:italic;color:var(--red)}
+  .hero p{
     font-size:1.1rem;line-height:1.7;
-    color:var(--muted);
-    max-width:460px;
-    margin-bottom:36px;
+    color:#999;max-width:480px;margin-bottom:36px;
   }
-  .hero-actions{
-    display:flex;gap:12px;flex-wrap:wrap;
-  }
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
   .btn-primary{
     display:inline-flex;align-items:center;gap:8px;
-    padding:14px 32px;
-    background:var(--red);color:#fff;
-    text-decoration:none;border-radius:8px;
-    font-weight:600;font-size:0.9rem;
+    padding:14px 34px;background:var(--red);color:#fff;
+    text-decoration:none;border-radius:8px;font-weight:600;font-size:0.9rem;
     transition:all .2s;
   }
-  .btn-primary:hover{background:#b82e2e;transform:translateY(-1px)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,69,69,.3)}
   .btn-secondary{
     display:inline-flex;align-items:center;gap:8px;
-    padding:14px 32px;
-    border:1px solid #333;color:#fff;
-    text-decoration:none;border-radius:8px;
-    font-weight:500;font-size:0.9rem;
+    padding:14px 34px;border:1px solid #333;color:#fff;
+    text-decoration:none;border-radius:8px;font-weight:500;font-size:0.9rem;
     transition:all .2s;
   }
   .btn-secondary:hover{border-color:var(--red);color:var(--red)}
+  .hero-strip{
+    display:flex;gap:40px;margin-top:60px;
+    padding-top:30px;border-top:1px solid rgba(255,255,255,.06);
+  }
+  .hero-strip-item{text-align:center}
+  .hero-strip-item .num{
+    font-size:1.6rem;font-weight:800;color:#fff;
+  }
+  .hero-strip-item .lbl{
+    font-size:0.7rem;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:1px;
+  }
 
-  .hero-right{
-    position:relative;
-    display:flex;justify-content:center;
-  }
-  .hero-showcase{
-    width:100%;max-width:460px;
-    background:linear-gradient(135deg,#1a1a1a,#222);
-    border-radius:20px;
-    padding:40px 30px 30px;
-    border:1px solid #2a2a2a;
-    position:relative;
-  }
-  .hero-showcase::before{
-    content:'';
-    position:absolute;inset:-2px;
-    border-radius:22px;
-    background:linear-gradient(135deg,var(--red),transparent 40%,transparent 60%,#ffd600);
-    z-index:-1;
-    opacity:.3;
-  }
-  .showcase-header{
-    display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;
-  }
-  .showcase-dots{display:flex;gap:6px}
-  .showcase-dots span{width:10px;height:10px;border-radius:50%}
-  .showcase-dots .r{background:var(--red)}
-  .showcase-dots .y{background:#e8a838}
-  .showcase-dots .g{background:#3fb87b}
-  .showcase-card{
-    background:var(--gray);border-radius:12px;padding:20px;
-    border:1px solid #2a2a2a;
-    margin-bottom:16px;
-    display:flex;gap:14px;align-items:center;
-  }
-  .showcase-card .icon{
-    width:44px;height:44px;border-radius:10px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.3rem;flex-shrink:0;
-  }
-  .showcase-card .icon.m{background:linear-gradient(135deg,#c73e3e,#e8a838)}
-  .showcase-card .icon.p{background:linear-gradient(135deg,#e8a838,#3fb87b)}
-  .showcase-card .icon.r{background:linear-gradient(135deg,#3fb87b,#5b8def)}
-  .showcase-card h4{font-size:0.85rem;font-weight:600;color:#fff;margin-bottom:2px}
-  .showcase-card p{font-size:0.75rem;color:var(--muted)}
-  .showcase-footer{
-    display:flex;justify-content:space-between;
-    padding-top:16px;border-top:1px solid #2a2a2a;
-    font-size:0.75rem;color:var(--muted);
-  }
-  .showcase-footer .price{color:var(--red);font-weight:600}
-
-  /* SERVICES */
-  .section{
-    padding:100px 24px;
-    position:relative;
-  }
+  /* SECTIONS */
+  .section{padding:100px 28px}
   .section-inner{max-width:1100px;margin:0 auto}
   .section-label{
-    font-size:0.7rem;font-weight:700;text-transform:uppercase;
-    letter-spacing:3px;color:var(--red);margin-bottom:12px;
+    font-size:0.65rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:3px;color:var(--red);margin-bottom:10px;
   }
   .section h2{
     font-family:'DM Serif Display',serif;
-    font-size:2.5rem;font-weight:400;color:#fff;
-    margin-bottom:50px;
+    font-size:2.6rem;font-weight:400;color:#fff;
+    margin-bottom:12px;line-height:1.15;
   }
-  .services-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  .section .lead{
+    color:var(--muted);font-size:1rem;line-height:1.6;
+    max-width:540px;margin-bottom:48px;
   }
-  .service-card{
-    background:var(--gray);
-    border-radius:16px;padding:36px;
-    border:1px solid #222;
-    transition:all .3s;
-  }
-  .service-card:hover{
-    border-color:var(--red);
-    transform:translateY(-2px);
-  }
-  .service-card.big{grid-column:1/-1}
-  .service-card .emoji{font-size:2rem;margin-bottom:12px;display:block}
-  .service-card h3{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:8px}
-  .service-card p{color:var(--muted);font-size:0.88rem;line-height:1.6;margin-bottom:16px}
-  .service-price{
-    display:inline-block;
-    font-size:1.3rem;font-weight:800;color:var(--red);
-  }
-  .service-price small{
-    font-size:0.7rem;font-weight:400;color:var(--muted);
-  }
-  .service-tags{
-    display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;
-  }
-  .tag{
-    padding:4px 10px;border-radius:4px;
-    font-size:0.68rem;font-weight:600;
-    background:rgba(199,62,62,.12);color:var(--red);
-  }
-  .tag.alt{background:rgba(255,255,255,.06);color:#999}
 
-  /* STYLES PREVIEW */
-  .styles-grid{
+  /* STYLE SHOWCASE */
+  .showcase-grid{
     display:grid;grid-template-columns:repeat(5,1fr);gap:12px;
   }
-  .style-preview{
-    background:var(--gray);border-radius:12px;
-    padding:24px 16px;text-align:center;
-    border:1px solid #222;
-    cursor:pointer;transition:all .3s;
-    text-decoration:none;display:block;
+  .showcase-card{
+    position:relative;
+    border-radius:14px;overflow:hidden;
+    aspect-ratio:3/4;
+    cursor:pointer;
+    border:1px solid var(--border);
+    transition:all .4s;
+    display:flex;align-items:flex-end;
   }
-  .style-preview:hover{
+  .showcase-card:hover{
+    transform:translateY(-6px);
     border-color:var(--red);
-    transform:translateY(-3px);
+    box-shadow:0 20px 50px rgba(224,69,69,.12);
   }
-  .style-preview .sp-icon{
-    font-size:2rem;margin-bottom:10px;display:block;
+  .showcase-card .sc-bg{
+    position:absolute;inset:0;
+    transition:transform .5s;
   }
-  .style-preview .sp-name{
-    font-size:0.78rem;font-weight:600;color:#fff;
-    margin-bottom:4px;
+  .showcase-card:hover .sc-bg{transform:scale(1.08)}
+  .showcase-card .sc-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 60%);
   }
-  .style-preview .sp-desc{
-    font-size:0.68rem;color:var(--muted);
+  .showcase-card .sc-content{
+    position:relative;z-index:2;padding:24px 20px;
+    width:100%;
   }
-  .style-preview .sp-num{
-    display:inline-block;
-    background:#222;color:#555;
-    font-size:0.6rem;font-weight:700;
-    padding:2px 8px;border-radius:4px;
-    margin-top:8px;
+  .showcase-card .sc-icon{font-size:1.6rem;margin-bottom:4px;display:block}
+  .showcase-card .sc-name{
+    font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:2px;
+  }
+  .showcase-card .sc-desc{
+    font-size:0.7rem;color:rgba(255,255,255,.6);
+  }
+  .showcase-card .sc-num{
+    position:absolute;top:14px;right:14px;
+    background:rgba(0,0,0,.5);backdrop-filter:blur(8px);
+    color:#fff;font-size:0.6rem;font-weight:700;
+    padding:3px 8px;border-radius:4px;
+    z-index:3;
+  }
+  .showcase-card .sc-arrow{
+    position:absolute;bottom:20px;right:20px;
+    width:32px;height:32px;border-radius:50%;
+    background:var(--red);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:0.8rem;z-index:3;
+    transition:all .3s;opacity:0;transform:translateY(5px);
+  }
+  .showcase-card:hover .sc-arrow{opacity:1;transform:translateY(0)}
+
+  /* SERVICES GRID */
+  .services-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:16px;
+  }
+  .svc-card{
+    background:var(--card);border-radius:16px;padding:36px;
+    border:1px solid var(--border);
+    transition:all .3s;
+  }
+  .svc-card:hover{border-color:#333;transform:translateY(-2px)}
+  .svc-card.featured{
+    border-color:var(--red);
+    background:linear-gradient(135deg,rgba(224,69,69,.06),var(--card));
+    grid-column:1/-1;
+    position:relative;
+    overflow:hidden;
+  }
+  .svc-card.featured::before{
+    content:'BEST SELLER';
+    position:absolute;top:16px;right:16px;
+    background:var(--red);color:#fff;
+    font-size:0.55rem;font-weight:700;letter-spacing:1px;
+    padding:4px 12px;border-radius:4px;
+  }
+  .svc-card .emoji{font-size:1.6rem;margin-bottom:10px;display:block}
+  .svc-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px}
+  .svc-card p{color:var(--muted);font-size:0.85rem;line-height:1.6;margin-bottom:14px}
+  .svc-card .price{font-size:1.5rem;font-weight:800;color:var(--red)}
+  .svc-card .price small{font-size:0.65rem;font-weight:400;color:var(--muted)}
+  .svc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+  .svc-tag{
+    padding:3px 10px;border-radius:4px;
+    font-size:0.65rem;font-weight:600;
+    background:rgba(224,69,69,.1);color:var(--red);
+  }
+  .svc-tag.alt{background:rgba(255,255,255,.05);color:#888}
+
+  /* PORTFOLIO GRID */
+  .port-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:12px;
+  }
+  .port-item{
+    border-radius:14px;overflow:hidden;
+    aspect-ratio:3/4;
+    position:relative;
+    cursor:pointer;text-decoration:none;
+    border:1px solid var(--border);
+    transition:all .4s;
+    display:flex;align-items:flex-end;
+  }
+  .port-item:hover{
+    transform:translateY(-6px);
+    border-color:var(--red);
+    box-shadow:0 20px 50px rgba(224,69,69,.12);
+  }
+  .port-item .pi-bg{
+    position:absolute;inset:0;
+    transition:transform .5s;
+  }
+  .port-item:hover .pi-bg{transform:scale(1.08)}
+  .port-item .pi-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(0deg,rgba(0,0,0,.88) 0%,transparent 60%);
+  }
+  .port-item .pi-content{
+    position:relative;z-index:2;padding:22px 18px;width:100%;
+  }
+  .port-item .pi-icon{font-size:1.6rem;margin-bottom:4px;display:block}
+  .port-item .pi-name{font-size:0.9rem;font-weight:700;color:#fff}
+  .port-item .pi-count{font-size:0.68rem;color:rgba(255,255,255,.5)}
+  .port-item .pi-bar{
+    position:absolute;bottom:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--red),#ff6f00);
+    z-index:3;
   }
 
   /* PRICING */
   .pricing-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
   }
-  .pricing-card{
-    background:var(--gray);
-    border-radius:16px;padding:36px 30px;
-    border:1px solid #222;
-    position:relative;
+  .price-card{
+    background:var(--card);border-radius:16px;padding:36px 28px;
+    border:1px solid var(--border);
     transition:all .3s;
   }
-  .pricing-card:hover{border-color:var(--red);transform:translateY(-2px)}
-  .pricing-card.featured{
+  .price-card:hover{border-color:#333;transform:translateY(-2px)}
+  .price-card.best{
     border-color:var(--red);
-    background:linear-gradient(135deg,#1d0e0e,#1a1a1a);
+    background:linear-gradient(135deg,rgba(224,69,69,.06),var(--card));
+    position:relative;
   }
-  .pricing-card.featured::before{
-    content:'PIÙ SCELTO';position:absolute;top:-10px;right:20px;
+  .price-card.best::before{
+    content:'PIÙ SCELTO';
+    position:absolute;top:-10px;right:20px;
     background:var(--red);color:#fff;
-    font-size:0.6rem;font-weight:700;letter-spacing:1px;
+    font-size:0.55rem;font-weight:700;letter-spacing:1px;
     padding:4px 12px;border-radius:4px;
   }
-  .pricing-card .tier{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:4px}
-  .pricing-card .price{font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:4px}
-  .pricing-card .price small{font-size:0.8rem;font-weight:400;color:var(--muted)}
-  .pricing-card .per{font-size:0.75rem;color:var(--muted);margin-bottom:24px}
-  .pricing-card ul{list-style:none;margin-bottom:28px}
-  .pricing-card li{
-    padding:6px 0;font-size:0.82rem;color:#ccc;
+  .price-card .pt{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+  .price-card .pp{font-size:2.5rem;font-weight:800;color:#fff;margin:8px 0 2px}
+  .price-card .pp small{font-size:0.75rem;font-weight:400;color:var(--muted)}
+  .price-card .per{font-size:0.72rem;color:var(--muted);margin-bottom:24px}
+  .price-card ul{list-style:none;margin-bottom:24px}
+  .price-card li{
+    padding:5px 0;font-size:0.82rem;color:#bbb;
     display:flex;gap:8px;align-items:center;
   }
-  .pricing-card li::before{content:'✓';color:var(--red);font-weight:700}
-  .pricing-card .btn-outline{
-    display:block;text-align:center;
-    padding:12px;border:1px solid #333;color:#fff;
-    text-decoration:none;border-radius:8px;
-    font-weight:600;font-size:0.85rem;
+  .price-card li::before{content:'✓';color:var(--red);font-weight:700}
+  .price-card .btn-out{
+    display:block;text-align:center;padding:12px;
+    border:1px solid #333;color:#fff;text-decoration:none;
+    border-radius:8px;font-weight:600;font-size:0.85rem;
     transition:all .2s;
   }
-  .pricing-card .btn-outline:hover{border-color:var(--red);color:var(--red)}
-  .pricing-card.featured .btn-outline{
-    background:var(--red);border-color:var(--red);
-  }
-  .pricing-card.featured .btn-outline:hover{background:#b82e2e}
-
-  /* PORTFOLIO GALLERY */
-  .gallery-grid{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:12px;
-    margin-top:40px;
-  }
-  .gallery-item{
-    position:relative;border-radius:12px;overflow:hidden;
-    background:var(--gray);border:1px solid #222;
-    aspect-ratio:3/4;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-decoration:none;cursor:pointer;
-    transition:all .3s;
-  }
-  .gallery-item:hover{
-    border-color:var(--red);transform:translateY(-3px);
-  }
-  .gallery-item .gi-icon{font-size:2rem;margin-bottom:8px}
-  .gallery-item .gi-name{
-    font-size:0.75rem;font-weight:600;color:#fff;
-  }
-  .gallery-item .gi-count{
-    font-size:0.6rem;color:var(--muted);
-    margin-top:4px;
-  }
-  .gallery-item .gi-bar{
-    position:absolute;bottom:0;left:0;right:0;
-    height:3px;
-    background:linear-gradient(90deg,var(--red),#ffd600);
-    opacity:.6;
-  }
+  .price-card .btn-out:hover{border-color:var(--red);color:var(--red)}
+  .price-card.best .btn-out{background:var(--red);border-color:var(--red)}
+  .price-card.best .btn-out:hover{background:#c73e3e}
 
   /* CTA */
-  .cta-section{
-    padding:100px 24px;
-    text-align:center;
-    background:linear-gradient(180deg,transparent,rgba(199,62,62,.04),transparent);
+  .cta-sec{
+    padding:120px 28px;text-align:center;
+    background:
+      linear-gradient(135deg,rgba(10,10,10,.95),rgba(10,10,10,.8)),
+      url('https://images.unsplash.com/photo-1515182629504-727d7753751f?w=1920&h=600&fit=crop&auto=format') center/cover fixed no-repeat;
   }
-  .cta-section h2{
+  .cta-sec h2{
     font-family:'DM Serif Display',serif;
-    font-size:3rem;font-weight:400;color:#fff;
-    margin-bottom:16px;
+    font-size:3.2rem;font-weight:400;color:#fff;max-width:700px;margin:0 auto 16px;
   }
-  .cta-section h2 em{font-style:italic;color:var(--red)}
-  .cta-section p{
-    color:var(--muted);font-size:1.05rem;
-    max-width:500px;margin:0 auto 36px;line-height:1.7;
-  }
-  .cta-section .big-btn{
+  .cta-sec h2 em{font-style:italic;color:var(--red)}
+  .cta-sec p{color:var(--muted);font-size:1rem;max-width:480px;margin:0 auto 36px;line-height:1.7}
+  .cta-sec .big-btn{
     display:inline-flex;align-items:center;gap:10px;
-    padding:18px 44px;
-    background:var(--red);color:#fff;
-    text-decoration:none;border-radius:10px;
-    font-weight:700;font-size:1.05rem;
-    transition:all .2s;
+    padding:18px 48px;background:var(--red);color:#fff;
+    text-decoration:none;border-radius:10px;font-weight:700;font-size:1rem;
+    transition:all .2s;letter-spacing:-.3px;
   }
-  .cta-section .big-btn:hover{background:#b82e2e;transform:translateY(-2px)}
+  .cta-sec .big-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,69,69,.3)}
 
   footer{
-    padding:40px 24px;
-    border-top:1px solid #1a1a1a;
+    padding:40px 28px;border-top:1px solid var(--border);
     text-align:center;
   }
-  footer p{color:var(--muted);font-size:0.8rem}
-  footer .f-logo{font-size:1.1rem;font-weight:800;margin-bottom:8px}
-  footer .f-logo span{color:var(--red)}
+  footer p{color:var(--muted);font-size:0.8rem;line-height:1.6}
+  footer .fl{font-size:1.1rem;font-weight:800;margin-bottom:4px;color:#fff}
+  footer .fl span{color:var(--red)}
 
-  /* Mobile */
-  @media(max-width:800px){
-    .hero-inner{grid-template-columns:1fr;gap:40px}
-    .hero-left h1{font-size:2.5rem}
-    .section h2{font-size:1.8rem}
+  @media(max-width:900px){
+    .hero h1{font-size:2.8rem}
     .services-grid{grid-template-columns:1fr}
-    .styles-grid{grid-template-columns:repeat(2,1fr)}
-    .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    .showcase-grid,.port-grid{grid-template-columns:repeat(2,1fr)}
     .pricing-grid{grid-template-columns:1fr}
-    .nav-links{display:none}
-    .nav-links .nav-cta{display:block}
+    .nav-links a:not(.nav-cta){display:none}
   }
-
   @media(max-width:500px){
-    .styles-grid{grid-template-columns:1fr 1fr}
-    .gallery-grid{grid-template-columns:1fr 1fr}
+    .hero h1{font-size:2rem}
+    .section h2{font-size:1.8rem}
+    .hero-strip{flex-wrap:wrap;gap:20px}
+    .showcase-grid,.port-grid{grid-template-columns:1fr 1fr}
   }
 </style>
 </head>
@@ -392,209 +367,190 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="hero-left">
-      <h1>Il tuo <em>negozio</em><br>sul web, in 3 stili<br>diversi. Gratis.</h1>
-      <p class="sub">Ti preparo 3 bozze del tuo sito, in stili diversi. Le vedi in call, scegli quello che preferisci. Zero impegno, zero costi di partenza.</p>
-      <div class="hero-actions">
-        <a href="portfolio.html" class="btn-primary">Vedi portfolio →</a>
-        <a href="#" class="btn-secondary" onclick="alert('Chiedi a Teo per il contatto!')">Parlane con me</a>
-      </div>
+    <div class="hero-badge">
+      <span class="dot">5</span>
+      5 stili grafici per ogni settore
     </div>
-    <div class="hero-right">
-      <div class="hero-showcase">
-        <div class="showcase-header">
-          <div class="showcase-dots">
-            <span class="r"></span>
-            <span class="y"></span>
-            <span class="g"></span>
-          </div>
-          <span style="font-size:0.7rem;color:#555">teodigital</span>
-        </div>
-        <div class="showcase-card">
-          <div class="icon m">🥩</div>
-          <div>
-            <h4>Moderno · Macelleria</h4>
-            <p>Pulito, essenziale, foto in primo piano</p>
-          </div>
-        </div>
-        <div class="showcase-card">
-          <div class="icon p">🥖</div>
-          <div>
-            <h4>Caldo · Panificio</h4>
-            <p>Tradizionale, accogliente, materiale</p>
-          </div>
-        </div>
-        <div class="showcase-card">
-          <div class="icon r">🍝</div>
-          <div>
-            <h4>Vivace · Ristorante</h4>
-            <p>Social integrato, dark theme, bold</p>
-          </div>
-        </div>
-        <div class="showcase-footer">
-          <span>Sito pronto in 48h</span>
-          <span class="price">da €750</span>
-        </div>
-      </div>
+    <h1>Il tuo <em>negozio</em> sul web.<br>3 bozze gratis,<br>in stili diversi.</h1>
+    <p>Ti preparo il sito della tua attività in 3 vesti grafiche differenti. Le vediamo insieme in una call. Scegli quello che preferisci senza impegno.</p>
+    <div class="hero-actions">
+      <a href="portfolio.html" class="btn-primary">Vedi portfolio →</a>
+      <a href="#servizi" class="btn-secondary">Scopri i servizi</a>
+    </div>
+    <div class="hero-strip">
+      <div class="hero-strip-item"><div class="num">€750</div><div class="lbl">Una tantum</div></div>
+      <div class="hero-strip-item"><div class="num">48h</div><div class="lbl">Consegna</div></div>
+      <div class="hero-strip-item"><div class="num">5</div><div class="lbl">Settori</div></div>
+      <div class="hero-strip-item"><div class="num">25</div><div class="lbl">Design</div></div>
     </div>
   </div>
 </section>
 
-<!-- SERVIZI -->
 <section class="section" id="servizi">
   <div class="section-inner">
     <div class="section-label">✦ Servizi</div>
-    <h2>Cosa faccio per la tua attività</h2>
+    <h2>Cosa ottieni con me</h2>
+    <p class="lead">Prezzi fissi, niente sorprese. Un partner unico per sito e social.</p>
     <div class="services-grid">
-      <div class="service-card big">
-        <span class="emoji">🌐</span>
-        <h3>Sito web completo</h3>
-        <p>Una tantum, prezzo fisso, niente sorprese. Mobile, SEO, Google Maps, Instagram integrato, modulo contatti. Il tuo biglietto da visita digitale fatto bene.</p>
-        <div class="service-price">€750 <small>+ IVA</small></div>
-        <div class="service-tags">
-          <span class="tag">Mobile first</span>
-          <span class="tag">SEO base</span>
-          <span class="tag">Google Maps</span>
-          <span class="tag alt">+ social sync</span>
-        </div>
-      </div>
-      <div class="service-card">
-        <span class="emoji">📱</span>
-        <h3>Social Management</h3>
-        <p>Instagram e Facebook gestiti per te. Post, reel, stories, interazione coi clienti. Presenza costante senza perdere tempo.</p>
-        <div class="service-price">€79 <small>+/mese</small></div>
-      </div>
-      <div class="service-card">
-        <span class="emoji">🔄</span>
-        <h3>Manutenzione sito</h3>
-        <p>Aggiornamenti, nuovi contenuti, foto prodotti, eventi, offerte. Il sito non resta fermo, si evolve con la tua attività.</p>
-        <div class="service-price">€30 <small>+/mese</small></div>
-      </div>
-      <div class="service-card" style="border-color:var(--red)">
+      <div class="svc-card featured">
         <span class="emoji">🎯</span>
         <h3>Bundle Sito + Social</h3>
-        <p>Il pacchetto completo: sito professionale + social gestito + manutenzione. Prezzo scontato rispetto ai singoli.</p>
-        <div class="service-price">€99 <small>+/mese</small></div>
-        <div class="service-tags">
-          <span class="tag" style="background:rgba(199,62,62,.2)">PIÙ CONVENIENTE</span>
+        <p>Sito professionale (una tantum €750) + social management + manutenzione. Il massimo per la tua presenza online.</p>
+        <div class="price">€99 <small>/mese</small></div>
+        <div class="svc-tags">
+          <span class="svc-tag">Sito incluso</span>
+          <span class="svc-tag">Social gestito</span>
+          <span class="svc-tag alt">Assistenza illimitata</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <span class="emoji">🌐</span>
+        <h3>Sito web vetrina</h3>
+        <p>Mobile, SEO, Google Maps, Instagram integrato, modulo contatti. Il biglietto da visita digitale della tua attività.</p>
+        <div class="price">€750 <small>+ IVA</small></div>
+        <div class="svc-tags">
+          <span class="svc-tag">Mobile first</span>
+          <span class="svc-tag">SEO base</span>
+          <span class="svc-tag alt">48h consegna</span>
+        </div>
+      </div>
+      <div class="svc-card">
+        <span class="emoji">📱</span>
+        <h3>Social Management</h3>
+        <p>Instagram e Facebook gestiti: post, reel, stories, interazione coi clienti. Presenza costante senza perdere tempo.</p>
+        <div class="price">€79 <small>/mese</small></div>
+        <div class="svc-tags">
+          <span class="svc-tag">Instagram</span>
+          <span class="svc-tag">Facebook</span>
+          <span class="svc-tag alt">4 post/settimana</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 5 STILI -->
-<section class="section" style="padding-top:0">
-  <div class="section-inner">
-    <div class="section-label">✦ Stili</div>
-    <h2>5 modi di raccontare la tua attività</h2>
-    <div class="styles-grid">
-      <a href="portfolio.html#cat-macelleria" class="style-preview" style="border-color:var(--red)">
-        <span class="sp-icon">✦</span>
-        <div class="sp-name">Moderno</div>
-        <div class="sp-desc">Pulito, essenziale</div>
-        <div class="sp-num">1/5</div>
-      </a>
-      <a href="portfolio.html#cat-macelleria" class="style-preview">
-        <span class="sp-icon">✦</span>
-        <div class="sp-name">Caldo</div>
-        <div class="sp-desc">Tradizionale, materico</div>
-        <div class="sp-num">2/5</div>
-      </a>
-      <a href="portfolio.html#cat-macelleria" class="style-preview">
-        <span class="sp-icon">✦</span>
-        <div class="sp-name">Vivace</div>
-        <div class="sp-desc">Dark, social-forward</div>
-        <div class="sp-num">3/5</div>
-      </a>
-      <a href="portfolio.html#cat-macelleria" class="style-preview">
-        <span class="sp-icon">✦</span>
-        <div class="sp-name">Editoriale</div>
-        <div class="sp-desc">Magazine-style, foto</div>
-        <div class="sp-num">4/5</div>
-      </a>
-      <a href="portfolio.html#cat-macelleria" class="style-preview">
-        <span class="sp-icon">✦</span>
-        <div class="sp-name">POP</div>
-        <div class="sp-desc">Bold, colori forti</div>
-        <div class="sp-num">5/5</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO GALLERY -->
-<section class="section" id="portfolio">
+<section class="section" id="portfolio" style="padding-top:0">
   <div class="section-inner">
     <div class="section-label">✦ Portfolio</div>
-    <h2>Ogni settore, 5 design</h2>
-    <div class="gallery-grid">
-      <a href="portfolio.html" class="gallery-item">
-        <div class="gi-icon">🥩</div>
-        <div class="gi-name">Macelleria</div>
-        <div class="gi-count">5 design</div>
-        <div class="gi-bar"></div>
+    <h2>Ogni settore, 5 stili</h2>
+    <p class="lead">Clicca su un settore per vedere i 5 design disponibili.</p>
+    <div class="port-grid">
+      <a href="portfolio.html" class="port-item">
+        <div class="pi-bg" style="background:url('https://images.unsplash.com/photo-1763033035770-e83f50e8e8b1?w=400&h=533&fit=crop&auto=format') center/cover"></div>
+        <div class="pi-overlay"></div>
+        <div class="pi-content">
+          <div class="pi-icon">🥩</div>
+          <div class="pi-name">Macelleria</div>
+          <div class="pi-count">5 design</div>
+        </div>
+        <div class="pi-bar"></div>
       </a>
-      <a href="portfolio.html" class="gallery-item">
-        <div class="gi-icon">🥖</div>
-        <div class="gi-name">Panificio</div>
-        <div class="gi-count">5 design</div>
-        <div class="gi-bar"></div>
+      <a href="portfolio.html" class="port-item">
+        <div class="pi-bg" style="background:url('https://images.unsplash.com/photo-1515182629504-727d7753751f?w=400&h=533&fit=crop&auto=format') center/cover"></div>
+        <div class="pi-overlay"></div>
+        <div class="pi-content">
+          <div class="pi-icon">🥖</div>
+          <div class="pi-name">Panificio</div>
+          <div class="pi-count">5 design</div>
+        </div>
+        <div class="pi-bar"></div>
       </a>
-      <a href="portfolio.html" class="gallery-item">
-        <div class="gi-icon">🍰</div>
-        <div class="gi-name">Pasticceria</div>
-        <div class="gi-count">5 design</div>
-        <div class="gi-bar"></div>
+      <a href="portfolio.html" class="port-item">
+        <div class="pi-bg" style="background:url('https://images.unsplash.com/photo-1722518252691-1182e2e80a2a?w=400&h=533&fit=crop&auto=format') center/cover"></div>
+        <div class="pi-overlay"></div>
+        <div class="pi-content">
+          <div class="pi-icon">🍰</div>
+          <div class="pi-name">Pasticceria</div>
+          <div class="pi-count">5 design</div>
+        </div>
+        <div class="pi-bar"></div>
       </a>
-      <a href="portfolio.html" class="gallery-item">
-        <div class="gi-icon">🍝</div>
-        <div class="gi-name">Ristorante</div>
-        <div class="gi-count">5 design</div>
-        <div class="gi-bar"></div>
+      <a href="portfolio.html" class="port-item">
+        <div class="pi-bg" style="background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=533&fit=crop&auto=format') center/cover"></div>
+        <div class="pi-overlay"></div>
+        <div class="pi-content">
+          <div class="pi-icon">🍝</div>
+          <div class="pi-name">Ristorante</div>
+          <div class="pi-count">5 design</div>
+        </div>
+        <div class="pi-bar"></div>
       </a>
-      <a href="portfolio.html" class="gallery-item">
-        <div class="gi-icon">💇</div>
-        <div class="gi-name">Parrucchiere</div>
-        <div class="gi-count">5 design</div>
-        <div class="gi-bar"></div>
+      <a href="portfolio.html" class="port-item">
+        <div class="pi-bg" style="background:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=533&fit=crop&auto=format') center/cover"></div>
+        <div class="pi-overlay"></div>
+        <div class="pi-content">
+          <div class="pi-icon">💇</div>
+          <div class="pi-name">Parrucchiere</div>
+          <div class="pi-count">5 design</div>
+        </div>
+        <div class="pi-bar"></div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
+<section class="section" id="prezzi" style="padding-top:0">
+  <div class="section-inner">
+    <div class="section-label">✦ Prezzi</div>
+    <h2>Investi nella tua presenza online</h2>
+    <p class="lead">Tutto trasparente, niente costi nascosti.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="pt">Essential</div>
+        <div class="pp">€99 <small>/mese</small></div>
+        <div class="per">sito + social base</div>
+        <ul>
+          <li>Sito vetrina professionale</li>
+          <li>Social management base</li>
+          <li>Manutenzione inclusa</li>
+          <li>Supporto email</li>
+        </ul>
+        <a href="portfolio.html" class="btn-out">Vedi portfolio →</a>
+      </div>
+      <div class="price-card best">
+        <div class="pt">Business</div>
+        <div class="pp">€299 <small>/mese</small></div>
+        <div class="per">sito + social pro</div>
+        <ul>
+          <li>Sito vetrina professionale</li>
+          <li>Social management completo</li>
+          <li>Manutenzione + aggiornamenti</li>
+          <li>Reel e stories settimanali</li>
+          <li>Supporto priority</li>
+        </ul>
+        <a href="portfolio.html" class="btn-out">Vedi portfolio →</a>
+      </div>
+      <div class="price-card">
+        <div class="pt">Enterprise</div>
+        <div class="pp">€649 <small>/mese</small></div>
+        <div class="per">sito premium + social elite</div>
+        <ul>
+          <li>Sito premium con e-commerce</li>
+          <li>Social elite (tutti i canali)</li>
+          <li>Contenuti daily</li>
+          <li>Campagne ADV incluse</li>
+          <li>Supporto 24/7</li>
+        </ul>
+        <a href="portfolio.html" class="btn-out">Vedi portfolio →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
   <h2>3 bozze, <em>zero</em> impegno.</h2>
-  <p>Ti preparo il tuo sito in 3 stili diversi. Lo vediamo insieme in call. Se ti piace, è tuo. Se no, pace. Non perdi niente.</p>
+  <p>Ti preparo il tuo sito in 3 stili diversi. Lo vediamo insieme in call di 15 minuti. Se ti piace, è tuo. Se no, pace.</p>
   <a href="portfolio.html" class="big-btn">Vedi il portfolio →</a>
 </section>
 
 <footer>
-  <div class="f-logo">Teo<span>Digital</span></div>
+  <div class="fl">Teo<span>Digital</span></div>
   <p>Siti web per attività locali · Prezzi fissi, niente sorprese</p>
-  <p style="margin-top:4px;font-size:0.7rem;color:#444">© 2026</p>
+  <p style="margin-top:2px;font-size:0.7rem;color:#333">© 2026</p>
 </footer>
 
-<script>
-// Intersection Observer for fade-in
-document.querySelectorAll('.service-card, .pricing-card').forEach(el => {
-  el.style.opacity='0';
-  el.style.transform='translateY(20px)';
-  el.style.transition='all .6s ease';
-});
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.style.opacity='1';
-      entry.target.style.transform='translateY(0)';
-    }
-  });
-}, {threshold:.15});
-document.querySelectorAll('.service-card, .pricing-card').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>
