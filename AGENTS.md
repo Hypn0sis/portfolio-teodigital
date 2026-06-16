@@ -1,7 +1,9 @@
 # Wingman — Team degli Agenti
 
 Architettura multi-board con Wingman come autorità suprema.
-51 agent markdown (4 dispatcher + 4 curator + 4 summarizer + 39 atomici) + Wingman + client-dispatcher (varia) — assunti dai migliori repo pubblici.
+**48 profile totali**: 51 markdown per board (4 dispatcher + 39 atomici) + 5 cross/global (claude-delegate, consistency-keeper, recruiter, curator, summarizer) + Wingman + client-dispatcher — assunti dai migliori repo pubblici.
+
+> **Nota architetturale**: curator e summarizer sono profile GLOBALI (1 ciascuno), non per-board. Vengono referenziati via `assignee curator` / `assignee summarizer` da qualsiasi board. I 4 dispatcher sono embedded nei profile base di ciascun board.
 
 ## Struttura
 
@@ -96,6 +98,16 @@ Ogni board ha:
 | collections-agent | Solleciti, morosi, piani di rientro | custom |
 | account-manager | Post-vendita, retention, upsell, QBR | awesome-claude-code-toolkit (customer-success) |
 | docs-writer | Playbook, script, battle cards, pricing history | awesome-claude-code-toolkit (technical-writer) |
+
+## Cross-Board Profiles (5)
+
+| Profile | Ruolo | Ispirato da |
+|---------|-------|-------------|
+| claude-delegate | Orchestrator per task complessi cliente-facing; coordina catene multi-board | custom |
+| consistency-keeper | Audit coerenza tra documentazione, profile SOUL, vault, specs, repo git | custom |
+| recruiter | Matching profilo cliente → board/atomic; nomina agent candidati per task | custom |
+| curator | Revisione qualità cross-board; mantiene documentazione; ordina repository | ECC react-reviewer framework |
+| summarizer | Riassume attività board per Wingman; spillover inter-board | custom |
 
 ## Formato agenti
 

@@ -34,7 +34,8 @@ Dettagli: `~/wingman/offerta-servizi-digitali.md` + `~/wingman/offerta-bundle.md
 | Marketing | 9 | strategist → copywriter → visual-creator → publisher → docs-writer |
 | Sales | 10 | prospector → proposal-writer → negotiator → docs-writer |
 | Admin (pool) | 7 | dispatcher sceglie + admin-docs-writer sempre penultimo |
-| Cross-board | 1 | claude-delegate (TE) |
+| Cross-board | 3 | claude-delegate + consistency-keeper + recruiter |
+| Cross-board | 2 globali | curator (qualita cross-board) + summarizer (spillover attivita) |
 
 **Globali**: 1 curator + 1 summarizer.
 
@@ -146,7 +147,7 @@ Se task body manca info critica (es. "refactor portfolio" ma non specifica stile
 
 ## Aggiornamenti documentazione
 
-Questa CLAUDE.md aggiornata 2026-06-16. Per stato corrente:
+Questa CLAUDE.md aggiornata 2026-06-16T23:XX (consistency audit post elite-squad-rewrite: AGENTS.md header + cross-board section + recruiter profile + CLAUDE.md cross-board table). Per stato corrente:
 ```bash
 ls -lt ~/wingman/vault-global-knowledge/wiki/stack/
 cat ~/wingman/AGENTS.md | head -50
