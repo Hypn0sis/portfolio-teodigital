@@ -1,0 +1,8 @@
+
+# vault sub-repos hanno git lifecycle indipendente — non includere nell'outer wingman
+vault-global-knowledge/
+vault-sviluppo/
+vault-marketing/
+vault-admin/
+vault-sales/
+vault-cliente/
