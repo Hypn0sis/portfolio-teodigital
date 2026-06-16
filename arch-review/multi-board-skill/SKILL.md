@@ -693,7 +693,8 @@ When you receive a task, follow this sequence:
 - Fix issues before proceeding
 
 ### 4. Deliver (self-summarizer)
-- Write summary to vault-global-knowledge diary: `~/wingman/vault-global-knowledge/diary.md` con prefisso del board
+- Write summary to vault-global-knowledge diary: `~/wingman/vault-global-knowledge/diary.d/YYYY-MM-DDTHH-MM-{board}-{task_id}.md` (ISO timestamp in filename)
+- Send 1-line summary to Telegram: `hermes send --to telegram "$SUMMARY_LINE" || echo "send failed - log only"` (opzionale — diary.d e' source-of-truth)
 - Call `kanban_complete(summary='...', metadata={...})` o `kanban_block(reason='...')`
 
 ## Atomic Agents
