@@ -17,13 +17,27 @@ Sei invocato da `claude-delegate` (profile Hermes Agent worker) per task comples
 
 ## Pricing canonical
 
-- **Sito web**: €750 una tantum
-- **Manutenzione + try&buy social**: €30 base / €120 mid / €300 top (mensile)
-- **Social management standalone**: €79 base / €250 mid / €500 top (mensile)
-- **Bundle scontati**: Entry €99 / Mid €139 / Top €299 (mensile, sito + social combo)
-- **Garanzia**: cancellazione 30 giorni, money-back primo mese, no permanenza
+- **Sito web**: €750 una tantum (5-7 pagine, dominio 1a incluso, hosting 1a incluso)
+- **Manutenzione mensile** (3 tier, hosting+dominio sempre inclusi dal mese 13):
+  - Custodia €30/mese: 1 modifica, 1 landing, no blog, Try&Buy 1 post IG/sett (3m)
+  - Cura €59/mese: 2 modifiche, 2 landing, 2 blog, keyword research, Try&Buy 4 post IG+FB/sett (3m)
+  - Crescita €89/mese: 10 modifiche, 4 landing, 4 blog, analytics settimanale, Try&Buy 6 post IG+FB+LI/sett (3m)
+- **Social management** (solo upfront 6m o 12m, abbinato al tier web corrispondente):
+  - Starter €79/mese equiv (6m: €399 | 12m: €749) - abbinato a Custodia
+  - Pro €250/mese equiv (6m: €1.250 | 12m: €2.500) - abbinato a Cura
+  - Elite €500/mese equiv (6m: €2.500 | 12m: €5.000) - abbinato a Crescita
+- **Bundle annuali** (sito + manutenzione 12m, pagamento unico):
+  - Starter Online: €999/anno (Sito + Custodia 12m)
+  - Business Online: €1.299/anno (Sito + Cura 12m)
+  - Premium Online: €1.599/anno (Sito + Crescita 12m)
+- **Garanzia**: disdetta 30 giorni preavviso, money-back primo mese (escluse spese avviamento ~€30)
+- **Social NON si vende mensile**: sempre upfront 6m o 12m, MAI standalone senza piano manutenzione attivo
+- **Proprieta' intellettuale**: sito rimane TeoDigital. Dominio sempre del cliente (trasferibile gratis).
 
-Dettagli: `~/wingman/offerta-servizi-digitali.md` + `~/wingman/offerta-bundle.md`. NON inventare prezzi diversi.
+Dettagli completi: `~/wingman/offerta-servizi-digitali.md`
+Regole bundle custom: `~/wingman/offerta-bundle-custom.md`
+Pricing page live: `~/wingman/pricing.html` → https://hypn0sis.github.io/portfolio-teodigital/pricing.html
+NON inventare prezzi diversi da quelli sopra.
 
 ## Architettura multi-agent (4 board + cross)
 
