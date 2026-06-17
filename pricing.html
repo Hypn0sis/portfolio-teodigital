@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prezzi - TeoDigital | Siti Web + Social per Attivita' Locali</title>
+<meta name="description" content="Sito professionale €750. Manutenzione da €30/mese. Social da €399 per 6 mesi. Nessuna sorpresa, nessun vincolo.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+<script>
+window.__tailwindConfig={theme:{extend:{colors:{crimson:'#e04545',deep:'#0a0a0a',card:'#121212',surface:'#161616',border:'#1e1e1e'}}}};
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+.fd{font-family:'Cormorant Garamond',Georgia,serif}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rev{opacity:1!important;transform:none!important}
+}
+.rev{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rev.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px}
+:focus-visible{outline:2px solid #e04545;outline-offset:2px}
+[x-cloak]{display:none!important}
+
+/* URGENCY BAR */
+#urgency-bar{background:#e04545;color:#fff;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+
+/* NAV */
+#main-nav{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #1a1a1a}
+
+/* HERO */
+#hero{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(224,69,69,.07),transparent)}
+
+/* CARDS */
+.plan-card{background:#121212;border:1px solid #1e1e1e;transition:border-color .3s ease,transform .3s ease}
+.plan-card:hover{border-color:#333;transform:translateY(-2px)}
+.plan-card.featured{background:linear-gradient(135deg,rgba(224,69,69,.10),rgba(224,69,69,.03));border-color:rgba(224,69,69,.35)!important}
+.plan-card.featured:hover{border-color:rgba(224,69,69,.55)!important}
+
+/* BADGES */
+.badge{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:2px}
+.badge-pop{background:#e04545;color:#fff}
+.badge-free{background:rgba(224,69,69,.15);color:#e04545;border:1px solid rgba(224,69,69,.3)}
+.badge-tier{background:#1e1e1e;color:#666;border:1px solid #2a2a2a}
+
+/* PRICE DISPLAY */
+.price-main{font-family:'Cormorant Garamond',Georgia,serif;font-size:3rem;font-weight:300;line-height:1;color:#eee}
+.price-sub{font-size:.78rem;color:#555;letter-spacing:.06em}
+.price-strike{text-decoration:line-through;color:#444}
+.price-note{font-size:.72rem;color:#666}
+
+/* TOGGLE */
+.toggle-btn{padding:.4rem 1.2rem;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:2px;transition:all .2s ease;cursor:pointer}
+.toggle-btn.active{background:#e04545;color:#fff}
+.toggle-btn.inactive{background:#1a1a1a;color:#555;border:1px solid #222}
+
+/* CHECK / CROSS */
+.chk{color:#e04545}
+.cross{color:#333}
+
+/* SECTION SEPARATOR */
+.sep{height:1px;background:linear-gradient(90deg,transparent,#1e1e1e 30%,#1e1e1e 70%,transparent)}
+
+/* FEATURE TABLE */
+.ftbl td,.ftbl th{padding:.55rem 1rem;border-bottom:1px solid #141414;font-size:.82rem}
+.ftbl th{color:#444;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.ftbl tr:last-child td,.ftbl tr:last-child th{border:none}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid #1a1a1a}
+.faq-q{cursor:pointer;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;user-select:none}
+.faq-a{color:#888;font-size:.9rem;line-height:1.7;padding-bottom:1.25rem}
+.faq-icon{flex-shrink:0;width:18px;height:18px;color:#e04545;transition:transform .3s ease}
+
+/* URGENCY CARD */
+.urgency-card{border:1px solid rgba(224,69,69,.3);background:linear-gradient(135deg,rgba(224,69,69,.06),rgba(224,69,69,.02))}
+
+/* SLOT COUNTER */
+.slot-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:4rem;font-weight:300;color:#e04545;line-height:1}
+
+/* CTA BUTTONS */
+.btn-primary{background:#e04545;color:#fff;font-weight:600;letter-spacing:.04em;transition:background .2s ease,transform .15s ease}
+.btn-primary:hover{background:#c93b3b;transform:translateY(-1px)}
+.btn-ghost{border:1px solid #2a2a2a;color:#aaa;font-weight:500;transition:all .2s ease}
+.btn-ghost:hover{border-color:#555;color:#eee}
+
+/* COMPARISON TABLE */
+.cmp-tbl td,.cmp-tbl th{padding:.75rem 1.25rem;border-bottom:1px solid #141414}
+.cmp-tbl thead th{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#444}
+.cmp-tbl .ours{color:#e04545;font-weight:600}
+.cmp-tbl .them{color:#333}
+
+/* FLOATING WA */
+#wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:50;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.3);transition:transform .2s ease}
+#wa-float:hover{transform:scale(1.08)}
+</style>
+</head>
+
+<body x-data="{socialPeriod:'12m'}">
+
+<!-- FLOATING WHATSAPP -->
+<a id="wa-float" href="https://wa.me/39XXXXXXXXXX?text=Ciao%20Teo%2C%20vorrei%20un%20sito%20web" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- URGENCY BAR -->
+<div id="urgency-bar" class="py-2 px-4 text-center">
+  <span>2 slot disponibili a giugno</span>
+  <span class="mx-3 opacity-40">|</span>
+  <span>Da luglio: lista d'attesa</span>
+  <span class="mx-3 opacity-40">|</span>
+  <a href="#contatti" class="underline underline-offset-2 opacity-90 hover:opacity-100">Prenota ora</a>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav" class="sticky top-0 z-40 bg-deep/80 px-6 py-4">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="portfolio.html" class="fd text-xl font-light tracking-wider text-white">TeoDigital</a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-gray-500">
+      <a href="#sito" class="hover:text-white transition-colors">Il Sito</a>
+      <a href="#manutenzione" class="hover:text-white transition-colors">Manutenzione</a>
+      <a href="#social" class="hover:text-white transition-colors">Social</a>
+      <a href="#bundle" class="hover:text-white transition-colors">Bundle</a>
+      <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+    </div>
+    <a href="#contatti" class="btn-primary text-sm px-5 py-2 rounded-sm">Inizia ora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="px-6 py-28 md:py-40">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-xs text-crimson tracking-widest uppercase mb-6 font-semibold rev">Siti web + social management per attivita' locali</p>
+    <h1 class="fd text-5xl md:text-7xl lg:text-8xl font-light leading-tight text-white mb-6 rev d1">
+      Il tuo sito<br>professionale.<br><em class="text-crimson not-italic">€750.</em>
+    </h1>
+    <p class="text-gray-400 text-lg md:text-xl max-w-xl mx-auto mb-10 rev d2">
+      Online in 7 giorni. Senza agenzia. Senza sorprese.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center rev d3">
+      <a href="#sito" class="btn-primary px-8 py-3.5 rounded-sm text-sm font-semibold">Vedi cosa includiamo</a>
+      <a href="portfolio.html" class="btn-ghost px-8 py-3.5 rounded-sm text-sm">Guarda i lavori realizzati</a>
+    </div>
+    <!-- Anchor -->
+    <div class="mt-16 rev d4">
+      <p class="text-xs tracking-widest uppercase text-gray-600 mb-3">Benchmark di mercato</p>
+      <div class="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+        <div class="text-center">
+          <span class="price-strike text-2xl">€5.000</span>
+          <p class="text-xs text-gray-600 mt-1">Agenzia</p>
+        </div>
+        <div class="text-crimson text-2xl">vs</div>
+        <div class="text-center">
+          <span class="price-strike text-2xl">€2.500</span>
+          <p class="text-xs text-gray-600 mt-1">Freelance</p>
+        </div>
+        <div class="text-crimson text-2xl">vs</div>
+        <div class="text-center">
+          <span class="fd text-3xl text-crimson font-light">€750</span>
+          <p class="text-xs text-gray-600 mt-1">TeoDigital</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SITO WEB -->
+<section id="sito" class="px-6 py-24">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl mb-16 rev">
+      <p class="text-xs text-crimson tracking-widest uppercase font-semibold mb-3">Il sito web</p>
+      <h2 class="fd text-4xl md:text-5xl font-light text-white mb-4">Una volta.<br>Per sempre.</h2>
+      <p class="text-gray-500">Un pagamento unico. Zero canoni nascosti. Il tuo sito professionale online in 7 giorni lavorativi.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <!-- Price card -->
+      <div class="plan-card rounded-sm p-8 rev d1">
+        <div class="flex items-end gap-3 mb-2">
+          <span class="price-main">€750</span>
+          <span class="text-gray-600 pb-2 text-sm">una tantum</span>
+        </div>
+        <p class="text-gray-500 text-sm mb-8">Tutto incluso. Dominio, hosting, setup, go-live.</p>
+
+        <div class="space-y-3 text-sm">
+          <div class="flex items-start gap-3">
+            <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="text-gray-300">Sito multipagina 5-7 pagine (Homepage, Chi Siamo, Servizi, Galleria, Contatti)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="text-gray-300">Dominio .it o .com (1 anno incluso)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="text-gray-300">Hosting professionale (1 anno incluso)</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="text-gray-300">Mobile responsive + SSL https</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="text-gray-300">SEO base: meta tag, sitemap, Google indexing</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="text-gray-300">Modulo contatti + mappa Google + anti-spam</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="text-gray-300">GDPR compliance: cookie banner + privacy policy</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="text-gray-300">2 cicli di revisione inclusi</span>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-border">
+          <p class="text-xs text-gray-600 uppercase tracking-wider mb-3">Non include</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center gap-3">
+              <span class="cross text-lg leading-none">-</span>
+              <span class="text-gray-600">Foto professionali (da €250)</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="cross text-lg leading-none">-</span>
+              <span class="text-gray-600">E-commerce (preventivo separato)</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contatti" class="btn-primary mt-8 block text-center py-3.5 rounded-sm text-sm font-semibold">Ordina il sito - €750</a>
+        <p class="text-center text-xs text-gray-600 mt-3">50% all'ordine - 50% al go-live. Soddisfatto o rimborsato il primo mese.*</p>
+      </div>
+
+      <!-- Side info -->
+      <div class="space-y-6 rev d2">
+        <div class="plan-card rounded-sm p-6">
+          <p class="text-xs text-gray-600 uppercase tracking-wider mb-2">Timeline</p>
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400">Ordine + brief</span>
+              <span class="text-gray-300">Giorno 1</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400">Sviluppo + contenuti</span>
+              <span class="text-gray-300">Giorni 2-6</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400">Revisioni</span>
+              <span class="text-gray-300">Giorni 6-7</span>
+            </div>
+            <div class="flex justify-between items-center border-t border-border pt-3 mt-3">
+              <span class="text-white font-medium">Go-live</span>
+              <span class="text-crimson font-semibold">Giorno 7</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-600 mt-3">*I 7 giorni partono dalla ricezione di testi, logo e foto.</p>
+        </div>
+
+        <div class="plan-card rounded-sm p-6">
+          <p class="text-xs text-gray-600 uppercase tracking-wider mb-2">Condizioni di pagamento</p>
+          <div class="space-y-2 text-sm text-gray-400">
+            <p>50% all'ordine - 50% al go-live</p>
+            <p>Bonifico bancario o carta di credito</p>
+            <p>Fattura con IVA al 22%</p>
+          </div>
+        </div>
+
+        <div class="plan-card rounded-sm p-6">
+          <p class="text-xs text-gray-600 uppercase tracking-wider mb-2">Garanzia</p>
+          <p class="text-sm text-gray-400">Se entro il primo mese il sito non ti soddisfa, rimborsiamo il canone mensile. Escluse le spese di avviamento gia' sostenute (dominio + hosting, ~€30).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- MANUTENZIONE -->
+<section id="manutenzione" class="px-6 py-24">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl mb-4 rev">
+      <p class="text-xs text-crimson tracking-widest uppercase font-semibold mb-3">Manutenzione</p>
+      <h2 class="fd text-4xl md:text-5xl font-light text-white mb-4">Gestiamo noi<br>il resto.</h2>
+    </div>
+    <p class="text-gray-500 mb-4 rev d1">€1 al giorno. Hosting, dominio e rinnovi sempre inclusi. Zero telefonate al tecnico.</p>
+    <p class="text-xs text-gray-600 mb-16 rev d1">Il piano manutenzione parte dal mese 13 per chi acquista il sito (primo anno hosting e dominio gia' inclusi nel sito).</p>
+
+    <div class="grid md:grid-cols-3 gap-4">
+
+      <!-- CUSTODIA -->
+      <div class="plan-card rounded-sm p-7 flex flex-col rev d1">
+        <div class="mb-6">
+          <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Custodia</p>
+          <div class="flex items-end gap-2 mb-1">
+            <span class="price-main text-4xl">€30</span>
+            <span class="text-gray-600 pb-1.5 text-sm">/mese</span>
+          </div>
+          <p class="text-xs text-gray-600">Il sito resta vivo.</p>
+        </div>
+        <ul class="space-y-2.5 text-sm flex-1">
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Hosting incluso</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Rinnovo dominio incluso</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Backup giornaliero</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Aggiornamenti CMS/plugin</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Uptime monitoring 24/7</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">1 modifica</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">1 landing page</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><span class="text-gray-700 flex-shrink-0 pl-0.5 text-base leading-none mt-0.5">-</span><span class="text-gray-600">Blog post</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Try &amp; Buy social: <strong class="text-white">1 post IG/sett</strong> (3 mesi)</span></li>
+        </ul>
+        <a href="#contatti" class="btn-ghost mt-8 block text-center py-3 rounded-sm text-sm font-medium">Scegli Custodia</a>
+      </div>
+
+      <!-- CURA (FEATURED) -->
+      <div class="plan-card featured rounded-sm p-7 flex flex-col rev d2 relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="badge badge-pop">Piu' scelto</span>
+        </div>
+        <div class="mb-6">
+          <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Cura</p>
+          <div class="flex items-end gap-2 mb-1">
+            <span class="price-main text-4xl">€59</span>
+            <span class="text-gray-600 pb-1.5 text-sm">/mese</span>
+          </div>
+          <p class="text-xs text-gray-500">Il sito cresce.</p>
+        </div>
+        <ul class="space-y-2.5 text-sm flex-1">
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Tutto di Custodia</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">2 modifiche</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">2 landing page</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">2 blog post</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Keyword research mensile</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Report analytics mensile</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Try &amp; Buy: <strong class="text-white">4 post IG+FB/sett</strong> (3 mesi)</span></li>
+        </ul>
+        <a href="#contatti" class="btn-primary mt-8 block text-center py-3 rounded-sm text-sm font-semibold">Scegli Cura</a>
+      </div>
+
+      <!-- CRESCITA -->
+      <div class="plan-card rounded-sm p-7 flex flex-col rev d3">
+        <div class="mb-6">
+          <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Crescita</p>
+          <div class="flex items-end gap-2 mb-1">
+            <span class="price-main text-4xl">€89</span>
+            <span class="text-gray-600 pb-1.5 text-sm">/mese</span>
+          </div>
+          <p class="text-xs text-gray-600">Il sito domina.</p>
+        </div>
+        <ul class="space-y-2.5 text-sm flex-1">
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Tutto di Cura</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">10 modifiche</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">4 landing page</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">4 blog post</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Report analytics <strong class="text-white">settimanale</strong></span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Rollover 1 mese (landing/blog non usate)</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Try &amp; Buy: <strong class="text-white">6 post IG+FB+LinkedIn/sett</strong> (3 mesi)</span></li>
+        </ul>
+        <a href="#contatti" class="btn-ghost mt-8 block text-center py-3 rounded-sm text-sm font-medium">Scegli Crescita</a>
+      </div>
+    </div>
+
+    <!-- Dettaglio disdetta -->
+    <div class="mt-8 text-center rev">
+      <p class="text-xs text-gray-600">Disdetta: 30 giorni di preavviso, senza penali. Modifiche/landing/blog non usate non si accumulano (eccetto Crescita: rollover max 1 mese).</p>
+    </div>
+
+    <!-- Extras -->
+    <div class="mt-8 plan-card rounded-sm p-6 rev">
+      <p class="text-xs text-gray-600 uppercase tracking-wider mb-3">Extra fuori piano</p>
+      <div class="flex flex-wrap gap-6 text-sm text-gray-500">
+        <span>Modifica extra: <strong class="text-gray-300">€35/h</strong></span>
+        <span>Landing extra: <strong class="text-gray-300">€80</strong></span>
+        <span>Blog extra: <strong class="text-gray-300">€60</strong></span>
+        <span>Intervento urgente (no piano): <strong class="text-gray-300">€75/h</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SOCIAL MANAGEMENT -->
+<section id="social" class="px-6 py-24">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl mb-4 rev">
+      <p class="text-xs text-crimson tracking-widest uppercase font-semibold mb-3">Social management</p>
+      <h2 class="fd text-4xl md:text-5xl font-light text-white mb-4">Vuoi anche<br>i social?</h2>
+    </div>
+    <p class="text-gray-500 mb-4 rev d1">Abbinato al piano manutenzione corrispondente. Solo con impegno semestrale o annuale.</p>
+    <div class="inline-block plan-card rounded-sm px-4 py-2.5 mb-12 rev d1">
+      <p class="text-xs text-gray-500">Il social richiede setup: content calendar, template grafici, brand voice. L'upfront copre l'investimento iniziale di 8-10 ore. Non vendiamo social mese per mese.</p>
+    </div>
+
+    <!-- Toggle -->
+    <div class="flex items-center gap-3 mb-10 rev d2" x-data>
+      <button class="toggle-btn" :class="$store.sp==='6m' ? 'active' : 'inactive'" @click="$store.sp='6m'">6 mesi</button>
+      <button class="toggle-btn" :class="$store.sp==='12m' ? 'active' : 'inactive'" @click="$store.sp='12m'">12 mesi</button>
+      <span class="badge badge-free" x-show="$store.sp==='12m'">2 mesi gratis</span>
+      <span class="badge badge-free" x-show="$store.sp==='6m'" x-cloak>1 mese gratis</span>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4">
+
+      <!-- STARTER -->
+      <div class="plan-card rounded-sm p-7 flex flex-col rev d1">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Starter</p>
+            <div x-show="$store.sp==='12m'">
+              <div class="flex items-end gap-2 mb-1">
+                <span class="price-main text-4xl">€749</span>
+              </div>
+              <p class="text-xs text-gray-600">per 12 mesi <span class="price-strike">€948</span></p>
+            </div>
+            <div x-show="$store.sp==='6m'" x-cloak>
+              <div class="flex items-end gap-2 mb-1">
+                <span class="price-main text-4xl">€399</span>
+              </div>
+              <p class="text-xs text-gray-600">per 6 mesi <span class="price-strike">€474</span></p>
+            </div>
+          </div>
+          <span class="badge badge-tier mt-1">per Custodia</span>
+        </div>
+        <ul class="space-y-2.5 text-sm flex-1">
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">4 post</strong>/sett su IG + FB</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">4 storie</strong>/sett</span></li>
+          <li class="flex items-start gap-2.5"><span class="text-gray-700 flex-shrink-0 pl-0.5 text-base leading-none mt-0.5">-</span><span class="text-gray-600">Reel</span></li>
+          <li class="flex items-start gap-2.5"><span class="text-gray-700 flex-shrink-0 pl-0.5 text-base leading-none mt-0.5">-</span><span class="text-gray-600">LinkedIn / TikTok</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Report mensile (reach, engagement)</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Risposta commenti entro 48h</span></li>
+        </ul>
+        <a href="#contatti" class="btn-ghost mt-8 block text-center py-3 rounded-sm text-sm font-medium">Scegli Starter</a>
+      </div>
+
+      <!-- PRO (FEATURED) -->
+      <div class="plan-card featured rounded-sm p-7 flex flex-col rev d2 relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="badge badge-pop">Consigliato</span>
+        </div>
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Pro</p>
+            <div x-show="$store.sp==='12m'">
+              <div class="flex items-end gap-2 mb-1">
+                <span class="price-main text-4xl">€2.500</span>
+              </div>
+              <p class="text-xs text-gray-600">per 12 mesi <span class="price-strike">€3.000</span></p>
+            </div>
+            <div x-show="$store.sp==='6m'" x-cloak>
+              <div class="flex items-end gap-2 mb-1">
+                <span class="price-main text-4xl">€1.250</span>
+              </div>
+              <p class="text-xs text-gray-600">per 6 mesi <span class="price-strike">€1.500</span></p>
+            </div>
+          </div>
+          <span class="badge badge-tier mt-1">per Cura</span>
+        </div>
+        <ul class="space-y-2.5 text-sm flex-1">
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">6 post</strong>/sett su IG + FB</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">8 storie</strong>/sett</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">1 Reel</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">LinkedIn</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Brand kit (visual + tone of voice)</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Report mensile avanzato</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Call strategica 30 min/mese</span></li>
+        </ul>
+        <a href="#contatti" class="btn-primary mt-8 block text-center py-3 rounded-sm text-sm font-semibold">Scegli Pro</a>
+      </div>
+
+      <!-- ELITE -->
+      <div class="plan-card rounded-sm p-7 flex flex-col rev d3">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Elite</p>
+            <div x-show="$store.sp==='12m'">
+              <div class="flex items-end gap-2 mb-1">
+                <span class="price-main text-4xl">€5.000</span>
+              </div>
+              <p class="text-xs text-gray-600">per 12 mesi <span class="price-strike">€6.000</span></p>
+            </div>
+            <div x-show="$store.sp==='6m'" x-cloak>
+              <div class="flex items-end gap-2 mb-1">
+                <span class="price-main text-4xl">€2.500</span>
+              </div>
+              <p class="text-xs text-gray-600">per 6 mesi <span class="price-strike">€3.000</span></p>
+            </div>
+          </div>
+          <span class="badge badge-tier mt-1">per Crescita</span>
+        </div>
+        <ul class="space-y-2.5 text-sm flex-1">
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">10 post</strong>/sett su IG + FB</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">12 storie</strong>/sett</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300"><strong class="text-white">2 Reel</strong>/mese</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">TikTok + LinkedIn</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Gestione Ads (1 campagna/mese, budget escluso)</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Report settimanale (engagement, ROAS)</span></li>
+          <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Call strategica 60 min/settimana</span></li>
+        </ul>
+        <a href="#contatti" class="btn-ghost mt-8 block text-center py-3 rounded-sm text-sm font-medium">Scegli Elite</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- BUNDLE ANNUALI -->
+<section id="bundle" class="px-6 py-24">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl mb-16 rev">
+      <p class="text-xs text-crimson tracking-widest uppercase font-semibold mb-3">Bundle annuali</p>
+      <h2 class="fd text-4xl md:text-5xl font-light text-white mb-4">Tutto incluso.<br>Un anno.</h2>
+      <p class="text-gray-500">Sito + manutenzione insieme. Un numero da approvare. Zero sorprese per 12 mesi.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 mb-8">
+      <div class="plan-card rounded-sm p-7 rev d1">
+        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Starter Online</p>
+        <div class="mb-4">
+          <span class="fd text-5xl font-light text-white">€999</span>
+          <span class="text-gray-600 text-sm">/anno</span>
+        </div>
+        <p class="text-xs text-gray-600 mb-6">Sito + Custodia 12 mesi. <span class="text-crimson">Risparmi €111</span> vs separati.</p>
+        <div class="text-xs text-gray-600 space-y-1 mb-8">
+          <p>Equiv. €83/mese tutto incluso</p>
+          <p>Poi €30/mese dal mese 13</p>
+        </div>
+        <a href="#contatti" class="btn-ghost block text-center py-3 rounded-sm text-sm font-medium">Scegli Starter Online</a>
+      </div>
+      <div class="plan-card featured rounded-sm p-7 rev d2 relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="badge badge-pop">Piu' scelto</span>
+        </div>
+        <p class="text-xs text-gray-400 uppercase tracking-widest mb-4">Business Online</p>
+        <div class="mb-4">
+          <span class="fd text-5xl font-light text-white">€1.299</span>
+          <span class="text-gray-600 text-sm">/anno</span>
+        </div>
+        <p class="text-xs text-gray-600 mb-6">Sito + Cura 12 mesi. <span class="text-crimson">Risparmi €159</span> vs separati.</p>
+        <div class="text-xs text-gray-600 space-y-1 mb-8">
+          <p>Equiv. €108/mese tutto incluso</p>
+          <p>Poi €59/mese dal mese 13</p>
+        </div>
+        <a href="#contatti" class="btn-primary block text-center py-3 rounded-sm text-sm font-semibold">Scegli Business Online</a>
+      </div>
+      <div class="plan-card rounded-sm p-7 rev d3">
+        <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Premium Online</p>
+        <div class="mb-4">
+          <span class="fd text-5xl font-light text-white">€1.599</span>
+          <span class="text-gray-600 text-sm">/anno</span>
+        </div>
+        <p class="text-xs text-gray-600 mb-6">Sito + Crescita 12 mesi. <span class="text-crimson">Risparmi €219</span> vs separati.</p>
+        <div class="text-xs text-gray-600 space-y-1 mb-8">
+          <p>Equiv. €133/mese tutto incluso</p>
+          <p>Poi €89/mese dal mese 13</p>
+        </div>
+        <a href="#contatti" class="btn-ghost block text-center py-3 rounded-sm text-sm font-medium">Scegli Premium Online</a>
+      </div>
+    </div>
+
+    <div class="plan-card rounded-sm p-6 rev">
+      <p class="text-xs text-gray-600 uppercase tracking-wider mb-3">Aggiungi Social al bundle</p>
+      <div class="flex flex-wrap gap-4 text-sm text-gray-500">
+        <span>Starter Online + Social Starter 12m = <strong class="text-gray-300">€999 + €749 = €1.748</strong></span>
+        <span class="text-gray-700">|</span>
+        <span>Business Online + Social Pro 12m = <strong class="text-gray-300">€1.299 + €2.500 = €3.799</strong></span>
+        <span class="text-gray-700">|</span>
+        <span>Premium Online + Social Elite 12m = <strong class="text-gray-300">€1.599 + €5.000 = €6.599</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- CONFRONTO MERCATO -->
+<section class="px-6 py-20">
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-12 rev">
+      <p class="text-xs text-crimson tracking-widest uppercase font-semibold mb-3">Confronto</p>
+      <h2 class="fd text-4xl font-light text-white">Cosa paga chi<br>sceglie un'agenzia.</h2>
+    </div>
+    <div class="overflow-x-auto rev d1">
+      <table class="cmp-tbl w-full text-sm">
+        <thead>
+          <tr>
+            <th class="text-left">Servizio</th>
+            <th class="text-left text-crimson">TeoDigital</th>
+            <th class="text-left">Freelance medio</th>
+            <th class="text-left">Agenzia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-gray-400">Sito web</td>
+            <td class="ours">€750</td>
+            <td class="them">€2.000 - €5.000</td>
+            <td class="them">€5.000 - €15.000</td>
+          </tr>
+          <tr>
+            <td class="text-gray-400">Manutenzione/anno</td>
+            <td class="ours">€360 - €1.068</td>
+            <td class="them">€600 - €2.400</td>
+            <td class="them">€1.200 - €6.000</td>
+          </tr>
+          <tr>
+            <td class="text-gray-400">Social Starter /anno</td>
+            <td class="ours">€749</td>
+            <td class="them">€3.600+</td>
+            <td class="them">€9.600+</td>
+          </tr>
+          <tr>
+            <td class="text-gray-400">Consegna sito</td>
+            <td class="ours">7 giorni</td>
+            <td class="them">3 - 8 settimane</td>
+            <td class="them">6 - 16 settimane</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-gray-600 mt-4 rev">Stime di mercato italiano 2026. Variano per complessita' e zona geografica.</p>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- OFFERTA LANCIO -->
+<section id="lancio" class="px-6 py-20">
+  <div class="max-w-4xl mx-auto">
+    <div class="urgency-card rounded-sm p-8 md:p-12 rev">
+      <div class="flex flex-col md:flex-row gap-8 items-center justify-between">
+        <div>
+          <span class="badge badge-pop mb-4 inline-block">Offerta giugno 2026</span>
+          <h3 class="fd text-3xl md:text-4xl font-light text-white mb-3">1 mese di Custodia<br>in omaggio.</h3>
+          <p class="text-gray-400 text-sm max-w-md">Attiva un bundle annuale (Starter Online, Business Online o Premium Online) entro il 30 giugno 2026 e il primo mese di manutenzione e' gratis.</p>
+          <p class="text-xs text-gray-600 mt-3">Valore: €30. Valido solo per i prossimi 2 nuovi clienti.</p>
+        </div>
+        <div class="text-center flex-shrink-0">
+          <div class="mb-2">
+            <span class="slot-num">2</span>
+          </div>
+          <p class="text-xs text-gray-500 uppercase tracking-widest">slot rimasti</p>
+          <a href="#contatti" class="btn-primary mt-6 inline-block px-8 py-3.5 rounded-sm text-sm font-semibold">Prenota ora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- FAQ -->
+<section id="faq" class="px-6 py-24">
+  <div class="max-w-3xl mx-auto">
+    <div class="mb-14 rev">
+      <p class="text-xs text-crimson tracking-widest uppercase font-semibold mb-3">Domande frequenti</p>
+      <h2 class="fd text-4xl md:text-5xl font-light text-white">Risposte dirette.</h2>
+    </div>
+
+    <div class="space-y-0 rev d1">
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">Posso avere il sito senza pagare ogni mese?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          Si'. Dopo il primo anno (dominio e hosting gia' inclusi nel sito), puoi gestire autonomamente hosting e rinnovo dominio a ~€30/anno. Il sito resta online. Se hai bisogno di interventi tecnici, lavoriamo a tariffa oraria (€35-75/h). Il piano manutenzione e' opzionale, non obbligatorio.
+        </div>
+      </div>
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">Il sito diventa mio?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          Il dominio e' sempre tuo: lo gestiamo noi per comodita', ma puoi richiederne il trasferimento in qualsiasi momento, gratuitamente, in 48 ore. Hai sempre accesso al pannello di amministrazione dei contenuti. Il codice sorgente del sito rimane di proprieta' intellettuale TeoDigital.
+        </div>
+      </div>
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">In quanto tempo e' online il sito?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          7 giorni lavorativi da quando ci fornisci testi, logo e foto. Se non hai foto, lo diciamo subito e troviamo una soluzione. Il clock parte al ricevimento dei materiali, non all'ordine.
+        </div>
+      </div>
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">Cosa succede se non sono soddisfatto?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          Rimborsiamo il canone del primo mese. Sono escluse le spese di avviamento gia' sostenute (dominio + hosting, circa €30): quelle le abbiamo pagate per te e non possiamo recuperarle. Per il sito: includiamo 2 cicli di revisione durante lo sviluppo - se non ti soddisfa nella fase di review, lo modifichiamo.
+        </div>
+      </div>
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">Posso disdire quando voglio?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          Si', con 30 giorni di preavviso. Nessuna penale. Per il social in upfront: l'importo e' prepagato e non si rimborsa (lo usiamo per coprire il setup iniziale). E' chiarito nel contratto prima di partire.
+        </div>
+      </div>
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">Il social funziona davvero per la mia attivita'?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          Dipende dal settore e dal momento. Ristoranti, estetiste, parrucchieri, alimentari: si', il social locale funziona bene. Prima di venderti qualcosa, ne parliamo: se non e' il momento giusto per te, te lo diciamo. Il Try &amp; Buy incluso nei piani manutenzione serve esattamente a questo: verificare che funzioni prima di impegnarsi sul serio.
+        </div>
+      </div>
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">Posso cambiare piano manutenzione?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          Upgrade: si', dal mese successivo, in qualsiasi momento. Downgrade: si', con 30 giorni di preavviso. Per il social in upfront: il cambio si gestisce al rinnovo del contratto, non in corso.
+        </div>
+      </div>
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">Perche' il social richiede pagamento anticipato?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          Il social richiede 8-10 ore di lavoro prima del primo post: content calendar, template grafici, brand voice, tone of voice. Questa fase non si paga a parte - e' inclusa nel contratto. L'upfront ci permette di farla bene. Chi non e' disposto a un impegno minimo semestrale, probabilmente non e' ancora pronto per una gestione social seria.
+        </div>
+      </div>
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">Fate foto e video professionali?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          No. Ci occupiamo di sito e social. Per le foto: lavoriamo con quelle che hai, o ti consigliamo un fotografo per il tuo settore. Per i Reel: montiamo materiale che ci fornisci tu; se non ce l'hai, lo discutiamo caso per caso.
+        </div>
+      </div>
+
+      <div class="faq-item" x-data="{o:false}">
+        <div class="faq-q" @click="o=!o">
+          <span class="text-gray-300 font-medium">Lavorate in tutta Italia?</span>
+          <svg class="faq-icon" :style="o?'transform:rotate(45deg)':''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+        <div class="faq-a" x-show="o" style="display:none">
+          Si', lavoriamo da remoto in tutta Italia. Onboarding via call video o telefono. Nessuna trasferta fisica inclusa nei piani standard.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- CONTATTI + BUNDLE PERSONALIZZATO -->
+<section id="contatti" class="px-6 py-24">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-14 rev">
+      <p class="text-xs text-crimson tracking-widest uppercase font-semibold mb-3">Inizia</p>
+      <h2 class="fd text-4xl md:text-5xl font-light text-white">Parliamone.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <!-- Inizia ora -->
+      <div class="plan-card rounded-sm p-8 rev d1">
+        <h3 class="fd text-2xl font-light text-white mb-2">Hai scelto un piano.</h3>
+        <p class="text-gray-500 text-sm mb-8">Scrivici o chiama. Risposta entro 24h lavorative.</p>
+        <div class="space-y-4">
+          <a href="https://wa.me/39XXXXXXXXXX?text=Ciao%20Teo%2C%20vorrei%20un%20sito%20web" target="_blank" rel="noopener"
+             class="flex items-center gap-4 btn-primary p-4 rounded-sm">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span class="text-sm font-semibold">Scrivici su WhatsApp</span>
+          </a>
+          <a href="mailto:hypnosis.mda@gmail.com?subject=Richiesta%20sito%20web%20TeoDigital"
+             class="flex items-center gap-4 btn-ghost p-4 rounded-sm">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span class="text-sm">Scrivi una email</span>
+          </a>
+        </div>
+        <div class="mt-8 pt-6 border-t border-border text-xs text-gray-600 space-y-1">
+          <p>Risposta entro 24h lavorative (lun-ven 9:00-18:00)</p>
+          <p>Onboarding via call video o telefono</p>
+        </div>
+      </div>
+
+      <!-- Bundle personalizzato -->
+      <div class="plan-card rounded-sm p-8 rev d2">
+        <h3 class="fd text-2xl font-light text-white mb-2">Hai esigenze specifiche?</h3>
+        <p class="text-gray-500 text-sm mb-6">Parliamo di un bundle su misura. Non usciamo dai binari standard, ma li combiniamo per te.</p>
+        <div class="plan-card rounded-sm p-4 mb-6">
+          <p class="text-xs text-gray-600 uppercase tracking-wider mb-3">Cosa puoi personalizzare</p>
+          <ul class="text-xs text-gray-500 space-y-1.5">
+            <li>- Combinazione di piani manutenzione + social</li>
+            <li>- Durata contratto social (6 o 12 mesi)</li>
+            <li>- Aggiunta di pagine extra o funzionalita' specifiche</li>
+            <li>- Timing di pagamento per bundle annuali</li>
+          </ul>
+        </div>
+        <div class="plan-card rounded-sm p-4 mb-6">
+          <p class="text-xs text-gray-600 uppercase tracking-wider mb-3">Cosa non si negozia</p>
+          <ul class="text-xs text-gray-500 space-y-1.5">
+            <li>- Il sito e' sempre incluso (no social standalone)</li>
+            <li>- Il social richiede sempre upfront 6m o 12m</li>
+            <li>- I prezzi floor dei componenti standard</li>
+            <li>- Shooting foto/video, grafica stampa, e-commerce base</li>
+          </ul>
+        </div>
+        <a href="mailto:hypnosis.mda@gmail.com?subject=Bundle%20personalizzato%20TeoDigital&body=Ciao%20Teo%2C%20vorrei%20discutere%20un%20bundle%20su%20misura.%20La%20mia%20attivita'%20e'%3A%20%0A%0ACosa%20mi%20serve%3A%20%0A%0ABudget%20indicativo%3A%20"
+           class="btn-ghost block text-center py-3 rounded-sm text-sm font-medium">
+          Richiedi bundle personalizzato
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-6 py-12 border-t border-border">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-6 text-xs text-gray-600">
+    <div>
+      <p class="fd text-lg text-gray-400 mb-2">TeoDigital</p>
+      <p>Siti web e social management per attivita' locali</p>
+      <p class="mt-1">Tutti i prezzi IVA esclusa. Fattura con IVA al 22%.</p>
+    </div>
+    <div class="space-y-1.5">
+      <a href="portfolio.html" class="block hover:text-gray-400 transition-colors">Portfolio lavori</a>
+      <a href="privacy-policy.html" class="block hover:text-gray-400 transition-colors">Privacy policy</a>
+      <a href="cookie-policy.html" class="block hover:text-gray-400 transition-colors">Cookie policy</a>
+    </div>
+    <div class="text-right">
+      <p>Offerta valida per nuovi clienti</p>
+      <p>Giugno 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+
+// Alpine store for social period toggle
+document.addEventListener('alpine:init',()=>{
+  Alpine.store('sp','12m');
+});
+</script>
+
+</body>
+</html>
