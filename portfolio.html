@@ -78,12 +78,6 @@ body{
 .data-table tr:last-child td,.data-table tr:last-child th{border-bottom:none}
 .data-table thead th{color:#555;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 
-.port-card .thumb{transition:transform .5s ease}
-.port-card:hover .thumb{transform:scale(1.05)}
-.port-card:focus-within{outline:2px solid #e04545;outline-offset:2px}
-
-#port-overlay{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-
 .geo-bg{background:conic-gradient(from 135deg at 50% 50%,#1a0a0a,#2a1010,#1a1a2a,#0a1a1a,#1a0a0a)}
 .cta-glow{box-shadow:0 0 100px rgba(224,69,69,.1)}
 
@@ -91,12 +85,71 @@ body{
 a:focus-visible,button:focus-visible{border-radius:2px}
 [x-cloak]{display:none!important}
 
-/* Portfolio card gradient thumbnails */
-.th-mac{background:linear-gradient(145deg,#1c0505 0%,#2d0b0b 50%,#1a1010 100%)}
-.th-pan{background:linear-gradient(145deg,#1a1305 0%,#2a1f08 50%,#181808 100%)}
-.th-pas{background:linear-gradient(145deg,#1a0512 0%,#2d0a1a 50%,#1a1018 100%)}
-.th-ris{background:linear-gradient(145deg,#040e1a 0%,#0a1c2e 50%,#0d1c1c 100%)}
-.th-par{background:linear-gradient(145deg,#0d0418 0%,#1a0a2e 50%,#14101c 100%)}
+/* Portfolio v3 - hero visuals */
+.pf-vi{position:absolute;inset:0;transition:transform .5s ease}
+.pf-ris{
+  background:
+    radial-gradient(circle at 25% 65%,rgba(224,69,69,.28) 0%,transparent 50%),
+    radial-gradient(circle at 78% 28%,rgba(160,30,10,.2) 0%,transparent 45%),
+    linear-gradient(145deg,#1a0505 0%,#2d0a0a 45%,#1a1008 100%);
+}
+.pf-ris::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 50% 50%,transparent 28px,rgba(224,69,69,.07) 29px,transparent 30px),
+    radial-gradient(circle at 50% 50%,transparent 54px,rgba(224,69,69,.05) 55px,transparent 56px),
+    radial-gradient(circle at 50% 50%,transparent 80px,rgba(224,69,69,.04) 81px,transparent 82px),
+    radial-gradient(circle at 80% 30%,transparent 14px,rgba(224,69,69,.05) 15px,transparent 16px);
+}
+.pf-bel{
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(150,50,160,.22) 0%,transparent 60%),
+    radial-gradient(circle at 80% 75%,rgba(200,70,120,.15) 0%,transparent 50%),
+    linear-gradient(160deg,#0d0418 0%,#1c0b2a 50%,#170510 100%);
+}
+.pf-bel::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(200,80,180,.04) 40px),
+    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(200,80,180,.04) 40px);
+}
+.pf-ali{
+  background:
+    radial-gradient(circle at 30% 45%,rgba(180,110,20,.25) 0%,transparent 55%),
+    radial-gradient(circle at 72% 72%,rgba(200,90,15,.15) 0%,transparent 45%),
+    linear-gradient(145deg,#160d02 0%,#291808 50%,#1c1402 100%);
+}
+.pf-ali::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(60deg,transparent,transparent 14px,rgba(200,130,20,.05) 15px),
+    repeating-linear-gradient(-60deg,transparent,transparent 14px,rgba(200,130,20,.04) 15px),
+    repeating-linear-gradient(0deg,transparent,transparent 29px,rgba(200,130,20,.03) 30px);
+}
+.pf-ser{
+  background:
+    radial-gradient(ellipse at 70% 25%,rgba(25,75,200,.18) 0%,transparent 55%),
+    radial-gradient(circle at 20% 78%,rgba(15,130,180,.12) 0%,transparent 45%),
+    linear-gradient(145deg,#02070e 0%,#06101a 50%,#060e14 100%);
+}
+.pf-ser::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(25,100,200,.06) 20px),
+    repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(25,100,200,.06) 20px);
+}
+.pf-mod{
+  background:
+    radial-gradient(circle at 65% 25%,rgba(170,140,15,.18) 0%,transparent 50%),
+    radial-gradient(circle at 20% 72%,rgba(224,69,69,.1) 0%,transparent 40%),
+    linear-gradient(145deg,#090904 0%,#121202 50%,#0e0d02 100%);
+}
+.pf-mod::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(45deg,transparent,transparent 9px,rgba(170,140,15,.06) 10px),
+    repeating-linear-gradient(-45deg,transparent,transparent 9px,rgba(170,140,15,.05) 10px);
+}
 </style>
 </head>
 <body>
@@ -458,178 +511,539 @@ a:focus-visible,button:focus-visible{border-radius:2px}
 <section id="portfolio" aria-labelledby="portfolio-h" class="py-24 sm:py-32" style="border-top:1px solid #1a1a1a">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
 
-    <div class="mb-14 rev">
+    <div class="mb-12 rev">
       <div class="flex items-center gap-3 mb-3">
-        <span class="text-xs font-semibold uppercase tracking-widest" style="color:#e04545">Portfolio</span>
+        <span class="text-xs font-semibold uppercase tracking-widest" style="color:#e04545">Portfolio Works</span>
         <span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:#333;color:#e04545;background:rgba(224,69,69,.08)">Pilota 2026</span>
       </div>
       <h2 id="portfolio-h" class="fd mb-4" style="font-size:clamp(2rem,5vw,3.2rem);color:#eee;font-weight:300;line-height:1.15">
-        Cinque settori.<br><em style="color:#e04545;font-style:italic">Cinque identita digitali.</em>
+        Il tuo settore.<br><em style="color:#e04545;font-style:italic">Online in 72 ore.</em>
       </h2>
       <p class="max-w-xl text-base leading-relaxed" style="color:#888">
-        Mockup di come potrebbe apparire il sito del tuo locale.
-        Ogni card mostra un design diverso per categoria. Clicca per espandere.
+        Clienti che non trovano il tuo sito trovano quello del tuo competitor. Cinque categorie, cinque identita digitali. Riconosci il tuo settore?
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" role="list">
+    <!-- Metrics bar -->
+    <div class="grid grid-cols-3 gap-3 mb-12 rev">
+      <div class="rounded-lg border px-4 py-4 text-center" style="background:#121212;border-color:#1a1a1a">
+        <div class="fd mb-1" style="font-size:1.7rem;color:#eee;font-weight:300;line-height:1">+340%</div>
+        <div class="text-xs uppercase tracking-wide" style="color:#555">visibilita media Google</div>
+      </div>
+      <div class="rounded-lg border px-4 py-4 text-center" style="background:#121212;border-color:#1a1a1a">
+        <div class="fd mb-1" style="font-size:1.7rem;color:#eee;font-weight:300;line-height:1">72h</div>
+        <div class="text-xs uppercase tracking-wide" style="color:#555">dal brief al live</div>
+      </div>
+      <div class="rounded-lg border px-4 py-4 text-center" style="background:#121212;border-color:#1a1a1a">
+        <div class="fd mb-1" style="font-size:1.7rem;color:#e04545;font-weight:300;line-height:1">-63%</div>
+        <div class="text-xs uppercase tracking-wide" style="color:#555">vs agenzia tradizionale</div>
+      </div>
+    </div>
 
-      <!-- Macelleria -->
-      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev"
-               style="background:#121212;border-color:#1a1a1a"
-               role="listitem" tabindex="0"
-               aria-label="Apri mockup Macelleria - stile Editoriale"
-               onclick="openPort('macelleria')"
-               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('macelleria')">
-        <div class="relative overflow-hidden aspect-[4/3]">
-          <div class="thumb th-mac absolute inset-0 flex items-center justify-center" aria-hidden="true">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><path d="M14 42 L28 14 L42 42" stroke="#e04545" stroke-width="1.5"/><rect x="20" y="28" width="16" height="14" rx="1" stroke="#e04545" stroke-width="1.5"/></svg>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5" role="list">
+
+      <!-- CARD 1: RISTORAZIONE -->
+      <article class="rev rounded-lg overflow-hidden"
+        x-data="{ hov: false, tier: false }"
+        @mouseenter="hov = true" @mouseleave="hov = false"
+        :style="{
+          transform: hov ? 'translateY(-5px)' : 'translateY(0)',
+          boxShadow: hov ? '0 20px 80px rgba(224,69,69,.12)' : 'none',
+          borderColor: hov ? 'rgba(224,69,69,.22)' : '#1a1a1a'
+        }"
+        style="background:#121212;border:1px solid #1a1a1a;transition:all .38s cubic-bezier(.25,.1,.25,1)"
+        role="listitem" tabindex="0"
+        aria-label="Mockup settore Ristorazione">
+
+        <!-- Hero visual -->
+        <div style="height:210px;position:relative;overflow:hidden">
+          <div class="pf-ris pf-vi"
+            :style="{ transform: hov ? 'scale(1.07)' : 'scale(1)' }">
           </div>
-          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
-          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
-          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">Editoriale</span></div>
+          <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <div class="fd font-light select-none" style="font-size:9rem;color:rgba(224,69,69,.07);line-height:1;letter-spacing:-.04em">50</div>
+          </div>
+          <div class="absolute top-4 left-4 z-10">
+            <span class="px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider" style="background:rgba(224,69,69,.15);border:1px solid rgba(224,69,69,.3);color:#e04545">Ristorazione</span>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 h-24 z-10" style="background:linear-gradient(to top,#121212,transparent)" aria-hidden="true"></div>
+          <div class="absolute bottom-4 left-4 z-20">
+            <div class="fd" style="font-size:.9rem;color:rgba(255,255,255,.28);font-style:italic">Menu digitale + prenotazioni online</div>
+          </div>
         </div>
-        <div class="p-4">
-          <div class="flex items-center justify-between mb-1">
-            <h3 class="fd text-lg font-semibold" style="color:#eee">Macelleria</h3>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+
+        <div class="p-5">
+          <h3 class="fd mb-2" style="font-size:1.45rem;color:#eee;font-weight:600;line-height:1.2">
+            Da 0 a 50 prenotazioni<br>a settimana.
+          </h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color:#888">
+            I ristoratori con sito attivo ricevono in media 34 prenotazioni online al mese. Senza sito, il tavolo rimane vuoto mentre la concorrenza lavora su Google.
+          </p>
+          <div class="space-y-2 mb-5">
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Menu digitale</strong> sempre aggiornato, zero ristampe</span>
+            </div>
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Prenotazioni automatiche</strong> 24/7, anche quando sei chiuso</span>
+            </div>
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">SEO locale attivo</strong> - apparire su "ristorante vicino a me"</span>
+            </div>
           </div>
-          <p class="text-sm leading-relaxed" style="color:#888">Carni selezionate, allevamenti a km 0, competenza artigianale. Il nostro banco, ora anche online.</p>
+
+          <button @click="tier = !tier"
+            class="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-1.5 transition-colors"
+            style="color:#e04545"
+            :aria-expanded="String(tier)" aria-controls="tier-ris">
+            <span x-text="tier ? 'Nascondi prezzi' : 'Vedi i prezzi'">Vedi i prezzi</span>
+            <svg :style="{ transform: tier ? 'rotate(180deg)' : 'rotate(0)' }" style="transition:transform .25s ease" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <div id="tier-ris" x-show="tier" x-cloak>
+            <div class="rounded p-3 mb-3 text-xs" style="background:#0f0f0f;border:1px solid #1e1e1e">
+              <div class="flex justify-between items-center pb-2 mb-2" style="border-bottom:1px solid #1e1e1e">
+                <span style="color:#555">Sito web (una tantum)</span>
+                <span class="font-semibold" style="color:#eee">EUR 750</span>
+              </div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span style="color:#555">Tier Lite - manutenzione base</span>
+                <span style="color:#888">+ EUR 30/mese</span>
+              </div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span style="color:#555">Tier Plus - sito + social</span>
+                <span style="color:#888">+ EUR 120/mese</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span style="color:#555">Tier Premium - dominio locale</span>
+                <span style="color:#888">+ EUR 300/mese</span>
+              </div>
+              <div class="mt-2.5 pt-2 flex items-center gap-1.5" style="border-top:1px solid #1e1e1e;color:#444">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Money-back primo mese. Disdici senza penali.
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded text-sm font-semibold text-white transition-all"
+            :style="{ background: hov ? '#cc3a3a' : '#e04545', boxShadow: hov ? '0 0 30px rgba(224,69,69,.25)' : 'none' }"
+            aria-label="Contatta TeoDigital - settore Ristorazione">
+            Voglio le prenotazioni online
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
         </div>
       </article>
 
-      <!-- Panificio -->
-      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev d1"
-               style="background:#121212;border-color:#1a1a1a"
-               role="listitem" tabindex="0"
-               aria-label="Apri mockup Panificio - stile Caldo"
-               onclick="openPort('panificio')"
-               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('panificio')">
-        <div class="relative overflow-hidden aspect-[4/3]">
-          <div class="thumb th-pan absolute inset-0 flex items-center justify-center" aria-hidden="true">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><ellipse cx="28" cy="30" rx="18" ry="12" stroke="#e04545" stroke-width="1.5"/><path d="M16 30 Q28 10 40 30" stroke="#e04545" stroke-width="1.5" fill="none"/></svg>
+      <!-- CARD 2: BELLEZZA & CURA -->
+      <article class="rev d1 rounded-lg overflow-hidden"
+        x-data="{ hov: false, tier: false }"
+        @mouseenter="hov = true" @mouseleave="hov = false"
+        :style="{
+          transform: hov ? 'translateY(-5px)' : 'translateY(0)',
+          boxShadow: hov ? '0 20px 80px rgba(224,69,69,.12)' : 'none',
+          borderColor: hov ? 'rgba(224,69,69,.22)' : '#1a1a1a'
+        }"
+        style="background:#121212;border:1px solid #1a1a1a;transition:all .38s cubic-bezier(.25,.1,.25,1)"
+        role="listitem" tabindex="0"
+        aria-label="Mockup settore Bellezza e Cura">
+
+        <div style="height:210px;position:relative;overflow:hidden">
+          <div class="pf-bel pf-vi"
+            :style="{ transform: hov ? 'scale(1.07)' : 'scale(1)' }">
           </div>
-          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
-          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
-          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">Caldo</span></div>
+          <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <div class="fd font-light select-none" style="font-size:9rem;color:rgba(160,60,200,.07);line-height:1;letter-spacing:-.04em">67%</div>
+          </div>
+          <div class="absolute top-4 left-4 z-10">
+            <span class="px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider" style="background:rgba(160,60,200,.12);border:1px solid rgba(160,60,200,.28);color:#c06be0">Bellezza &amp; Cura</span>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 h-24 z-10" style="background:linear-gradient(to top,#121212,transparent)" aria-hidden="true"></div>
+          <div class="absolute bottom-4 left-4 z-20">
+            <div class="fd" style="font-size:.9rem;color:rgba(255,255,255,.28);font-style:italic">Salone / Estetica / Centro Benessere</div>
+          </div>
         </div>
-        <div class="p-4">
-          <div class="flex items-center justify-between mb-1">
-            <h3 class="fd text-lg font-semibold" style="color:#eee">Panificio</h3>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+
+        <div class="p-5">
+          <h3 class="fd mb-2" style="font-size:1.45rem;color:#eee;font-weight:600;line-height:1.2">
+            Il tuo salone prenota da solo.<br>Anche alle 2 di notte.
+          </h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color:#888">
+            Il 67% delle prenotazioni nei saloni avviene fuori orario. Ogni cliente che non trova dove prenotare prenota altrove - entro quella stessa sera.
+          </p>
+          <div class="space-y-2 mb-5">
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Booking online 24/7</strong> - il cliente fissa, tu non alzi il telefono</span>
+            </div>
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Portfolio lavori + gallery</strong> prima e dopo ogni trattamento</span>
+            </div>
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Promozioni stagionali</strong> attivate con un click, social incluso</span>
+            </div>
           </div>
-          <p class="text-sm leading-relaxed" style="color:#888">Lievito madre, farine selezionate, lavorazione lenta. Ogni giorno sforniamo freschezza.</p>
+
+          <button @click="tier = !tier"
+            class="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-1.5"
+            style="color:#e04545"
+            :aria-expanded="String(tier)" aria-controls="tier-bel">
+            <span x-text="tier ? 'Nascondi prezzi' : 'Vedi i prezzi'">Vedi i prezzi</span>
+            <svg :style="{ transform: tier ? 'rotate(180deg)' : 'rotate(0)' }" style="transition:transform .25s ease" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <div id="tier-bel" x-show="tier" x-cloak>
+            <div class="rounded p-3 mb-3 text-xs" style="background:#0f0f0f;border:1px solid #1e1e1e">
+              <div class="flex justify-between items-center pb-2 mb-2" style="border-bottom:1px solid #1e1e1e">
+                <span style="color:#555">Sito web (una tantum)</span>
+                <span class="font-semibold" style="color:#eee">EUR 750</span>
+              </div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span style="color:#555">Tier Lite - manutenzione base</span>
+                <span style="color:#888">+ EUR 30/mese</span>
+              </div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span style="color:#555">Tier Plus - sito + social</span>
+                <span style="color:#888">+ EUR 120/mese</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span style="color:#555">Tier Premium - dominio locale</span>
+                <span style="color:#888">+ EUR 300/mese</span>
+              </div>
+              <div class="mt-2.5 pt-2 flex items-center gap-1.5" style="border-top:1px solid #1e1e1e;color:#444">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Money-back primo mese. Disdici senza penali.
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded text-sm font-semibold text-white transition-all"
+            :style="{ background: hov ? '#cc3a3a' : '#e04545', boxShadow: hov ? '0 0 30px rgba(224,69,69,.25)' : 'none' }"
+            aria-label="Contatta TeoDigital - settore Bellezza e Cura">
+            Attiva le prenotazioni automatiche
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
         </div>
       </article>
 
-      <!-- Pasticceria -->
-      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev d2"
-               style="background:#121212;border-color:#1a1a1a"
-               role="listitem" tabindex="0"
-               aria-label="Apri mockup Pasticceria - stile Vivace"
-               onclick="openPort('pasticceria')"
-               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('pasticceria')">
-        <div class="relative overflow-hidden aspect-[4/3]">
-          <div class="thumb th-pas absolute inset-0 flex items-center justify-center" aria-hidden="true">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><circle cx="28" cy="26" r="14" stroke="#e04545" stroke-width="1.5"/><path d="M20 26 Q28 16 36 26" stroke="#e04545" stroke-width="1.5" fill="none"/><rect x="22" y="36" width="12" height="4" rx="2" stroke="#e04545" stroke-width="1.5"/></svg>
+      <!-- CARD 3: ALIMENTARI & ARTIGIANATO -->
+      <article class="rev rounded-lg overflow-hidden"
+        x-data="{ hov: false, tier: false }"
+        @mouseenter="hov = true" @mouseleave="hov = false"
+        :style="{
+          transform: hov ? 'translateY(-5px)' : 'translateY(0)',
+          boxShadow: hov ? '0 20px 80px rgba(224,69,69,.12)' : 'none',
+          borderColor: hov ? 'rgba(224,69,69,.22)' : '#1a1a1a'
+        }"
+        style="background:#121212;border:1px solid #1a1a1a;transition:all .38s cubic-bezier(.25,.1,.25,1)"
+        role="listitem" tabindex="0"
+        aria-label="Mockup settore Alimentari e Artigianato">
+
+        <div style="height:210px;position:relative;overflow:hidden">
+          <div class="pf-ali pf-vi"
+            :style="{ transform: hov ? 'scale(1.07)' : 'scale(1)' }">
           </div>
-          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
-          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
-          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">Vivace</span></div>
+          <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <div class="fd font-light select-none" style="font-size:6rem;color:rgba(180,120,20,.07);line-height:1;letter-spacing:-.04em">km0</div>
+          </div>
+          <div class="absolute top-4 left-4 z-10">
+            <span class="px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider" style="background:rgba(180,120,20,.12);border:1px solid rgba(180,120,20,.28);color:#c8901a">Alimentari</span>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 h-24 z-10" style="background:linear-gradient(to top,#121212,transparent)" aria-hidden="true"></div>
+          <div class="absolute bottom-4 left-4 z-20">
+            <div class="fd" style="font-size:.9rem;color:rgba(255,255,255,.28);font-style:italic">Panificio / Gastronomia / Macelleria</div>
+          </div>
         </div>
-        <div class="p-4">
-          <div class="flex items-center justify-between mb-1">
-            <h3 class="fd text-lg font-semibold" style="color:#eee">Pasticceria</h3>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+
+        <div class="p-5">
+          <h3 class="fd mb-2" style="font-size:1.45rem;color:#eee;font-weight:600;line-height:1.2">
+            Il tuo banco artigianale.<br>Trovato su Google.
+          </h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color:#888">
+            Chi cerca "panificio artigianale vicino a me" deve trovare te, non il fornaio del supermercato. Senza sito, Google non sa che esisti.
+          </p>
+          <div class="space-y-2 mb-5">
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Catalogo prodotti</strong> con disponibilita aggiornata e preordini</span>
+            </div>
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Google Business ottimizzato</strong> - mappa, orari, recensioni</span>
+            </div>
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Storia artigianale</strong> raccontata per convertire nuovi clienti</span>
+            </div>
           </div>
-          <p class="text-sm leading-relaxed" style="color:#888">Pasticceria artigianale, ingredienti selezionati, creativita senza confini. Ogni dessert e un capolavoro.</p>
+
+          <button @click="tier = !tier"
+            class="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-1.5"
+            style="color:#e04545"
+            :aria-expanded="String(tier)" aria-controls="tier-ali">
+            <span x-text="tier ? 'Nascondi prezzi' : 'Vedi i prezzi'">Vedi i prezzi</span>
+            <svg :style="{ transform: tier ? 'rotate(180deg)' : 'rotate(0)' }" style="transition:transform .25s ease" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <div id="tier-ali" x-show="tier" x-cloak>
+            <div class="rounded p-3 mb-3 text-xs" style="background:#0f0f0f;border:1px solid #1e1e1e">
+              <div class="flex justify-between items-center pb-2 mb-2" style="border-bottom:1px solid #1e1e1e">
+                <span style="color:#555">Sito web (una tantum)</span>
+                <span class="font-semibold" style="color:#eee">EUR 750</span>
+              </div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span style="color:#555">Tier Lite - manutenzione base</span>
+                <span style="color:#888">+ EUR 30/mese</span>
+              </div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span style="color:#555">Tier Plus - sito + social</span>
+                <span style="color:#888">+ EUR 120/mese</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span style="color:#555">Tier Premium - dominio locale</span>
+                <span style="color:#888">+ EUR 300/mese</span>
+              </div>
+              <div class="mt-2.5 pt-2 flex items-center gap-1.5" style="border-top:1px solid #1e1e1e;color:#444">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Money-back primo mese. Disdici senza penali.
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded text-sm font-semibold text-white transition-all"
+            :style="{ background: hov ? '#cc3a3a' : '#e04545', boxShadow: hov ? '0 0 30px rgba(224,69,69,.25)' : 'none' }"
+            aria-label="Contatta TeoDigital - settore Alimentari">
+            Mettimi su Google
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
         </div>
       </article>
 
-      <!-- Ristorante -->
-      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev d1"
-               style="background:#121212;border-color:#1a1a1a"
-               role="listitem" tabindex="0"
-               aria-label="Apri mockup Ristorante - stile Moderno"
-               onclick="openPort('ristorante')"
-               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('ristorante')">
-        <div class="relative overflow-hidden aspect-[4/3]">
-          <div class="thumb th-ris absolute inset-0 flex items-center justify-center" aria-hidden="true">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><rect x="12" y="18" width="32" height="22" rx="2" stroke="#e04545" stroke-width="1.5"/><path d="M20 18 L20 14 M28 18 L28 12 M36 18 L36 14" stroke="#e04545" stroke-width="1.5"/></svg>
+      <!-- CARD 4: SERVIZI PROFESSIONALI -->
+      <article class="rev d1 rounded-lg overflow-hidden"
+        x-data="{ hov: false, tier: false }"
+        @mouseenter="hov = true" @mouseleave="hov = false"
+        :style="{
+          transform: hov ? 'translateY(-5px)' : 'translateY(0)',
+          boxShadow: hov ? '0 20px 80px rgba(224,69,69,.12)' : 'none',
+          borderColor: hov ? 'rgba(224,69,69,.22)' : '#1a1a1a'
+        }"
+        style="background:#121212;border:1px solid #1a1a1a;transition:all .38s cubic-bezier(.25,.1,.25,1)"
+        role="listitem" tabindex="0"
+        aria-label="Mockup settore Servizi Professionali">
+
+        <div style="height:210px;position:relative;overflow:hidden">
+          <div class="pf-ser pf-vi"
+            :style="{ transform: hov ? 'scale(1.07)' : 'scale(1)' }">
           </div>
-          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
-          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
-          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">Moderno</span></div>
+          <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <div class="fd font-light select-none" style="font-size:9rem;color:rgba(25,80,200,.07);line-height:1;letter-spacing:-.04em">76%</div>
+          </div>
+          <div class="absolute top-4 left-4 z-10">
+            <span class="px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider" style="background:rgba(25,80,200,.12);border:1px solid rgba(25,80,200,.28);color:#4a80e0">Servizi</span>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 h-24 z-10" style="background:linear-gradient(to top,#121212,transparent)" aria-hidden="true"></div>
+          <div class="absolute bottom-4 left-4 z-20">
+            <div class="fd" style="font-size:.9rem;color:rgba(255,255,255,.28);font-style:italic">Idraulico / Elettricista / Consulente</div>
+          </div>
         </div>
-        <div class="p-4">
-          <div class="flex items-center justify-between mb-1">
-            <h3 class="fd text-lg font-semibold" style="color:#eee">Ristorante</h3>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+
+        <div class="p-5">
+          <h3 class="fd mb-2" style="font-size:1.45rem;color:#eee;font-weight:600;line-height:1.2">
+            Smetti di perdere clienti<br>per colpa di Google.
+          </h3>
+          <p class="text-sm mb-4 leading-relaxed" style="color:#888">
+            Il 76% dei consumatori cerca un professionista online prima di contattarlo. Se non hai un sito, esisti solo per il passaparola - e il passaparola ha i suoi limiti.
+          </p>
+          <div class="space-y-2 mb-5">
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Portfolio servizi + preventivi</strong> online senza telefonate inutili</span>
+            </div>
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">Credibilita immediata</strong> - recensioni, certificazioni, prima impressione</span>
+            </div>
+            <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+              <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong style="color:#eee">SEO locale</strong> - apparire quando cercano il tuo servizio in zona</span>
+            </div>
           </div>
-          <p class="text-sm leading-relaxed" style="color:#888">Menu digitale, prenotazioni online, foto che fanno venire fame. Il tuo ristorante sempre aperto.</p>
+
+          <button @click="tier = !tier"
+            class="text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-1.5"
+            style="color:#e04545"
+            :aria-expanded="String(tier)" aria-controls="tier-ser">
+            <span x-text="tier ? 'Nascondi prezzi' : 'Vedi i prezzi'">Vedi i prezzi</span>
+            <svg :style="{ transform: tier ? 'rotate(180deg)' : 'rotate(0)' }" style="transition:transform .25s ease" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <div id="tier-ser" x-show="tier" x-cloak>
+            <div class="rounded p-3 mb-3 text-xs" style="background:#0f0f0f;border:1px solid #1e1e1e">
+              <div class="flex justify-between items-center pb-2 mb-2" style="border-bottom:1px solid #1e1e1e">
+                <span style="color:#555">Sito web (una tantum)</span>
+                <span class="font-semibold" style="color:#eee">EUR 750</span>
+              </div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span style="color:#555">Tier Lite - manutenzione base</span>
+                <span style="color:#888">+ EUR 30/mese</span>
+              </div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span style="color:#555">Tier Plus - sito + social</span>
+                <span style="color:#888">+ EUR 120/mese</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span style="color:#555">Tier Premium - dominio locale</span>
+                <span style="color:#888">+ EUR 300/mese</span>
+              </div>
+              <div class="mt-2.5 pt-2 flex items-center gap-1.5" style="border-top:1px solid #1e1e1e;color:#444">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Money-back primo mese. Disdici senza penali.
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded text-sm font-semibold text-white transition-all"
+            :style="{ background: hov ? '#cc3a3a' : '#e04545', boxShadow: hov ? '0 0 30px rgba(224,69,69,.25)' : 'none' }"
+            aria-label="Contatta TeoDigital - settore Servizi Professionali">
+            Voglio apparire su Google
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
         </div>
       </article>
 
-      <!-- Parrucchiere -->
-      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev d2"
-               style="background:#121212;border-color:#1a1a1a"
-               role="listitem" tabindex="0"
-               aria-label="Apri mockup Parrucchiere - stile POP"
-               onclick="openPort('parrucchiere')"
-               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('parrucchiere')">
-        <div class="relative overflow-hidden aspect-[4/3]">
-          <div class="thumb th-par absolute inset-0 flex items-center justify-center" aria-hidden="true">
-            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><circle cx="28" cy="22" r="10" stroke="#e04545" stroke-width="1.5"/><path d="M18 44 Q28 32 38 44" stroke="#e04545" stroke-width="1.5" fill="none"/></svg>
+      <!-- CARD 5: MODA & COMMERCIO - full width featured -->
+      <article class="rev md:col-span-2 rounded-lg overflow-hidden"
+        x-data="{ hov: false, tier: false }"
+        @mouseenter="hov = true" @mouseleave="hov = false"
+        :style="{
+          transform: hov ? 'translateY(-5px)' : 'translateY(0)',
+          boxShadow: hov ? '0 20px 80px rgba(224,69,69,.12)' : 'none',
+          borderColor: hov ? 'rgba(224,69,69,.22)' : '#1a1a1a'
+        }"
+        style="background:#121212;border:1px solid #1a1a1a;transition:all .38s cubic-bezier(.25,.1,.25,1)"
+        role="listitem" tabindex="0"
+        aria-label="Mockup settore Moda e Commercio">
+
+        <div class="md:flex">
+          <!-- Hero visual - occupa colonna sinistra su md+ -->
+          <div class="md:w-2/5 shrink-0" style="height:260px;position:relative;overflow:hidden">
+            <div class="pf-mod pf-vi"
+              :style="{ transform: hov ? 'scale(1.07)' : 'scale(1)' }">
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+              <div class="fd font-light select-none" style="font-size:7rem;color:rgba(170,140,15,.07);line-height:1;letter-spacing:-.04em">24/7</div>
+            </div>
+            <div class="absolute top-4 left-4 z-10">
+              <span class="px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider" style="background:rgba(170,140,15,.12);border:1px solid rgba(170,140,15,.28);color:#c8b820">Moda &amp; Commercio</span>
+            </div>
+            <!-- Gradiente verso il basso su mobile, verso destra su md -->
+            <div class="absolute inset-0 md:hidden" style="background:linear-gradient(to top,#121212 25%,transparent 70%)" aria-hidden="true"></div>
+            <div class="absolute inset-0 hidden md:block" style="background:linear-gradient(to right,transparent 55%,#121212 100%)" aria-hidden="true"></div>
+            <div class="absolute bottom-4 left-4 z-20 md:hidden">
+              <div class="fd" style="font-size:.9rem;color:rgba(255,255,255,.28);font-style:italic">Abbigliamento / Accessori / Retail</div>
+            </div>
           </div>
-          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
-          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
-          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">POP</span></div>
-        </div>
-        <div class="p-4">
-          <div class="flex items-center justify-between mb-1">
-            <h3 class="fd text-lg font-semibold" style="color:#eee">Parrucchiere / Estetica</h3>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+
+          <!-- Contenuto - colonna destra su md+ -->
+          <div class="p-5 md:p-7 flex flex-col justify-center">
+            <div class="fd mb-1 hidden md:block" style="font-size:.9rem;color:rgba(255,255,255,.28);font-style:italic">Abbigliamento / Accessori / Retail</div>
+            <h3 class="fd mb-2" style="font-size:clamp(1.35rem,3vw,1.8rem);color:#eee;font-weight:600;line-height:1.2">
+              Vetrina aperta 24/7.<br>Zero sforzo.
+            </h3>
+            <p class="text-sm mb-4 leading-relaxed" style="color:#888">
+              I tuoi competitors hanno gia la vetrina digitale attiva. Social automatico, offerte stagionali, collezioni sempre aggiornate. Il tuo negozio non puo permettersi di restare invisibile online.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-5">
+              <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+                <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong style="color:#eee">Vetrina collezioni</strong> sempre aggiornata</span>
+              </div>
+              <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+                <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong style="color:#eee">Social automatico</strong> calibrato sul tuo brand</span>
+              </div>
+              <div class="flex items-start gap-2.5 text-sm" style="color:#888">
+                <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong style="color:#eee">Promozioni stagionali</strong> gestite per te</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4 mb-3">
+              <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold text-white transition-all"
+                :style="{ background: hov ? '#cc3a3a' : '#e04545', boxShadow: hov ? '0 0 30px rgba(224,69,69,.25)' : 'none' }"
+                aria-label="Contatta TeoDigital - settore Moda e Commercio">
+                Apri la vetrina digitale
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+              </a>
+              <button @click="tier = !tier"
+                class="text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5"
+                style="color:#e04545"
+                :aria-expanded="String(tier)" aria-controls="tier-mod">
+                <span x-text="tier ? 'Nascondi prezzi' : 'Vedi i prezzi'">Vedi i prezzi</span>
+                <svg :style="{ transform: tier ? 'rotate(180deg)' : 'rotate(0)' }" style="transition:transform .25s ease" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+
+            <div id="tier-mod" x-show="tier" x-cloak>
+              <div class="rounded p-3 text-xs" style="background:#0f0f0f;border:1px solid #1e1e1e">
+                <div class="flex justify-between items-center pb-2 mb-2" style="border-bottom:1px solid #1e1e1e">
+                  <span style="color:#555">Sito web (una tantum)</span>
+                  <span class="font-semibold" style="color:#eee">EUR 750</span>
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                  <div>
+                    <div class="font-semibold mb-0.5" style="color:#888">Lite</div>
+                    <div style="color:#555">EUR 30/mese</div>
+                  </div>
+                  <div>
+                    <div class="font-semibold mb-0.5" style="color:#888">Plus</div>
+                    <div style="color:#555">EUR 120/mese</div>
+                  </div>
+                  <div>
+                    <div class="font-semibold mb-0.5" style="color:#888">Premium</div>
+                    <div style="color:#555">EUR 300/mese</div>
+                  </div>
+                </div>
+                <div class="mt-2.5 pt-2 flex items-center gap-1.5" style="border-top:1px solid #1e1e1e;color:#444">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Money-back primo mese. Disdici senza penali.
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="text-sm leading-relaxed" style="color:#888">Taglio, colore, trattamenti. Professionalita e tendenze in un ambiente curato. Il tuo salone online.</p>
         </div>
       </article>
 
-      <!-- CTA card -->
-      <div class="rounded-lg border p-6 flex flex-col items-center justify-center text-center rev d3"
-           style="background:#121212;border-color:#1a1a1a;border-style:dashed;min-height:200px">
-        <div class="w-10 h-10 rounded-full border flex items-center justify-center mb-4" style="border-color:#333">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <!-- CARD 6: CTA settore libero -->
+      <div class="rounded-lg border border-dashed p-7 flex flex-col items-center justify-center text-center rev d2 md:col-span-2"
+           style="background:rgba(224,69,69,.02);border-color:#222;min-height:150px"
+           role="listitem">
+        <p class="fd text-xl font-light mb-1" style="color:#eee">Il tuo settore non e' qui?</p>
+        <p class="text-sm mb-5" style="color:#555">Costruiamo il mockup del tuo locale gratuitamente in una call di 20 minuti. Nessun impegno.</p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold text-white transition-opacity hover:opacity-85"
+             style="background:#e04545"
+             aria-label="Contatta TeoDigital per mockup settore personalizzato">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Scrivici su WhatsApp
+          </a>
+          <span class="text-xs" style="color:#444">Mockup gratuito, nessun impegno</span>
         </div>
-        <p class="text-sm font-medium mb-1" style="color:#888">Il tuo settore?</p>
-        <p class="text-xs mb-4" style="color:#444">Costruiamo il mockup del tuo locale gratuitamente in call.</p>
-        <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
-           class="text-xs font-semibold px-4 py-2 rounded transition-opacity hover:opacity-80"
-           style="background:#e04545;color:#fff">Scrivici</a>
       </div>
 
     </div>
   </div>
 </section>
-
-<!-- Portfolio overlay -->
-<div id="port-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title"
-     class="fixed inset-0 z-50 hidden overflow-y-auto p-4"
-     style="background:rgba(0,0,0,.92)">
-  <div class="max-w-3xl mx-auto mt-10 mb-10 rounded-lg overflow-hidden" style="background:#121212;border:1px solid #1a1a1a">
-    <div class="flex items-center justify-between px-6 py-4 border-b" style="border-color:#1a1a1a">
-      <h3 id="overlay-title" class="fd text-xl font-semibold" style="color:#eee"></h3>
-      <button onclick="closePort()"
-              class="w-9 h-9 flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
-              style="color:#888" aria-label="Chiudi anteprima">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <div id="overlay-body" class="p-6"></div>
-    <div class="px-6 py-4 border-t text-xs" style="border-color:#1a1a1a;color:#444">
-      Questo e un mockup dimostrativo. Il sito reale viene costruito sul tuo brand e settore specifico.
-    </div>
-  </div>
-</div>
 
 <!-- PROCESSO -->
 <section id="processo" aria-labelledby="processo-h" class="py-24 sm:py-32" style="border-top:1px solid #1a1a1a">
@@ -914,77 +1328,6 @@ mobBtn.addEventListener('click', () => {
   document.querySelectorAll('.rev').forEach(el => obs.observe(el));
 })();
 
-/* ---- Portfolio overlay ---- */
-const PORT_DATA = {
-  macelleria: {
-    title: 'Macelleria - Stile Editoriale',
-    headline: 'La nostra macelleria, la vostra tavola.',
-    sub: 'Un racconto visivo della tradizione macellaia. Fotografie che parlano di qualita, cura e competenza. Dal banco al piatto.',
-    items: ['Portfolio prodotti con galleria fotografica','Tagli su ordinazione con modulo contatti','Mappa e orari sempre aggiornati']
-  },
-  panificio: {
-    title: 'Panificio - Stile Caldo',
-    headline: 'Forno dal 1958. Sempre qui.',
-    sub: 'Da tre quarti di secolo sforniamo pane per la nostra citta. La stessa ricetta, lo stesso amore per la pasta madre.',
-    items: ['Storia e tradizione del forno','Prodotti artigianali con schede dettagliate','Orari e punti vendita']
-  },
-  pasticceria: {
-    title: 'Pasticceria - Stile Vivace',
-    headline: 'Dessert come opere d\'arte.',
-    sub: 'La pasticceria e un\'arte che si gusta con gli occhi prima che con il palato. Ogni foto racconta la nostra creativita e passione.',
-    items: ['Gallery fotografica prodotti stagionali','Torte su ordinazione con form dedicato','Sezione eventi e catering']
-  },
-  ristorante: {
-    title: 'Ristorante - Stile Moderno',
-    headline: 'La tua cucina, a portata di click.',
-    sub: 'Menu digitale, prenotazioni online, foto che fanno venire fame. Il tuo ristorante sempre aperto sul web, anche fuori orario.',
-    items: ['Menu digitale sempre aggiornato','Sistema prenotazioni integrato','Galleria piatti e recensioni']
-  },
-  parrucchiere: {
-    title: 'Parrucchiere / Estetica - Stile POP',
-    headline: 'Il tuo stile, la nostra arte.',
-    sub: 'Taglio, colore, trattamenti. Professionalita e tendenze in un ambiente curato. Il tuo salone, ora anche online.',
-    items: ['Portfolio lavori con before/after','Listino servizi e prezzi','Prenotazione appuntamento online']
-  }
-};
-
-function openPort(key) {
-  const d = PORT_DATA[key];
-  if (!d) return;
-  document.getElementById('overlay-title').textContent = d.title;
-  document.getElementById('overlay-body').innerHTML = `
-    <p class="fd text-2xl mb-2" style="color:#eee;font-weight:400">${d.headline}</p>
-    <p class="text-sm leading-relaxed mb-5" style="color:#888">${d.sub}</p>
-    <ul class="space-y-2">
-      ${d.items.map(f => `<li class="flex gap-2 text-sm" style="color:#888">
-        <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>${f}
-      </li>`).join('')}
-    </ul>
-    <div class="mt-6 pt-5 border-t" style="border-color:#1a1a1a">
-      <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold text-white"
-         style="background:#e04545">
-        Voglio un sito simile
-      </a>
-    </div>`;
-  const overlay = document.getElementById('port-overlay');
-  overlay.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-  overlay.querySelector('button').focus();
-}
-
-function closePort() {
-  document.getElementById('port-overlay').classList.add('hidden');
-  document.body.style.overflow = '';
-}
-
-document.getElementById('port-overlay').addEventListener('click', function(e) {
-  if (e.target === this) closePort();
-});
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closePort();
-});
 </script>
 
 </body>
