@@ -7,14 +7,14 @@
 
 ## Regole MUST (violazione = no deal)
 
-1. **Il sito e' sempre incluso.**
-   Social standalone, manutenzione standalone, social + manutenzione senza sito TeoDigital: non si fa. Il sito e' il prodotto core, non e' opzionale.
+1. **La manutenzione presuppone un sito CORE. attivo.**
+   Non si gestisce manutenzione su siti di terzi. Il sito e' il prerequisito tecnico e contrattuale.
 
 2. **Social solo con piano manutenzione attivo.**
-   Non si gestisce il social di un cliente senza gestire anche il suo sito. Dipendenza tecnica + dipendenza strategica.
+   Non si vende social senza manutenzione abbinata. Dipendenza tecnica + strategica.
 
-3. **Social solo con upfront 6 mesi o 12 mesi.**
-   Nessun piano social mensile, nessuna eccezione. L'upfront copre il setup (8-10 ore). Chi non accetta l'impegno minimo non e' pronto per il social serio.
+3. **Social: mensile senza impegno, o upfront 6/12 mesi con sconto.**
+   Il mensile e' disponibile ma senza sconti. L'upfront 6m o 12m da accesso ai prezzi scontati e al mese gratis (12m).
 
 4. **Abbinamento tier web-social obbligatorio.**
    - Custodia → Social Starter (max)

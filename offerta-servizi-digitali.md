@@ -14,8 +14,10 @@
 5. **O il nostro prodotto hero**: Crescita Completa — sito + manutenzione + social da **€121/mese** (sito incluso gratis)
 
 **Regole non negoziabili:**
-- Manutenzione (Custodia/Cura/Crescita) solo per siti realizzati da CORE. — non gestiamo siti di terzi
-- Social Management: standalone OK, oppure abbinato a piano manutenzione
+- Manutenzione solo per siti realizzati da CORE. — non gestiamo siti di terzi
+- Social abbinato a piano manutenzione attivo — non si vende standalone
+- Social: mensile senza impegno, o upfront 6/12 mesi con sconto
+- Non compresi: shooting foto/video, grafica stampa, e-commerce (preventivo separato)
 
 ---
 
