@@ -135,6 +135,7 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
       <a href="#sito" class="hover:text-white transition-colors">Il Sito</a>
       <a href="#manutenzione" class="hover:text-white transition-colors">Manutenzione</a>
       <a href="#social" class="hover:text-white transition-colors">Social</a>
+      <a href="#crescita-completa" class="hover:text-white transition-colors text-crimson font-medium">Crescita Completa</a>
       <a href="#bundle" class="hover:text-white transition-colors">Bundle</a>
       <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
     </div>
@@ -494,17 +495,14 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
         <div class="flex items-start justify-between mb-6">
           <div>
             <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Elite</p>
-            <div x-show="$store.sp==='12m'">
+            <div>
               <div class="flex items-end gap-2 mb-1">
-                <span class="price-main text-4xl">€5.000</span>
+                <span class="price-main text-4xl">€3.600</span>
               </div>
-              <p class="text-xs text-gray-600">per 12 mesi <span class="price-strike">€6.000</span></p>
+              <p class="text-xs text-gray-600">per 12 mesi <span class="price-strike">€4.200</span></p>
             </div>
             <div x-show="$store.sp==='6m'" x-cloak>
-              <div class="flex items-end gap-2 mb-1">
-                <span class="price-main text-4xl">€2.500</span>
-              </div>
-              <p class="text-xs text-gray-600">per 6 mesi <span class="price-strike">€3.000</span></p>
+              <p class="text-xs text-gray-600 mt-2">Solo piano annuale disponibile</p>
             </div>
           </div>
           <span class="badge badge-tier mt-1">per Crescita</span>
@@ -518,7 +516,143 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
           <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Report settimanale (engagement, ROAS)</span></li>
           <li class="flex items-start gap-2.5"><svg class="chk mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg><span class="text-gray-300">Call strategica 60 min/settimana</span></li>
         </ul>
-        <a href="#contatti" class="btn-ghost mt-8 block text-center py-3 rounded-sm text-sm font-medium">Scegli Elite</a>
+        <a href="#contatti" class="btn-ghost mt-8 block text-center py-3 rounded-sm text-sm font-medium">Richiedi preventivo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- CRESCITA COMPLETA (HERO BUNDLE) -->
+<section id="crescita-completa" class="px-6 py-24">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl mb-4 rev">
+      <p class="text-xs text-crimson tracking-widest uppercase font-semibold mb-3">Il nostro prodotto</p>
+      <h2 class="fd text-4xl md:text-5xl font-light text-white mb-4">Tutto online.<br>Un numero al mese.</h2>
+    </div>
+    <p class="text-gray-500 mb-16 rev d1">Sito professionale + manutenzione + social management. Il sito e' tuo per sempre. Da €121/mese, tutto incluso.</p>
+
+    <!-- HERO CARD -->
+    <div class="relative plan-card featured rounded-sm p-8 md:p-12 rev mb-6">
+      <div class="absolute -top-3 left-8">
+        <span class="badge badge-pop">Prodotto piu' scelto</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <!-- Left: price + features -->
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-widest mb-3">Crescita Completa</p>
+          <div class="flex items-end gap-3 mb-2">
+            <span class="fd font-light text-white" style="font-size:3.5rem;line-height:1">€121</span>
+            <span class="text-gray-500 pb-2">/mese</span>
+          </div>
+          <p class="text-gray-500 text-sm mb-1">oppure <strong class="text-crimson">€1.238/anno</strong> pagato upfront (risparmio €219)</p>
+          <p class="text-gray-600 text-xs mb-8">o 2 rate: €1.311 &nbsp;(50% firma + 50% mese 6)</p>
+
+          <ul class="space-y-3 text-sm mb-8">
+            <li class="flex items-start gap-3">
+              <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="text-white font-semibold">Sito web professionale INCLUSO</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="text-gray-300">Piano <strong class="text-white">Cura</strong> — manutenzione, blog, landing page</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="text-gray-300"><strong class="text-white">Social Starter</strong> — 4 post + 4 storie/sett su IG + FB</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="chk mt-0.5 flex-shrink-0" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M11.5 3.5L6 9.5l-2.5-2.5" stroke="#e04545" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="text-gray-300">Online in 7 giorni lavorativi</span>
+            </li>
+          </ul>
+
+          <a href="#contatti" class="btn-primary inline-block px-8 py-3.5 rounded-sm text-sm font-semibold">Inizia con Crescita Completa</a>
+        </div>
+
+        <!-- Right: protection + loyalty + math -->
+        <div class="space-y-4">
+          <!-- Clausola protezione -->
+          <div class="plan-card rounded-sm p-5" style="border-color:rgba(224,69,69,.25)">
+            <p class="text-xs text-crimson uppercase tracking-wider mb-3 font-semibold">Il sito rimarra' per sempre tuo</p>
+            <p class="text-sm text-gray-400 leading-relaxed">Con impegno minimo di 12 mesi. Se ti fermi prima: contributo di €500 a copertura dei costi di produzione. Dopo i 12 mesi: libero di disdire in qualsiasi momento, senza penali. Il sito e' gia' tuo — per sempre.</p>
+          </div>
+
+          <!-- Year 2 loyalty -->
+          <div class="plan-card rounded-sm p-5">
+            <p class="text-xs text-gray-600 uppercase tracking-wider mb-2">Dal secondo anno in poi</p>
+            <div class="flex items-end gap-2 mb-1">
+              <span class="fd text-3xl text-white font-light">€109</span>
+              <span class="text-gray-500 pb-1">/mese</span>
+            </div>
+            <p class="text-sm text-gray-500">Prezzo bloccato per i clienti fedeli. Risparmio €12/mese vs listino.</p>
+          </div>
+
+          <!-- Math breakdown -->
+          <div class="plan-card rounded-sm p-5">
+            <p class="text-xs text-gray-600 uppercase tracking-wider mb-3">Confronto standalone</p>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-500">Sito web</span>
+                <span class="text-gray-400">€750</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Piano Cura (12 mesi)</span>
+                <span class="text-gray-400">€708</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Social Starter (12 mesi)</span>
+                <span class="text-gray-400">€749</span>
+              </div>
+              <div class="flex justify-between border-t border-border pt-2 mt-1">
+                <span class="text-gray-500">Totale standalone</span>
+                <span class="price-strike">€2.207</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-white font-medium">Crescita Completa</span>
+                <span class="text-crimson font-semibold">€1.457/anno</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Risparmi</span>
+                <span class="text-crimson">€750 (il sito gratis)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dominio Locale (premium anchor) -->
+    <div class="plan-card rounded-sm p-7 rev mb-4">
+      <div class="flex flex-col md:flex-row items-start justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <p class="text-xs text-gray-500 uppercase tracking-widest">Dominio Locale</p>
+            <span class="badge badge-tier">Premium</span>
+          </div>
+          <div class="flex items-end gap-2 mb-1">
+            <span class="fd text-3xl text-white font-light">€151</span>
+            <span class="text-gray-600 pb-1">/mese</span>
+          </div>
+          <p class="text-gray-500 text-sm">Sito INCLUSO + Piano Crescita + Social Starter. Per chi vuole il massimo dal giorno uno.</p>
+        </div>
+        <div class="md:text-right flex-shrink-0">
+          <p class="text-xs text-gray-600 mb-3">Upfront annuale: <strong class="text-gray-300">€1.549</strong></p>
+          <a href="#contatti" class="btn-ghost inline-block px-6 py-2.5 rounded-sm text-sm">Richiedi Dominio Locale</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avvio Completo (ex-Scenario A clients only) -->
+    <div class="plan-card rounded-sm p-6 rev">
+      <p class="text-xs text-gray-600 uppercase tracking-wider mb-3">Hai gia' un sito realizzato con CORE.?</p>
+      <div class="flex flex-col md:flex-row items-start justify-between gap-4">
+        <div>
+          <p class="text-sm text-gray-300 mb-1"><strong class="text-white">Avvio Completo</strong> — Custodia + Social Starter</p>
+          <p class="text-gray-500 text-sm">Per chi ha gia' un sito CORE. attivo e vuole aggiungere manutenzione + social. <strong class="text-crimson">€92/mese</strong> o <strong class="text-gray-400">€984/anno</strong> upfront.</p>
+        </div>
+        <a href="#contatti" class="btn-ghost inline-block px-6 py-2.5 rounded-sm text-sm flex-shrink-0">Attiva Avvio Completo</a>
       </div>
     </div>
   </div>
@@ -532,19 +666,21 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
     <div class="max-w-2xl mb-16 rev">
       <p class="text-xs text-crimson tracking-widest uppercase font-semibold mb-3">Bundle annuali</p>
       <h2 class="fd text-4xl md:text-5xl font-light text-white mb-4">Tutto incluso.<br>Un anno.</h2>
-      <p class="text-gray-500">Sito + manutenzione insieme. Un numero da approvare. Zero sorprese per 12 mesi.</p>
+      <p class="text-gray-500 mb-3">Sito + manutenzione insieme. Un numero da approvare. Zero sorprese per 12 mesi.</p>
+      <p class="text-xs text-gray-600">Pagamento upfront unico (-25%) o 2 rate (-18%). Pagamento mensile non disponibile sui bundle annuali.</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-4 mb-8">
       <div class="plan-card rounded-sm p-7 rev d1">
         <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Starter Online</p>
-        <div class="mb-4">
-          <span class="fd text-5xl font-light text-white">€999</span>
-          <span class="text-gray-600 text-sm">/anno</span>
+        <div class="mb-1">
+          <span class="fd text-5xl font-light text-white">€849</span>
+          <span class="text-gray-600 text-sm ml-1">upfront (-25%)</span>
         </div>
-        <p class="text-xs text-gray-600 mb-6">Sito + Custodia 12 mesi. <span class="text-crimson">Risparmi €111</span> vs separati.</p>
+        <p class="text-xs text-gray-600 mb-4">o <strong class="text-gray-400">2 rate: €899</strong> (-18%)</p>
+        <p class="text-xs text-gray-600 mb-6">Sito + Custodia 12 mesi. <span class="text-crimson">Risparmi €261</span> vs separati.</p>
         <div class="text-xs text-gray-600 space-y-1 mb-8">
-          <p>Equiv. €83/mese tutto incluso</p>
+          <p>Equiv. €71/mese tutto incluso</p>
           <p>Poi €30/mese dal mese 13</p>
         </div>
         <a href="#contatti" class="btn-ghost block text-center py-3 rounded-sm text-sm font-medium">Scegli Starter Online</a>
@@ -554,26 +690,28 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
           <span class="badge badge-pop">Piu' scelto</span>
         </div>
         <p class="text-xs text-gray-400 uppercase tracking-widest mb-4">Business Online</p>
-        <div class="mb-4">
-          <span class="fd text-5xl font-light text-white">€1.299</span>
-          <span class="text-gray-600 text-sm">/anno</span>
+        <div class="mb-1">
+          <span class="fd text-5xl font-light text-white">€1.099</span>
+          <span class="text-gray-600 text-sm ml-1">upfront (-25%)</span>
         </div>
-        <p class="text-xs text-gray-600 mb-6">Sito + Cura 12 mesi. <span class="text-crimson">Risparmi €159</span> vs separati.</p>
+        <p class="text-xs text-gray-600 mb-4">o <strong class="text-gray-400">2 rate: €1.199</strong> (-18%)</p>
+        <p class="text-xs text-gray-600 mb-6">Sito + Cura 12 mesi. <span class="text-crimson">Risparmi €359</span> vs separati.</p>
         <div class="text-xs text-gray-600 space-y-1 mb-8">
-          <p>Equiv. €108/mese tutto incluso</p>
+          <p>Equiv. €92/mese tutto incluso</p>
           <p>Poi €59/mese dal mese 13</p>
         </div>
         <a href="#contatti" class="btn-primary block text-center py-3 rounded-sm text-sm font-semibold">Scegli Business Online</a>
       </div>
       <div class="plan-card rounded-sm p-7 rev d3">
         <p class="text-xs text-gray-500 uppercase tracking-widest mb-4">Premium Online</p>
-        <div class="mb-4">
-          <span class="fd text-5xl font-light text-white">€1.599</span>
-          <span class="text-gray-600 text-sm">/anno</span>
+        <div class="mb-1">
+          <span class="fd text-5xl font-light text-white">€1.349</span>
+          <span class="text-gray-600 text-sm ml-1">upfront (-25%)</span>
         </div>
-        <p class="text-xs text-gray-600 mb-6">Sito + Crescita 12 mesi. <span class="text-crimson">Risparmi €219</span> vs separati.</p>
+        <p class="text-xs text-gray-600 mb-4">o <strong class="text-gray-400">2 rate: €1.499</strong> (-18%)</p>
+        <p class="text-xs text-gray-600 mb-6">Sito + Crescita 12 mesi. <span class="text-crimson">Risparmi €469</span> vs separati.</p>
         <div class="text-xs text-gray-600 space-y-1 mb-8">
-          <p>Equiv. €133/mese tutto incluso</p>
+          <p>Equiv. €112/mese tutto incluso</p>
           <p>Poi €89/mese dal mese 13</p>
         </div>
         <a href="#contatti" class="btn-ghost block text-center py-3 rounded-sm text-sm font-medium">Scegli Premium Online</a>
@@ -583,11 +721,11 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
     <div class="plan-card rounded-sm p-6 rev">
       <p class="text-xs text-gray-600 uppercase tracking-wider mb-3">Aggiungi Social al bundle</p>
       <div class="flex flex-wrap gap-4 text-sm text-gray-500">
-        <span>Starter Online + Social Starter 12m = <strong class="text-gray-300">€999 + €749 = €1.748</strong></span>
+        <span>Starter Online + Social Starter 12m = <strong class="text-gray-300">€849 + €749 = €1.598</strong></span>
         <span class="text-gray-700">|</span>
-        <span>Business Online + Social Pro 12m = <strong class="text-gray-300">€1.299 + €2.500 = €3.799</strong></span>
+        <span>Business Online + Social Pro 12m = <strong class="text-gray-300">€1.099 + €2.500 = €3.599</strong></span>
         <span class="text-gray-700">|</span>
-        <span>Premium Online + Social Elite 12m = <strong class="text-gray-300">€1.599 + €5.000 = €6.599</strong></span>
+        <span>Premium Online + Social Elite 12m = <strong class="text-gray-300">€1.349 + €3.600 = €4.949</strong></span>
       </div>
     </div>
   </div>
