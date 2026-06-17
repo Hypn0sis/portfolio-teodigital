@@ -3,484 +3,989 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TeoDigital — Portfolio</title>
+<title>TeoDigital - Siti Web e Social Management per Locali</title>
+<meta name="description" content="Sito professionale + social automatico. Qualita da agenzia, prezzo da abbonamento. Live in 48-72 ore. Da EUR 750 una tantum.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+<script>
+window.__tailwindConfig = {
+  theme: {
+    extend: {
+      colors: {
+        crimson: '#e04545',
+        deep: '#0a0a0a',
+        card: '#121212',
+        border: '#1a1a1a',
+      }
+    }
+  }
+};
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://unpkg.com/alpinejs@3.14.1/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/motion/dist/motion.js"></script>
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Anton&display=swap');
-  
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{
-    font-family:Inter,sans-serif;background:#0a0a0a;color:#eee;
-    padding:24px 16px 60px;
-  }
-  .container{max-width:1200px;margin:0 auto}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#0a0a0a;color:#eee;
+  font-family:'DM Sans',system-ui,sans-serif;
+  line-height:1.6;overflow-x:hidden;
+}
+.fd{font-family:'Cormorant Garamond',Georgia,serif}
 
-  header{text-align:center;margin-bottom:30px}
-  header h1{font-size:2rem;font-weight:800;letter-spacing:-1px;color:#fff}
-  header h1 span{color:#e04545}
-  header p{color:#666;font-size:0.85rem;margin-top:4px}
-  header .back{
-    display:inline-block;margin-top:8px;font-size:0.75rem;color:#555;
-    text-decoration:none;
-  }
-  header .back:hover{color:#e04545}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rev{opacity:1!important;transform:none!important}
+  .hero-item{opacity:1!important;transform:none!important}
+}
 
-  /* TABS */
-  .cat-tabs{
-    display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:28px;
-  }
-  .cat-btn{
-    padding:10px 20px;border:1px solid #222;background:#121212;color:#777;
-    border-radius:8px;font-family:Inter,sans-serif;font-size:0.8rem;font-weight:600;
-    cursor:pointer;transition:all .2s;
-  }
-  .cat-btn:hover{border-color:#e04545;color:#e04545}
-  .cat-btn.active{background:#e04545;border-color:#e04545;color:#fff}
+/* scroll reveals */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rev.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-  .cat-content{display:none}
-  .cat-content.active{display:block}
+/* hero items start hidden for Motion One */
+.hero-item{opacity:0;transform:translateY(28px)}
 
-  /* CARD GRID */
-  .card-grid{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:12px;
-  }
-  .card{
-    position:relative;border-radius:12px;overflow:hidden;
-    background:#121212;cursor:pointer;transition:all .3s;
-    aspect-ratio:3/4;display:flex;flex-direction:column;
-    border:1px solid #1e1e1e;
-  }
-  .card:hover{
-    transform:translateY(-4px);
-    border-color:#e04545;
-    box-shadow:0 12px 40px rgba(224,69,69,.1);
-  }
-  .card .cp{
-    flex:1;display:flex;align-items:center;justify-content:center;
-    position:relative;overflow:hidden;
-  }
-  .card .cp-bg{position:absolute;inset:0;transition:transform .4s}
-  .card:hover .cp-bg{transform:scale(1.08)}
-  .card .cp-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45)}
-  .card .cp-content{position:relative;z-index:2;text-align:center;padding:16px}
-  .card .cp-icon{font-size:2rem;margin-bottom:6px;display:block}
-  .card .style-tag{
-    display:inline-block;padding:4px 10px;border-radius:4px;
-    font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
-  }
-  .card .cf{
-    padding:12px 14px;border-top:1px solid #1e1e1e;
-    display:flex;justify-content:space-between;align-items:center;
-  }
-  .card .cf-name{font-size:0.78rem;font-weight:600;color:#fff}
-  .card .cf-num{font-size:0.6rem;color:#555;background:#1a1a1a;padding:2px 8px;border-radius:4px}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
 
-  /* Style tag colors */
-  .st-moderno{background:#1a1a1a;color:#fff}
-  .st-caldo{background:#b85c2a;color:#fff}
-  .st-vivace{background:linear-gradient(135deg,#e94560,#f77f00);color:#fff}
-  .st-editoriale{background:#fff;color:#1a1a1a}
-  .st-pop{background:#e91e63;color:#fff}
+#main-nav{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 
-  /* OVERLAY */
-  .overlay{
-    display:none;position:fixed;inset:0;
-    background:rgba(0,0,0,.94);z-index:1000;
-    overflow-y:auto;padding:16px;
-    backdrop-filter:blur(20px);
-  }
-  .overlay.open{display:block}
+#hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+}
 
-  .overlay-inner{max-width:960px;margin:20px auto;border-radius:16px;overflow:hidden;background:#121212}
-  .overlay-close{
-    position:fixed;top:16px;right:20px;z-index:1100;
-    width:44px;height:44px;border-radius:50%;
-    background:#e04545;border:none;color:#fff;
-    font-size:1.3rem;font-weight:700;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;
-    transition:all .2s;
-  }
-  .overlay-close:hover{background:#fff;color:#1a1a1a}
+.popular{
+  background:linear-gradient(135deg,rgba(224,69,69,.12),rgba(224,69,69,.04));
+  border-color:rgba(224,69,69,.3)!important;
+}
+.badge-pop{
+  background:#e04545;color:#fff;
+  font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:2px 7px;border-radius:2px;
+}
 
-  .overlay-header{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 24px;background:#121212;border-bottom:1px solid #1e1e1e;
-  }
-  .overlay-header h3{font-size:1rem;font-weight:600;color:#fff}
-  .overlay-header .ol{color:#666;font-size:0.75rem}
+.data-table td,.data-table th{padding:.7rem 1rem;border-bottom:1px solid #1a1a1a}
+.data-table tr:last-child td,.data-table tr:last-child th{border-bottom:none}
+.data-table thead th{color:#555;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 
-  /* Mockup sections - all share image overlays */
-  .mockup-hero{
-    position:relative;overflow:hidden;min-height:420px;
-    display:flex;align-items:center;
-  }
-  .mockup-hero .mh-bg{
-    position:absolute;inset:0;
-    background-size:cover;background-position:center;
-    transition:transform 6s ease;
-  }
-  .mockup-hero:hover .mh-bg{transform:scale(1.03)}
-  .mockup-hero .mh-shade{position:absolute;inset:0}
-  .mockup-hero .mh-content{
-    position:relative;z-index:2;padding:60px 50px;width:100%;
-  }
+.port-card .thumb{transition:transform .5s ease}
+.port-card:hover .thumb{transform:scale(1.05)}
+.port-card:focus-within{outline:2px solid #e04545;outline-offset:2px}
 
-  .mockup-features{
-    display:grid;grid-template-columns:repeat(3,1fr);
-  }
-  .mockup-features .mf-card{padding:36px 28px;text-align:center;border-left:1px solid}
-  .mockup-features .mf-card:first-child{border-left:none}
+#port-overlay{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 
-  .mockup-cta{text-align:center;padding:50px 28px}
+.geo-bg{background:conic-gradient(from 135deg at 50% 50%,#1a0a0a,#2a1010,#1a1a2a,#0a1a1a,#1a0a0a)}
+.cta-glow{box-shadow:0 0 100px rgba(224,69,69,.1)}
 
-  /* ===== STYLE 1: MODERNO ===== */
-  .fm-moderno{
-    font-family:Inter,sans-serif;
-  }
-  .fm-moderno .mh-shade{
-    background:linear-gradient(135deg,rgba(250,250,249,.92) 0%,rgba(250,250,249,.6) 100%);
-  }
-  .fm-moderno .mh-content{color:#1a1a1a}
-  .fm-moderno .mh-content h2{
-    font-family:'DM Serif Display',serif;font-size:2.8rem;font-weight:400;line-height:1.1;
-    margin-bottom:12px;
-  }
-  .fm-moderno .mh-content em{font-style:italic;color:#e04545}
-  .fm-moderno .mh-content p{color:#666;font-size:0.95rem;max-width:420px;line-height:1.6;margin-bottom:20px}
-  .fm-moderno .mh-content .btn{display:inline-block;padding:12px 30px;background:#1a1a1a;color:white;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.85rem}
-  .fm-moderno .mf-card{background:#fafaf9;border-left-color:#eee;color:#1a1a1a}
-  .fm-moderno .mf-card h3{font-size:0.85rem;font-weight:600;margin-bottom:6px}
-  .fm-moderno .mf-card p{color:#888;font-size:0.8rem;line-height:1.5}
-  .fm-moderno .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
-  .fm-moderno .mockup-cta{background:#fafaf9;color:#1a1a1a}
+:focus-visible{outline:2px solid #e04545;outline-offset:2px}
+a:focus-visible,button:focus-visible{border-radius:2px}
+[x-cloak]{display:none!important}
 
-  /* ===== STYLE 2: CALDO ===== */
-  .fm-caldo{
-    font-family:'DM Serif Display',serif;
-  }
-  .fm-caldo .mh-shade{
-    background:linear-gradient(135deg,rgba(250,243,237,.93) 0%,rgba(240,228,214,.7) 100%);
-  }
-  .fm-caldo .mh-content{color:#2d1f14}
-  .fm-caldo .mh-content h2{font-size:3rem;font-weight:400;line-height:1.08;margin-bottom:10px}
-  .fm-caldo .mh-content h2 span{color:#b85c2a}
-  .fm-caldo .mh-content p{
-    font-family:Inter,sans-serif;color:#8b6f5a;font-size:0.9rem;max-width:420px;line-height:1.6;margin-bottom:20px
-  }
-  .fm-caldo .mh-content .btn{
-    display:inline-block;padding:12px 34px;background:#b85c2a;color:#fff;
-    border-radius:30px;font-family:Inter,sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;
-  }
-  .fm-caldo .mf-card{background:#faf3ed;color:#2d1f14;border-left-color:#dccfc1}
-  .fm-caldo .mf-card h3{font-family:Inter,sans-serif;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;color:#b85c2a}
-  .fm-caldo .mf-card p{font-family:Inter,sans-serif;color:#8b6f5a;font-size:0.8rem;line-height:1.5}
-  .fm-caldo .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
-  .fm-caldo .mockup-cta{background:#faf3ed;color:#2d1f14}
-
-  /* ===== STYLE 3: VIVACE ===== */
-  .fm-vivace{
-    font-family:'Space Grotesk',sans-serif;
-  }
-  .fm-vivace .mh-shade{
-    background:linear-gradient(135deg,rgba(26,26,46,.94) 0%,rgba(22,33,62,.85) 100%);
-  }
-  .fm-vivace .mh-content{color:#fff}
-  .fm-vivace .mh-content h2{font-size:2.8rem;font-weight:700;line-height:1.05;letter-spacing:-1px;margin-bottom:12px}
-  .fm-vivace .mh-content .accent{
-    background:linear-gradient(135deg,#e94560,#f77f00);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  }
-  .fm-vivace .mh-content p{color:#a0aec0;font-size:0.9rem;max-width:400px;line-height:1.6;margin-bottom:20px}
-  .fm-vivace .mh-content .btn{
-    display:inline-block;padding:12px 28px;
-    background:linear-gradient(135deg,#e94560,#f77f00);color:#fff;border-radius:8px;
-    font-weight:600;font-size:0.85rem;text-decoration:none;
-  }
-  .fm-vivace .mf-card{background:#1a1a2e;color:#fff;border-left-color:#2a2a4a}
-  .fm-vivace .mf-card h3{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;color:#e94560}
-  .fm-vivace .mf-card p{color:#a0aec0;font-size:0.8rem;line-height:1.5}
-  .fm-vivace .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
-  .fm-vivace .mockup-cta{background:#16213e;color:#fff}
-
-  /* ===== STYLE 4: EDITORIALE ===== */
-  .fm-editoriale{
-    font-family:'Cormorant Garamond',serif;
-  }
-  .fm-editoriale .mockup-hero{min-height:480px}
-  .fm-editoriale .mh-shade{
-    background:linear-gradient(90deg,rgba(255,255,255,.95) 0%,rgba(200,200,200,.3) 50%,transparent 100%);
-  }
-  .fm-editoriale .mh-content{color:#1a1a1a;max-width:450px}
-  .fm-editoriale .mh-content .sup{
-    font-family:Inter,sans-serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:3px;color:#999;margin-bottom:14px;display:block;
-  }
-  .fm-editoriale .mh-content h2{font-size:3.2rem;font-style:italic;font-weight:400;line-height:1.05;margin-bottom:16px}
-  .fm-editoriale .mh-content p{font-family:Inter,sans-serif;color:#777;font-size:0.85rem;line-height:1.7;margin-bottom:24px}
-  .fm-editoriale .mh-content .btn{
-    display:inline-block;padding:12px 32px;border:1px solid #1a1a1a;color:#1a1a1a;
-    font-family:Inter,sans-serif;font-size:0.7rem;font-weight:500;text-transform:uppercase;letter-spacing:2px;text-decoration:none;
-  }
-  .fm-editoriale .mf-card{background:#fff;color:#1a1a1a;border-left-color:#eee}
-  .fm-editoriale .mf-card h3{font-family:Inter,sans-serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:#999;margin-bottom:8px}
-  .fm-editoriale .mf-card p{font-family:Inter,sans-serif;color:#888;font-size:0.78rem;line-height:1.6}
-  .fm-editoriale .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
-  .fm-editoriale .mockup-cta{background:#fff;color:#1a1a1a}
-
-  /* ===== STYLE 5: POP ===== */
-  .fm-pop{
-    font-family:Inter,sans-serif;
-  }
-  .fm-pop .mh-shade{
-    background:linear-gradient(135deg,rgba(255,214,0,.88) 0%,rgba(255,111,0,.75) 50%,rgba(233,30,99,.6) 100%);
-  }
-  .fm-pop .mh-content{color:#1a1a1a;text-align:center}
-  .fm-pop .mh-content .sup{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;opacity:.6;margin-bottom:10px;display:block}
-  .fm-pop .mh-content h2{
-    font-family:'Anton',sans-serif;font-size:4rem;text-transform:uppercase;line-height:1;letter-spacing:-2px;margin-bottom:10px;
-  }
-  .fm-pop .mh-content p{max-width:380px;margin:0 auto 22px;opacity:.8;font-size:0.9rem;line-height:1.5}
-  .fm-pop .mh-content .btn{
-    display:inline-block;padding:14px 40px;background:#1a1a1a;color:#ffd600;
-    border-radius:30px;font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;text-decoration:none;
-  }
-  .fm-pop .mf-card{background:#fffde7;color:#1a1a1a;border-left-color:#ffe082}
-  .fm-pop .mf-card h3{font-family:'Anton',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;color:#e91e63}
-  .fm-pop .mf-card p{color:#666;font-size:0.8rem;line-height:1.5}
-  .fm-pop .mf-icon{font-size:1.6rem;margin-bottom:8px;display:block}
-  .fm-pop .mockup-cta{background:#fffde7;color:#1a1a1a}
-
-  .style-nav{
-    display:flex;justify-content:center;gap:8px;padding:16px;flex-wrap:wrap;
-  }
-  .style-nav-btn{
-    padding:7px 16px;border:1px solid #333;background:transparent;color:#888;
-    border-radius:6px;font-size:0.7rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;
-    transition:all .2s;
-  }
-  .style-nav-btn.active{background:#e04545;border-color:#e04545;color:#fff}
-  .style-nav-btn:hover{border-color:#e04545;color:#e04545}
-
-  @media(max-width:800px){
-    .card-grid{grid-template-columns:repeat(2,1fr)}
-    .mockup-hero .mh-content{padding:40px 24px}
-    .mockup-features{grid-template-columns:1fr}
-    .mockup-features .mf-card{border-left:none;border-top:1px solid}
-    .fm-pop .mh-content h2{font-size:2.5rem}
-    .fm-moderno .mh-content h2,.fm-vivace .mh-content h2,.fm-editoriale .mh-content h2,.fm-caldo .mh-content h2{font-size:2rem}
-  }
-  @media(max-width:500px){
-    .card-grid{grid-template-columns:1fr 1fr}
-    .overlay-close{top:10px;right:10px}
-  }
+/* Portfolio card gradient thumbnails */
+.th-mac{background:linear-gradient(145deg,#1c0505 0%,#2d0b0b 50%,#1a1010 100%)}
+.th-pan{background:linear-gradient(145deg,#1a1305 0%,#2a1f08 50%,#181808 100%)}
+.th-pas{background:linear-gradient(145deg,#1a0512 0%,#2d0a1a 50%,#1a1018 100%)}
+.th-ris{background:linear-gradient(145deg,#040e1a 0%,#0a1c2e 50%,#0d1c1c 100%)}
+.th-par{background:linear-gradient(145deg,#0d0418 0%,#1a0a2e 50%,#14101c 100%)}
 </style>
 </head>
 <body>
-<div class="container">
 
-<header>
-  <h1>Teo<span>Digital</span></h1>
-  <p>Portfolio · 5 settori, 5 stili ciascuno</p>
-  <a href="index.html" class="back">← Torna alla home</a>
-</header>
+<!-- NAV -->
+<nav id="main-nav" aria-label="Navigazione principale"
+     class="fixed top-0 left-0 right-0 z-50 border-b"
+     style="background:rgba(10,10,10,.9);border-color:#1a1a1a">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <a href="#top" class="fd text-xl font-semibold tracking-wide" aria-label="TeoDigital - torna in cima">
+        Teo<span style="color:#e04545">Digital</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#servizi" class="text-sm font-medium transition-colors hover:text-white" style="color:#888">Servizi</a>
+        <a href="#bundle" class="text-sm font-medium transition-colors hover:text-white" style="color:#888">Bundle</a>
+        <a href="#portfolio" class="text-sm font-medium transition-colors hover:text-white" style="color:#888">Portfolio</a>
+        <a href="#processo" class="text-sm font-medium transition-colors hover:text-white" style="color:#888">Processo</a>
+        <a href="#faq" class="text-sm font-medium transition-colors hover:text-white" style="color:#888">FAQ</a>
+        <a href="https://wa.me/39XXXXXXXXXX"
+           target="_blank" rel="noopener noreferrer"
+           class="px-4 py-2 rounded text-sm font-semibold text-white transition-opacity hover:opacity-85"
+           style="background:#e04545"
+           aria-label="Contatta TeoDigital su WhatsApp">WhatsApp</a>
+      </div>
+      <button id="mob-btn" class="md:hidden p-2 rounded"
+              aria-label="Apri menu mobile" aria-expanded="false" aria-controls="mob-menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="mob-menu" class="hidden md:hidden border-t" style="background:rgba(10,10,10,.98);border-color:#1a1a1a">
+    <div class="px-4 py-4 flex flex-col gap-4">
+      <a href="#servizi" class="text-sm font-medium" style="color:#888" onclick="closeMob()">Servizi</a>
+      <a href="#bundle" class="text-sm font-medium" style="color:#888" onclick="closeMob()">Bundle</a>
+      <a href="#portfolio" class="text-sm font-medium" style="color:#888" onclick="closeMob()">Portfolio</a>
+      <a href="#processo" class="text-sm font-medium" style="color:#888" onclick="closeMob()">Processo</a>
+      <a href="#faq" class="text-sm font-medium" style="color:#888" onclick="closeMob()">FAQ</a>
+      <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+         class="px-4 py-2 rounded text-sm font-semibold text-white text-center" style="background:#e04545">WhatsApp</a>
+    </div>
+  </div>
+</nav>
 
-<div class="cat-tabs" id="catTabs"></div>
+<!-- HERO -->
+<section id="top" aria-labelledby="hero-h1"
+         class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+  <div class="absolute inset-0" style="background:radial-gradient(ellipse 90% 55% at 50% -5%,rgba(224,69,69,.07) 0%,transparent 65%)" aria-hidden="true"></div>
+  <div class="absolute left-1/4 top-0 bottom-0 w-px opacity-[.06]" style="background:linear-gradient(180deg,transparent,#e04545 35%,#e04545 65%,transparent)" aria-hidden="true"></div>
+  <div class="absolute right-1/4 top-0 bottom-0 w-px opacity-[.06]" style="background:linear-gradient(180deg,transparent,#e04545 35%,#e04545 65%,transparent)" aria-hidden="true"></div>
 
-<div class="cat-content" id="contentMacelleria"></div>
-<div class="cat-content" id="contentPanificio"></div>
-<div class="cat-content" id="contentPasticceria"></div>
-<div class="cat-content" id="contentRistorante"></div>
-<div class="cat-content" id="contentParrucchiere"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
+    <div class="hero-item mb-6" id="h-badge">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium uppercase tracking-widest"
+            style="border-color:#1a1a1a;color:#888;background:rgba(18,18,18,.7)">
+        Freelance Digital &nbsp;·&nbsp; Giugno 2026
+      </span>
+    </div>
 
-<div class="overlay" id="overlay">
-  <button class="overlay-close" onclick="closeOverlay()">✕</button>
-  <div class="overlay-inner" id="overlayInner"></div>
+    <h1 id="hero-h1" class="hero-item fd leading-none tracking-tight mb-6"
+        style="font-size:clamp(2.8rem,8vw,6rem);color:#eee;font-weight:300">
+      Sito web.<br>
+      <em style="color:#e04545;font-style:italic">Social automatico.</em><br>
+      <span style="font-weight:600">Prezzi reali.</span>
+    </h1>
+
+    <p id="h-sub" class="hero-item text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed" style="color:#888">
+      Sito professionale chiavi in mano da <strong style="color:#eee">EUR 750</strong>, live in 48-72 ore.
+      Manutenzione e contenuti social inclusi nel canone mensile.
+      Qualita da agenzia, struttura da abbonamento. Disdici quando vuoi.
+    </p>
+
+    <div id="h-ctas" class="hero-item flex flex-wrap items-center justify-center gap-4">
+      <a href="https://wa.me/39XXXXXXXXXX"
+         target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded text-sm font-semibold text-white transition-opacity hover:opacity-85"
+         style="background:#e04545"
+         aria-label="Contatta TeoDigital su WhatsApp">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Parliamoci su WhatsApp
+      </a>
+      <a href="#servizi"
+         class="inline-flex items-center gap-2 px-7 py-3.5 rounded text-sm font-medium transition-colors hover:border-white"
+         style="border:1px solid #2a2a2a;color:#888">
+        Vedi i prezzi
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+
+    <p id="h-note" class="hero-item mt-8 text-xs uppercase tracking-widest" style="color:#444">
+      Garanzia soddisfatti o rimborsati &nbsp;·&nbsp; Primo mese &nbsp;·&nbsp; Senza vincoli &nbsp;·&nbsp; No penali
+    </p>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2" aria-hidden="true">
+    <div class="w-px h-10 opacity-20" style="background:linear-gradient(180deg,#e04545,transparent)"></div>
+  </div>
+</section>
+
+<!-- SERVIZI PRICING -->
+<section id="servizi" aria-labelledby="servizi-h" class="py-24 sm:py-32" style="border-top:1px solid #1a1a1a">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="mb-16 rev">
+      <span class="text-xs font-semibold uppercase tracking-widest" style="color:#e04545">Servizi e Prezzi</span>
+      <h2 id="servizi-h" class="fd mt-2 mb-4" style="font-size:clamp(2rem,5vw,3.2rem);color:#eee;font-weight:300;line-height:1.15">
+        Prezzi chiari.<br><em style="color:#e04545;font-style:italic">Nessuna sorpresa.</em>
+      </h2>
+      <p class="max-w-xl text-base leading-relaxed" style="color:#888">
+        Tutto parte dal sito. Poi scegli il tier mensile con manutenzione + contenuti social inclusi.
+        Il Social Management si attiva solo se vuoi di piu.
+      </p>
+    </div>
+
+    <!-- Sito una tantum -->
+    <div class="rounded-lg border p-6 sm:p-8 mb-4 rev" style="background:#121212;border-color:#1a1a1a">
+      <div class="flex flex-wrap items-start justify-between gap-6 mb-6">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Una tantum</span>
+          <h3 class="fd mt-1 mb-1" style="font-size:2rem;color:#eee;font-weight:600">Sito Web Professionale</h3>
+          <p class="text-sm" style="color:#888">Multipagina chiavi in mano. Live in 48-72 ore.</p>
+        </div>
+        <div class="text-right shrink-0">
+          <div class="fd" style="font-size:3rem;color:#eee;font-weight:300;line-height:1">EUR 750</div>
+          <div class="text-xs mt-1" style="color:#444">IVA esclusa &nbsp;·&nbsp; 2 rate</div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 mb-4">
+        <div class="flex items-start gap-2 text-sm" style="color:#888"><svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sito 5-7 pagine (Home, Chi Siamo, Servizi, Galleria, Contatti)</div>
+        <div class="flex items-start gap-2 text-sm" style="color:#888"><svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Dominio .it o .com incluso (1 anno)</div>
+        <div class="flex items-start gap-2 text-sm" style="color:#888"><svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Hosting professionale incluso (1 anno)</div>
+        <div class="flex items-start gap-2 text-sm" style="color:#888"><svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO base: meta, sitemap, velocita, Google indexing</div>
+        <div class="flex items-start gap-2 text-sm" style="color:#888"><svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Mobile responsive su ogni dispositivo</div>
+        <div class="flex items-start gap-2 text-sm" style="color:#888"><svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SSL https + GDPR + cookie banner</div>
+        <div class="flex items-start gap-2 text-sm" style="color:#888"><svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Modulo contatti + mappa (anti-spam incluso)</div>
+        <div class="flex items-start gap-2 text-sm" style="color:#888"><svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>2 cicli di revisione inclusi</div>
+      </div>
+      <p class="text-xs" style="color:#444">Non include: foto professionali (da EUR 250), e-commerce (preventivo separato)</p>
+    </div>
+
+    <!-- Tier sito mensili -->
+    <div class="mb-4">
+      <h3 class="fd mb-1 rev" style="font-size:1.5rem;color:#eee;font-weight:400">Tier sito mensili</h3>
+      <p class="text-sm mb-4 rev" style="color:#888">Ogni tier include manutenzione del sito + contenuti social IG (Try &amp; Buy permanente).</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <div class="rounded-lg border p-6 rev" style="background:#121212;border-color:#1a1a1a">
+          <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Lite</span>
+          <div class="fd mt-1 mb-0.5" style="font-size:2.2rem;color:#eee;font-weight:300">EUR 30<span style="font-size:1rem;color:#888">/mese</span></div>
+          <p class="text-xs mb-4" style="color:#444">Presenza essenziale senza fronzoli</p>
+          <ul class="space-y-2 text-sm" style="color:#888">
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Hosting + dominio + backup settimanale</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>1 aggiornamento pagina a trimestre</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO base + report trimestrale</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SLA 72 ore lavorative</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><strong style="color:#eee">Try &amp; Buy IG:</strong> 2 post + 2 storie/sett</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Supporto ticket email</li>
+          </ul>
+        </div>
+
+        <div class="rounded-lg border p-6 rev d1 popular" style="background:#121212">
+          <div class="flex items-center justify-between mb-0.5">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Plus</span>
+            <span class="badge-pop">Piu diffuso</span>
+          </div>
+          <div class="fd mt-1 mb-0.5" style="font-size:2.2rem;color:#eee;font-weight:300">EUR 120<span style="font-size:1rem;color:#888">/mese</span></div>
+          <p class="text-xs mb-4" style="color:#444">Per chi fa sul serio con contenuti cadenzati</p>
+          <ul class="space-y-2 text-sm" style="color:#888">
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Hosting + dominio + backup giornaliero</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>1 aggiornamento pagina/mese</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>1 blog post/mese + 1 landing ogni 3 mesi</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO + keyword research + report mensile</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SLA 48 ore lavorative</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><strong style="color:#eee">Try &amp; Buy IG:</strong> 4 post + 6 storie + 1 Reel/sett</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Supporto ticket + chat</li>
+          </ul>
+        </div>
+
+        <div class="rounded-lg border p-6 rev d2" style="background:#121212;border-color:#1a1a1a">
+          <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Premium</span>
+          <div class="fd mt-1 mb-0.5" style="font-size:2.2rem;color:#eee;font-weight:300">EUR 300<span style="font-size:1rem;color:#888">/mese</span></div>
+          <p class="text-xs mb-4" style="color:#444">Per dominare il mercato locale</p>
+          <ul class="space-y-2 text-sm" style="color:#888">
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Hosting + dominio + backup giornaliero + firewall</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>2 aggiornamenti pagine/mese</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>2 blog post/mese + 1 landing/mese</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO completo + competitor + report settimanale</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SLA 24 ore (festivi inclusi)</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><strong style="color:#eee">Try &amp; Buy IG:</strong> 6 post + 8 storie + 2 Reel/sett</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Supporto ticket + chat + telefono</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Social Management standalone -->
+    <div class="mt-10">
+      <h3 class="fd mb-1 rev" style="font-size:1.5rem;color:#eee;font-weight:400">Social Management standalone</h3>
+      <p class="text-sm mb-4 rev" style="color:#888">Servizio separato. Si aggiunge ai contenuti Try &amp; Buy gia inclusi nel tier sito.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <div class="rounded-lg border p-6 rev" style="background:#121212;border-color:#1a1a1a">
+          <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Social Starter</span>
+          <div class="fd mt-1 mb-0.5" style="font-size:2rem;color:#eee;font-weight:300">EUR 79<span style="font-size:.9rem;color:#888">/mese</span></div>
+          <p class="text-xs mb-4" style="color:#444">Instagram + Facebook</p>
+          <ul class="space-y-1.5 text-sm" style="color:#888">
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>4 post/sett + 4 storie/sett</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>15 hashtag mirati</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Risposta commenti entro 48h</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Report mensile (reach, engagement)</li>
+          </ul>
+        </div>
+
+        <div class="rounded-lg border p-6 rev d1 popular" style="background:#121212">
+          <div class="flex items-center justify-between mb-0.5">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Social Pro</span>
+            <span class="badge-pop">Piu richiesto</span>
+          </div>
+          <div class="fd mt-1 mb-0.5" style="font-size:2rem;color:#eee;font-weight:300">EUR 250<span style="font-size:.9rem;color:#888">/mese</span></div>
+          <p class="text-xs mb-4" style="color:#444">Instagram + Facebook + LinkedIn</p>
+          <ul class="space-y-1.5 text-sm" style="color:#888">
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>6 post/sett + 8 storie/sett + 1 Reel/mese</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>25 hashtag + brand kit incluso</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Risposta commenti + DM entro 24h</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Report mensile avanzato</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Call strategica 30 min/mese</li>
+          </ul>
+        </div>
+
+        <div class="rounded-lg border p-6 rev d2" style="background:#121212;border-color:#1a1a1a">
+          <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Social Elite</span>
+          <div class="fd mt-1 mb-0.5" style="font-size:2rem;color:#eee;font-weight:300">EUR 500<span style="font-size:.9rem;color:#888">/mese</span></div>
+          <p class="text-xs mb-4" style="color:#444">IG + FB + LinkedIn + TikTok</p>
+          <ul class="space-y-1.5 text-sm" style="color:#888">
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>10 post/sett + 12 storie/sett + 2 Reel/mese</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>35 hashtag + brand kit completo</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Gestione 1 campagna Ads/mese</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Risposta DM + commenti + mentions entro 12h</li>
+            <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Report settimanale + call 60 min/sett</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BUNDLE -->
+<section id="bundle" aria-labelledby="bundle-h" class="py-24 sm:py-32" style="border-top:1px solid #1a1a1a">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="mb-14 rev">
+      <span class="text-xs font-semibold uppercase tracking-widest" style="color:#e04545">Bundle Sito + Social</span>
+      <h2 id="bundle-h" class="fd mt-2 mb-4" style="font-size:clamp(2rem,5vw,3.2rem);color:#eee;font-weight:300;line-height:1.15">
+        Prendi tutto insieme.<br><em style="color:#e04545;font-style:italic">Risparmi fino a EUR 151/mese.</em>
+      </h2>
+      <p class="max-w-xl text-base leading-relaxed" style="color:#888">
+        Sito + Social in un unico canone mensile. Il sito EUR 750 una tantum rimane invariato,
+        lo sconto e sul mensile.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+
+      <!-- ENTRY -->
+      <div class="rounded-lg border p-6 rev" style="background:#121212;border-color:#1a1a1a">
+        <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Entry</span>
+        <div class="fd mt-2" style="font-size:2.5rem;color:#eee;font-weight:300;line-height:1">EUR 99</div>
+        <div class="text-sm mb-1" style="color:#888">/mese</div>
+        <div class="inline-block px-2 py-0.5 rounded text-xs font-semibold mb-4" style="background:rgba(224,69,69,.12);color:#e04545">Risparmi EUR 10/mese</div>
+        <p class="text-sm mb-4 leading-relaxed" style="color:#888">Tier Lite + Social Starter. 6 post + 6 storie/sett su IG e FB.</p>
+        <ul class="space-y-1.5 text-sm" style="color:#888">
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Hosting + dominio + backup settimanale</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Manutenzione sito</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>6 post + 6 storie/sett (IG+FB)</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Report mensile</li>
+        </ul>
+        <div class="mt-5 pt-4 border-t text-xs" style="border-color:#1a1a1a;color:#444">Separati costerebbe EUR 109/mese</div>
+      </div>
+
+      <!-- MID -->
+      <div class="rounded-lg border p-6 rev d1 popular" style="background:#121212">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Mid</span>
+          <span class="badge-pop">Consigliato</span>
+        </div>
+        <div class="fd mt-2" style="font-size:2.5rem;color:#eee;font-weight:300;line-height:1">EUR 139</div>
+        <div class="text-sm mb-1" style="color:#888">/mese</div>
+        <div class="inline-block px-2 py-0.5 rounded text-xs font-semibold mb-4" style="background:rgba(224,69,69,.12);color:#e04545">Risparmi EUR 71/mese</div>
+        <p class="text-sm mb-4 leading-relaxed" style="color:#888">Tier Plus + Social Starter. Presenza solida, blog incluso.</p>
+        <ul class="space-y-1.5 text-sm" style="color:#888">
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Hosting + dominio + backup giornaliero</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Blog post mensile + landing ogni 3 mesi</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Social su 3 piattaforme (IG+FB+LI)</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO + keyword research</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Report mensile avanzato</li>
+        </ul>
+        <div class="mt-5 pt-4 border-t text-xs" style="border-color:rgba(224,69,69,.2);color:#444">Separati costerebbe EUR 210/mese</div>
+      </div>
+
+      <!-- TOP -->
+      <div class="rounded-lg border p-6 rev d2" style="background:#121212;border-color:#1a1a1a">
+        <span class="text-xs font-semibold uppercase tracking-widest" style="color:#888">Top</span>
+        <div class="fd mt-2" style="font-size:2.5rem;color:#eee;font-weight:300;line-height:1">EUR 299</div>
+        <div class="text-sm mb-1" style="color:#888">/mese</div>
+        <div class="inline-block px-2 py-0.5 rounded text-xs font-semibold mb-4" style="background:rgba(224,69,69,.12);color:#e04545">Risparmi EUR 151/mese</div>
+        <p class="text-sm mb-4 leading-relaxed" style="color:#888">Tier Premium + Social Pro. Dominio locale completo.</p>
+        <ul class="space-y-1.5 text-sm" style="color:#888">
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Hosting + dominio + backup + firewall</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>2 blog post/mese + 1 landing/mese</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>10+ post + 14+ storie + 2 Reel/sett</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO completo + competitor analysis</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Call strategica 30 min/mese</li>
+          <li class="flex gap-2"><svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Supporto ticket + chat + telefono</li>
+        </ul>
+        <div class="mt-5 pt-4 border-t text-xs" style="border-color:#1a1a1a;color:#444">Separati costerebbe EUR 450/mese</div>
+      </div>
+
+    </div>
+
+    <!-- Comparison table -->
+    <div class="rounded-lg border overflow-hidden rev" style="border-color:#1a1a1a">
+      <div class="px-6 py-4 border-b" style="border-color:#1a1a1a;background:#121212">
+        <h3 class="fd text-lg font-semibold" style="color:#eee">Confronto col mercato</h3>
+        <p class="text-sm mt-0.5" style="color:#888">Lo stesso servizio, senza i costi di struttura dell'agenzia tradizionale.</p>
+      </div>
+      <div class="overflow-x-auto" style="background:#0f0f0f">
+        <table class="data-table w-full" role="table" aria-label="Confronto prezzi TeoDigital vs freelance vs agenzia">
+          <thead>
+            <tr>
+              <th class="text-left">Servizio</th>
+              <th class="text-center" style="color:#e04545!important">TeoDigital</th>
+              <th class="text-center">Freelance</th>
+              <th class="text-center">Agenzia</th>
+            </tr>
+          </thead>
+          <tbody style="color:#888;font-size:.875rem">
+            <tr><td>Sito web</td><td class="text-center font-semibold" style="color:#eee">EUR 750</td><td class="text-center">EUR 2.000-5.000</td><td class="text-center">EUR 5.000-15.000</td></tr>
+            <tr><td>Bundle Entry /mese</td><td class="text-center font-semibold" style="color:#eee">EUR 99</td><td class="text-center">EUR 430</td><td class="text-center">EUR 1.200</td></tr>
+            <tr><td>Bundle Mid /mese</td><td class="text-center font-semibold" style="color:#eee">EUR 139</td><td class="text-center">EUR 600</td><td class="text-center">EUR 1.600</td></tr>
+            <tr><td>Bundle Top /mese</td><td class="text-center font-semibold" style="color:#eee">EUR 299</td><td class="text-center">EUR 900</td><td class="text-center">EUR 2.250</td></tr>
+            <tr><td>Social Starter (4 post/sett)</td><td class="text-center font-semibold" style="color:#eee">EUR 79</td><td class="text-center">EUR 300-600</td><td class="text-center">EUR 800-2.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="px-6 py-3 border-t text-xs" style="border-color:#1a1a1a;background:#121212;color:#444">
+        Usiamo AI agents invece di team umani per la produzione. Stesso risultato, costi fissi bassissimi.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PORTFOLIO WORKS -->
+<section id="portfolio" aria-labelledby="portfolio-h" class="py-24 sm:py-32" style="border-top:1px solid #1a1a1a">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="mb-14 rev">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-xs font-semibold uppercase tracking-widest" style="color:#e04545">Portfolio</span>
+        <span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:#333;color:#e04545;background:rgba(224,69,69,.08)">Pilota 2026</span>
+      </div>
+      <h2 id="portfolio-h" class="fd mb-4" style="font-size:clamp(2rem,5vw,3.2rem);color:#eee;font-weight:300;line-height:1.15">
+        Cinque settori.<br><em style="color:#e04545;font-style:italic">Cinque identita digitali.</em>
+      </h2>
+      <p class="max-w-xl text-base leading-relaxed" style="color:#888">
+        Mockup di come potrebbe apparire il sito del tuo locale.
+        Ogni card mostra un design diverso per categoria. Clicca per espandere.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" role="list">
+
+      <!-- Macelleria -->
+      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev"
+               style="background:#121212;border-color:#1a1a1a"
+               role="listitem" tabindex="0"
+               aria-label="Apri mockup Macelleria - stile Editoriale"
+               onclick="openPort('macelleria')"
+               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('macelleria')">
+        <div class="relative overflow-hidden aspect-[4/3]">
+          <div class="thumb th-mac absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><path d="M14 42 L28 14 L42 42" stroke="#e04545" stroke-width="1.5"/><rect x="20" y="28" width="16" height="14" rx="1" stroke="#e04545" stroke-width="1.5"/></svg>
+          </div>
+          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
+          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
+          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">Editoriale</span></div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="fd text-lg font-semibold" style="color:#eee">Macelleria</h3>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:#888">Carni selezionate, allevamenti a km 0, competenza artigianale. Il nostro banco, ora anche online.</p>
+        </div>
+      </article>
+
+      <!-- Panificio -->
+      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev d1"
+               style="background:#121212;border-color:#1a1a1a"
+               role="listitem" tabindex="0"
+               aria-label="Apri mockup Panificio - stile Caldo"
+               onclick="openPort('panificio')"
+               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('panificio')">
+        <div class="relative overflow-hidden aspect-[4/3]">
+          <div class="thumb th-pan absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><ellipse cx="28" cy="30" rx="18" ry="12" stroke="#e04545" stroke-width="1.5"/><path d="M16 30 Q28 10 40 30" stroke="#e04545" stroke-width="1.5" fill="none"/></svg>
+          </div>
+          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
+          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
+          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">Caldo</span></div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="fd text-lg font-semibold" style="color:#eee">Panificio</h3>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:#888">Lievito madre, farine selezionate, lavorazione lenta. Ogni giorno sforniamo freschezza.</p>
+        </div>
+      </article>
+
+      <!-- Pasticceria -->
+      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev d2"
+               style="background:#121212;border-color:#1a1a1a"
+               role="listitem" tabindex="0"
+               aria-label="Apri mockup Pasticceria - stile Vivace"
+               onclick="openPort('pasticceria')"
+               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('pasticceria')">
+        <div class="relative overflow-hidden aspect-[4/3]">
+          <div class="thumb th-pas absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><circle cx="28" cy="26" r="14" stroke="#e04545" stroke-width="1.5"/><path d="M20 26 Q28 16 36 26" stroke="#e04545" stroke-width="1.5" fill="none"/><rect x="22" y="36" width="12" height="4" rx="2" stroke="#e04545" stroke-width="1.5"/></svg>
+          </div>
+          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
+          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
+          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">Vivace</span></div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="fd text-lg font-semibold" style="color:#eee">Pasticceria</h3>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:#888">Pasticceria artigianale, ingredienti selezionati, creativita senza confini. Ogni dessert e un capolavoro.</p>
+        </div>
+      </article>
+
+      <!-- Ristorante -->
+      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev d1"
+               style="background:#121212;border-color:#1a1a1a"
+               role="listitem" tabindex="0"
+               aria-label="Apri mockup Ristorante - stile Moderno"
+               onclick="openPort('ristorante')"
+               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('ristorante')">
+        <div class="relative overflow-hidden aspect-[4/3]">
+          <div class="thumb th-ris absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><rect x="12" y="18" width="32" height="22" rx="2" stroke="#e04545" stroke-width="1.5"/><path d="M20 18 L20 14 M28 18 L28 12 M36 18 L36 14" stroke="#e04545" stroke-width="1.5"/></svg>
+          </div>
+          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
+          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
+          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">Moderno</span></div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="fd text-lg font-semibold" style="color:#eee">Ristorante</h3>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:#888">Menu digitale, prenotazioni online, foto che fanno venire fame. Il tuo ristorante sempre aperto.</p>
+        </div>
+      </article>
+
+      <!-- Parrucchiere -->
+      <article class="port-card rounded-lg border overflow-hidden cursor-pointer group rev d2"
+               style="background:#121212;border-color:#1a1a1a"
+               role="listitem" tabindex="0"
+               aria-label="Apri mockup Parrucchiere - stile POP"
+               onclick="openPort('parrucchiere')"
+               onkeydown="if(event.key==='Enter'||event.key===' ')openPort('parrucchiere')">
+        <div class="relative overflow-hidden aspect-[4/3]">
+          <div class="thumb th-par absolute inset-0 flex items-center justify-center" aria-hidden="true">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" opacity=".18"><circle cx="28" cy="22" r="10" stroke="#e04545" stroke-width="1.5"/><path d="M18 44 Q28 32 38 44" stroke="#e04545" stroke-width="1.5" fill="none"/></svg>
+          </div>
+          <div class="absolute inset-0" style="background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.9) 100%)" aria-hidden="true"></div>
+          <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded border text-xs font-semibold uppercase tracking-wider" style="border-color:rgba(224,69,69,.4);color:#e04545;background:rgba(10,10,10,.7)">Pilota 2026</span></div>
+          <div class="absolute bottom-3 left-3"><span class="text-xs font-semibold uppercase tracking-wider" style="color:#fff;opacity:.5">POP</span></div>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="fd text-lg font-semibold" style="color:#eee">Parrucchiere / Estetica</h3>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true" class="group-hover:stroke-white transition-colors"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:#888">Taglio, colore, trattamenti. Professionalita e tendenze in un ambiente curato. Il tuo salone online.</p>
+        </div>
+      </article>
+
+      <!-- CTA card -->
+      <div class="rounded-lg border p-6 flex flex-col items-center justify-center text-center rev d3"
+           style="background:#121212;border-color:#1a1a1a;border-style:dashed;min-height:200px">
+        <div class="w-10 h-10 rounded-full border flex items-center justify-center mb-4" style="border-color:#333">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <p class="text-sm font-medium mb-1" style="color:#888">Il tuo settore?</p>
+        <p class="text-xs mb-4" style="color:#444">Costruiamo il mockup del tuo locale gratuitamente in call.</p>
+        <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+           class="text-xs font-semibold px-4 py-2 rounded transition-opacity hover:opacity-80"
+           style="background:#e04545;color:#fff">Scrivici</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio overlay -->
+<div id="port-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title"
+     class="fixed inset-0 z-50 hidden overflow-y-auto p-4"
+     style="background:rgba(0,0,0,.92)">
+  <div class="max-w-3xl mx-auto mt-10 mb-10 rounded-lg overflow-hidden" style="background:#121212;border:1px solid #1a1a1a">
+    <div class="flex items-center justify-between px-6 py-4 border-b" style="border-color:#1a1a1a">
+      <h3 id="overlay-title" class="fd text-xl font-semibold" style="color:#eee"></h3>
+      <button onclick="closePort()"
+              class="w-9 h-9 flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+              style="color:#888" aria-label="Chiudi anteprima">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="overlay-body" class="p-6"></div>
+    <div class="px-6 py-4 border-t text-xs" style="border-color:#1a1a1a;color:#444">
+      Questo e un mockup dimostrativo. Il sito reale viene costruito sul tuo brand e settore specifico.
+    </div>
+  </div>
 </div>
 
-</div>
+<!-- PROCESSO -->
+<section id="processo" aria-labelledby="processo-h" class="py-24 sm:py-32" style="border-top:1px solid #1a1a1a">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <div class="mb-14 rev">
+      <span class="text-xs font-semibold uppercase tracking-widest" style="color:#e04545">Come funziona</span>
+      <h2 id="processo-h" class="fd mt-2" style="font-size:clamp(2rem,5vw,3.2rem);color:#eee;font-weight:300;line-height:1.15">
+        Dal brief al live<br><em style="color:#e04545;font-style:italic">in 4 passi.</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <div class="rounded-lg border p-6 rev" style="background:#121212;border-color:#1a1a1a">
+        <div class="fd text-5xl font-light mb-4" style="color:#1a1a1a;-webkit-text-stroke:1px #2a2a2a">01</div>
+        <h3 class="fd text-xl font-semibold mb-2" style="color:#eee">Brief</h3>
+        <p class="text-sm leading-relaxed" style="color:#888">Call di 20 minuti. Raccogliamo posizionamento, competitor, target e tone of voice. Nessun modulo da compilare.</p>
+      </div>
+
+      <div class="rounded-lg border p-6 rev d1" style="background:#121212;border-color:#1a1a1a">
+        <div class="fd text-5xl font-light mb-4" style="color:#1a1a1a;-webkit-text-stroke:1px #2a2a2a">02</div>
+        <h3 class="fd text-xl font-semibold mb-2" style="color:#eee">Setup</h3>
+        <p class="text-sm leading-relaxed" style="color:#888">Dominio, hosting, struttura, palette, font. Tutto configurato prima di scrivere una riga di codice.</p>
+      </div>
+
+      <div class="rounded-lg border p-6 rev d2 popular" style="background:#121212">
+        <div class="fd text-5xl font-light mb-4" style="color:rgba(224,69,69,.15);-webkit-text-stroke:1px rgba(224,69,69,.25)">03</div>
+        <h3 class="fd text-xl font-semibold mb-2" style="color:#eee">Build <span style="color:#e04545">48-72h</span></h3>
+        <p class="text-sm leading-relaxed" style="color:#888">Sviluppo completo, revisioni incluse, test su tutti i dispositivi. Live in meno di 3 giorni lavorativi.</p>
+      </div>
+
+      <div class="rounded-lg border p-6 rev d3" style="background:#121212;border-color:#1a1a1a">
+        <div class="fd text-5xl font-light mb-4" style="color:#1a1a1a;-webkit-text-stroke:1px #2a2a2a">04</div>
+        <h3 class="fd text-xl font-semibold mb-2" style="color:#eee">Cresci</h3>
+        <p class="text-sm leading-relaxed" style="color:#888">Contenuti social mensili, aggiornamenti sito, report. Noi gestiamo il digitale, tu ti occupi del tuo lavoro.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- GARANZIA FAQ -->
+<section id="faq" aria-labelledby="faq-h" class="py-24 sm:py-32" style="border-top:1px solid #1a1a1a">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+    <div class="mb-14 rev">
+      <span class="text-xs font-semibold uppercase tracking-widest" style="color:#e04545">Garanzia e FAQ</span>
+      <h2 id="faq-h" class="fd mt-2" style="font-size:clamp(2rem,5vw,3.2rem);color:#eee;font-weight:300;line-height:1.15">
+        Domande frequenti.<br><em style="color:#e04545;font-style:italic">Risposte dirette.</em>
+      </h2>
+    </div>
+
+    <div x-data="{ open: null }" class="space-y-2 rev">
+
+      <div class="rounded-lg border overflow-hidden" style="background:#121212;border-color:#1a1a1a">
+        <button @click="open = open === 1 ? null : 1"
+                class="w-full flex items-center justify-between px-5 py-4 text-left transition-colors hover:bg-white/5"
+                :aria-expanded="open === 1" aria-controls="faq-a-1">
+          <span class="font-medium text-sm pr-4" style="color:#eee">Come funziona la garanzia soddisfatti o rimborsati?</span>
+          <svg :class="open === 1 ? 'rotate-45' : ''" class="shrink-0 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div id="faq-a-1" x-show="open === 1" x-cloak class="px-5 pb-4">
+          <p class="text-sm leading-relaxed" style="color:#888">Se entro il primo mese non sei soddisfatto del servizio mensile, ti rimborsiamo integralmente il canone pagato. Il sito resta tuo senza costi aggiuntivi. La garanzia si applica solo al primo mese di abbonamento, non al sito una tantum.</p>
+        </div>
+      </div>
+
+      <div class="rounded-lg border overflow-hidden" style="background:#121212;border-color:#1a1a1a">
+        <button @click="open = open === 2 ? null : 2"
+                class="w-full flex items-center justify-between px-5 py-4 text-left transition-colors hover:bg-white/5"
+                :aria-expanded="open === 2" aria-controls="faq-a-2">
+          <span class="font-medium text-sm pr-4" style="color:#eee">Come funziona il pagamento del sito web?</span>
+          <svg :class="open === 2 ? 'rotate-45' : ''" class="shrink-0 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div id="faq-a-2" x-show="open === 2" x-cloak class="px-5 pb-4">
+          <p class="text-sm leading-relaxed" style="color:#888">Il sito EUR 750 si paga in due rate: 50% all'ordine (avvio lavori), 50% al go-live. Il canone mensile viene fatturato in anticipo ogni mese. Tutti i prezzi sono IVA esclusa.</p>
+        </div>
+      </div>
+
+      <div class="rounded-lg border overflow-hidden" style="background:#121212;border-color:#1a1a1a">
+        <button @click="open = open === 3 ? null : 3"
+                class="w-full flex items-center justify-between px-5 py-4 text-left transition-colors hover:bg-white/5"
+                :aria-expanded="open === 3" aria-controls="faq-a-3">
+          <span class="font-medium text-sm pr-4" style="color:#eee">Posso disdire il canone mensile quando voglio?</span>
+          <svg :class="open === 3 ? 'rotate-45' : ''" class="shrink-0 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div id="faq-a-3" x-show="open === 3" x-cloak class="px-5 pb-4">
+          <p class="text-sm leading-relaxed" style="color:#888">Si, con preavviso di 30 giorni e senza penali. Non ci sono vincoli di durata minima. Il sito resta comunque di tua proprieta. Potrai poi gestire autonomamente hosting e dominio.</p>
+        </div>
+      </div>
+
+      <div class="rounded-lg border overflow-hidden" style="background:#121212;border-color:#1a1a1a">
+        <button @click="open = open === 4 ? null : 4"
+                class="w-full flex items-center justify-between px-5 py-4 text-left transition-colors hover:bg-white/5"
+                :aria-expanded="open === 4" aria-controls="faq-a-4">
+          <span class="font-medium text-sm pr-4" style="color:#eee">Devo fornire le foto o le fate voi?</span>
+          <svg :class="open === 4 ? 'rotate-45' : ''" class="shrink-0 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div id="faq-a-4" x-show="open === 4" x-cloak class="px-5 pb-4">
+          <p class="text-sm leading-relaxed" style="color:#888">Le foto professionali del tuo locale non sono incluse nel sito da EUR 750 e si quotano separatamente (da EUR 250 a EUR 600). Puoi anche fornire foto tue: in quel caso le integriamo senza costi aggiuntivi. Foto stock royalty-free incluse dove necessario.</p>
+        </div>
+      </div>
+
+      <div class="rounded-lg border overflow-hidden" style="background:#121212;border-color:#1a1a1a">
+        <button @click="open = open === 5 ? null : 5"
+                class="w-full flex items-center justify-between px-5 py-4 text-left transition-colors hover:bg-white/5"
+                :aria-expanded="open === 5" aria-controls="faq-a-5">
+          <span class="font-medium text-sm pr-4" style="color:#eee">I contenuti social sono personalizzati o generici?</span>
+          <svg :class="open === 5 ? 'rotate-45' : ''" class="shrink-0 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div id="faq-a-5" x-show="open === 5" x-cloak class="px-5 pb-4">
+          <p class="text-sm leading-relaxed" style="color:#888">Personalizzati. All'onboarding compiliamo un brief insieme: posizionamento, competitor, target, tone of voice. Ogni contenuto e costruito sul tuo brand. Se dopo il primo mese non ti sembra centrato, lo rifacciamo gratuitamente.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT TEO -->
+<section id="about" aria-labelledby="about-h" class="py-24 sm:py-32" style="border-top:1px solid #1a1a1a">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+      <div class="flex justify-center md:justify-start rev">
+        <div class="relative w-56 h-56 rounded-2xl geo-bg flex items-center justify-center"
+             role="img" aria-label="Avatar geometrico TeoDigital">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+            <circle cx="60" cy="60" r="58" stroke="#e04545" stroke-width=".5" opacity=".25"/>
+            <circle cx="60" cy="60" r="40" stroke="#e04545" stroke-width=".5" opacity=".15"/>
+            <polygon points="60,10 110,90 10,90" stroke="#e04545" stroke-width=".5" fill="none" opacity=".2"/>
+            <circle cx="60" cy="44" r="16" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+            <path d="M30 95 Q60 75 90 95" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+            <circle cx="60" cy="44" r="8" fill="#e04545" opacity=".65"/>
+          </svg>
+          <div class="absolute bottom-3 right-3 text-xs font-semibold uppercase tracking-widest" style="color:#444">Teo</div>
+        </div>
+      </div>
+
+      <div class="rev d1">
+        <span class="text-xs font-semibold uppercase tracking-widest" style="color:#e04545">Chi sono</span>
+        <h2 id="about-h" class="fd mt-2 mb-4" style="font-size:clamp(1.8rem,4vw,2.8rem);color:#eee;font-weight:300;line-height:1.2">
+          Freelance digitale.<br><em style="font-style:italic">Non un'agenzia.</em>
+        </h2>
+        <div class="space-y-4 text-base leading-relaxed" style="color:#888">
+          <p>Gestisco TeoDigital come singolo professionista: struttura leggera, costi bassi, comunicazione diretta. Non hai un account manager che non sa nulla del tuo sito. Parli con chi lo costruisce.</p>
+          <p>Uso sistemi AI per la produzione di contenuti, non per sostituire il ragionamento strategico. Il risultato e qualita da agenzia a una frazione del costo, perche non ho costi di struttura da scaricare su di te.</p>
+          <p style="color:#555">Disponibile su appuntamento. Rispondo sempre entro le SLA del tuo piano.</p>
+        </div>
+        <div class="mt-6">
+          <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold text-white transition-opacity hover:opacity-85"
+             style="background:#e04545">
+            Scrivimi su WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINALE -->
+<section id="contatti" aria-labelledby="cta-h" class="py-24 sm:py-32" style="border-top:1px solid #1a1a1a">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <div class="rounded-2xl border p-8 sm:p-12 cta-glow rev" style="background:#121212;border-color:#1a1a1a">
+      <span class="text-xs font-semibold uppercase tracking-widest" style="color:#e04545">Pronto a partire?</span>
+      <h2 id="cta-h" class="fd mt-3 mb-4" style="font-size:clamp(2rem,5vw,3.2rem);color:#eee;font-weight:300;line-height:1.15">
+        Il tuo sito live<br><em style="color:#e04545;font-style:italic">in 48-72 ore.</em>
+      </h2>
+      <p class="mb-8 text-base leading-relaxed" style="color:#888">
+        Inizia con una call gratuita di 20 minuti. Nessun impegno.
+        Se decidi di procedere, il sito e online in 3 giorni lavorativi.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
+        <a href="https://wa.me/39XXXXXXXXXX"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2.5 px-8 py-4 rounded text-sm font-semibold text-white transition-opacity hover:opacity-85"
+           style="background:#e04545"
+           aria-label="Contatta TeoDigital su WhatsApp per iniziare">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Inizia su WhatsApp
+        </a>
+        <a href="https://cal.com/teodigital"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-8 py-4 rounded text-sm font-medium transition-colors hover:border-white"
+           style="border:1px solid #2a2a2a;color:#888"
+           aria-label="Prenota una call su Cal.com">
+          Prenota una call
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </a>
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs" style="border-color:#1a1a1a;color:#555">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Garanzia soddisfatti o rimborsati - primo mese
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo" class="border-t" style="border-color:#1a1a1a">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <div class="flex flex-wrap items-center justify-between gap-6">
+      <div>
+        <div class="fd text-lg font-semibold mb-1">Teo<span style="color:#e04545">Digital</span></div>
+        <p class="text-xs" style="color:#444">Siti web e social management per locali e professionisti</p>
+      </div>
+      <nav aria-label="Link footer" class="flex flex-wrap gap-6">
+        <a href="#servizi" class="text-xs transition-colors hover:text-white" style="color:#555">Servizi</a>
+        <a href="#bundle" class="text-xs transition-colors hover:text-white" style="color:#555">Bundle</a>
+        <a href="#portfolio" class="text-xs transition-colors hover:text-white" style="color:#555">Portfolio</a>
+        <a href="#faq" class="text-xs transition-colors hover:text-white" style="color:#555">FAQ</a>
+        <a href="#" class="text-xs transition-colors hover:text-white" style="color:#555">Privacy Policy</a>
+      </nav>
+    </div>
+    <div class="mt-8 pt-8 border-t flex flex-wrap items-center justify-between gap-4" style="border-color:#1a1a1a">
+      <p class="text-xs" style="color:#444">
+        &copy; 2026 TeoDigital &middot;
+        <a href="mailto:hypnosis.mda@gmail.com" class="hover:text-white transition-colors" style="color:#555">hypnosis.mda@gmail.com</a>
+      </p>
+      <p class="text-xs" style="color:#333">Prezzi IVA esclusa &middot; Contratti mensili &middot; No vincoli</p>
+    </div>
+  </div>
+</footer>
 
 <script>
-// IMAGE MAP — same background per category, used by all styles
-const IMGS = {
-  macelleria: 'https://images.unsplash.com/photo-1763033035770-e83f50e8e8b1?w=960&h=640&fit=crop&auto=format',
-  panificio: 'https://images.unsplash.com/photo-1515182629504-727d7753751f?w=960&h=640&fit=crop&auto=format',
-  pasticceria: 'https://images.unsplash.com/photo-1722518252691-1182e2e80a2a?w=960&h=640&fit=crop&auto=format',
-  ristorante: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=960&h=640&fit=crop&auto=format',
-  parrucchiere: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=960&h=640&fit=crop&auto=format'
-};
+/* ---- Mobile nav ---- */
+const mobBtn = document.getElementById('mob-btn');
+const mobMenu = document.getElementById('mob-menu');
+function closeMob() {
+  mobMenu.classList.add('hidden');
+  mobBtn.setAttribute('aria-expanded', 'false');
+}
+mobBtn.addEventListener('click', () => {
+  const open = !mobMenu.classList.contains('hidden');
+  mobMenu.classList.toggle('hidden');
+  mobBtn.setAttribute('aria-expanded', String(!open));
+});
 
-const CATS = {
-  macelleria: { label:'🥩 Macelleria', icon:'🥩' },
-  panificio: { label:'🥖 Panificio', icon:'🥖' },
-  pasticceria: { label:'🍰 Pasticceria', icon:'🍰' },
-  ristorante: { label:'🍝 Ristorante', icon:'🍝' },
-  parrucchiere: { label:'💇 Parrucchiere', icon:'💇' }
-};
+/* ---- Motion One hero fade-in ---- */
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.hero-item').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    return;
+  }
+  function runHeroAnim() {
+    if (!window.Motion) return;
+    const items = document.querySelectorAll('.hero-item');
+    items.forEach((el, i) => {
+      Motion.animate(
+        el,
+        { opacity: [0, 1], transform: ['translateY(28px)', 'translateY(0px)'] },
+        { duration: 0.65, delay: i * 0.11, easing: [0.25, 0.1, 0.25, 1.0] }
+      );
+    });
+  }
+  if (document.readyState === 'complete') {
+    runHeroAnim();
+  } else {
+    window.addEventListener('load', runHeroAnim);
+  }
+})();
 
-const STYLES = [
-  { id:'moderno', label:'Moderno', cl:'fm-moderno', tagCl:'st-moderno', icon:'✦' },
-  { id:'caldo', label:'Caldo', cl:'fm-caldo', tagCl:'st-caldo', icon:'✦' },
-  { id:'vivace', label:'Vivace', cl:'fm-vivace', tagCl:'st-vivace', icon:'✦' },
-  { id:'editoriale', label:'Editoriale', cl:'fm-editoriale', tagCl:'st-editoriale', icon:'✦' },
-  { id:'pop', label:'POP', cl:'fm-pop', tagCl:'st-pop', icon:'✦' }
-];
+/* ---- Scroll reveal ---- */
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.rev').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+})();
 
-// CONTENT PER CATEGORY × STYLE
-const CONTENT = {
+/* ---- Portfolio overlay ---- */
+const PORT_DATA = {
   macelleria: {
-    name:'Macelleria',
-    data:[
-      { h2:'Il <em>taglio</em> giusto,<br>da sempre.', p:'Carni selezionate, allevamenti a km 0, competenza artigianale. Il nostro banco, ora anche online con lo stesso standard di qualità.', features:['🔪 Taglio artigianale','🐄 Allevamenti selezionati','📍 Dove trovarci'] },
-      { h2:'La stessa <span>qualità</span><br>da tre generazioni.', p:'Tradizione di famiglia, passione per la carne buona. Dal banco al web con lo stesso calore e la stessa cura.', features:['👨‍👩‍👧‍👦 Famiglia dal 1970','🥩 Carne certificata','📞 Contattaci'] },
-      { h2:'Carne <span class="accent">vera</span>.<br>Zero storie.', p:'Niente foto ritoccate. Solo carne di qualità, allevatori selezionati, taglio artigianale. Quello che vedi è quello che mangi.', features:['🔥 Direttamente dal produttore','📱 Ordina online','⭐ Recensioni vere'] },
-      { h2:'La nostra macelleria,<br>la <em>vostra tavola</em>.', p:'Un racconto visivo della tradizione macellaia. Fotografie che parlano di qualità, cura e competenza. Dal banco al piatto.', features:['📸 Gallery prodotti','🍖 Tagli su ordinazione','📍 Visitateci'] },
-      { h2:'CARNE<br>DA FAVOLA.', p:'La macelleria che non ti aspetti. Look audace, contenuti social, presenza che colpisce. Carne di qualità, servizio moderno.', features:['💪 Proteine di qualità','📱 IG e Social','🚚 Consegna a casa'] },
-    ]
+    title: 'Macelleria - Stile Editoriale',
+    headline: 'La nostra macelleria, la vostra tavola.',
+    sub: 'Un racconto visivo della tradizione macellaia. Fotografie che parlano di qualita, cura e competenza. Dal banco al piatto.',
+    items: ['Portfolio prodotti con galleria fotografica','Tagli su ordinazione con modulo contatti','Mappa e orari sempre aggiornati']
   },
   panificio: {
-    name:'Panificio',
-    data:[
-      { h2:'Il <em>profumo</em> del<br>pane appena fatto.', p:'Lievito madre, farine selezionate, lavorazione lenta. Il nostro forno, ora anche sul web. Ogni giorno sforniamo freschezza.', features:['🍞 Lievito madre','🌾 Farine bio','📍 Forno in sede'] },
-      { h2:'Forno dal <span>1958</span>.<br>Sempre qui.', p:'Da tre quarti di secolo sforniamo pane per la nostra città. La stessa ricetta, lo stesso amore per la pasta madre.', features:['📜 Storia e tradizione','🔥 Cottura a legna','👨‍🍳 Artigiani del pane'] },
-      { h2:'<span class="accent">Forno</span><br>24/7? No,<br>quasi.', p:'Il pane buono non ha orari, ma il nostro sito è sempre aperto. Scopri i nostri prodotti artigianali e passa in forno.', features:['🥖 Tutti i prodotti','🕐 Orari del forno','📱 Resta connesso'] },
-      { h2:'Lievito madre,<br><em>storia viva</em>.', p:'Ogni pagnotta racconta una storia di farina, acqua e tempo. Il nostro pane è fatto di pazienza, competenza e ingredienti veri.', features:['🌾 Dalla farina al pane','📸 Il nostro lavoro','📍 Vieni a trovarci'] },
-      { h2:'FORNO<br>DA MATTI.', p:'Dalla pietra al piatto. Lievitazione lenta, ingredienti veri, forme che ricordano il sapore di una volta. Il pane come deve essere.', features:['🔥 Cottura tradizionale','🥇 Ingredienti selezionati','📱 Seguici'] },
-    ]
+    title: 'Panificio - Stile Caldo',
+    headline: 'Forno dal 1958. Sempre qui.',
+    sub: 'Da tre quarti di secolo sforniamo pane per la nostra citta. La stessa ricetta, lo stesso amore per la pasta madre.',
+    items: ['Storia e tradizione del forno','Prodotti artigianali con schede dettagliate','Orari e punti vendita']
   },
   pasticceria: {
-    name:'Pasticceria',
-    data:[
-      { h2:'Il <em>dolce</em> che<br>cercavi.', p:'Pasticceria artigianale, ingredienti selezionati, creatività senza confini. Ogni dessert è un capolavoro di gusto ed estetica.', features:['🍰 Dolci artigianali','🌿 Ingredienti freschi','📍 La vetrina'] },
-      { h2:'Dolcezze di <span>casa</span><br>da sempre.', p:'Ricette della nonna, materie prime eccellenti, la cura che solo la pasticceria artigianale sa dare. Il gusto di una volta.', features:['👵 Ricette tradizionali','🎂 Torte su ordinazione','☕ Colazione in sede'] },
-      { h2:'<span class="accent">Sugar</span><br>rush<br>autorizzato.', p:'Dolci che fanno girare la testa. Letteralmente. Pasticceria moderna per palati contemporanei. Ogni morso è un\'emozione.', features:['🌈 Colori e gusto','📱 IG-friendly','🎉 Eventi e catering'] },
-      { h2:'Dessert come<br><em>opere d\'arte</em>.', p:'La pasticceria è un\'arte che si gusta con gli occhi prima che con il palato. Ogni foto racconta la nostra creatività e passione.', features:['📸 Gallery fotografica','🍫 Cioccolato artigianale','📍 Dove siamo'] },
-      { h2:'DOLCI<br>CHIC.', p:'Pasticceria d\'autore, servizio impeccabile, location da sogno. Per chi non si accontenta del solito dolce.', features:['⭐ Alta pasticceria','🥂 Eventi esclusivi','📱 Prenota online'] },
-    ]
+    title: 'Pasticceria - Stile Vivace',
+    headline: 'Dessert come opere d\'arte.',
+    sub: 'La pasticceria e un\'arte che si gusta con gli occhi prima che con il palato. Ogni foto racconta la nostra creativita e passione.',
+    items: ['Gallery fotografica prodotti stagionali','Torte su ordinazione con form dedicato','Sezione eventi e catering']
   },
   ristorante: {
-    name:'Ristorante',
-    data:[
-      { h2:'La <em>tua</em> cucina,<br>a portata di click.', p:'Menù digitale, prenotazioni online, foto che fanno venire fame. Il tuo ristorante sempre aperto sul web, anche fuori orario.', features:['🍝 Menù digitale','📅 Prenota online','⭐ Recensioni'] },
-      { h2:'Cucina di <span>casa</span><br>dal 1972.', p:'Ricette della tradizione, ingredienti del territorio, l\'accoglienza di una volta. La nostra storia raccontata in ogni piatto.', features:['🌿 A km 0','🍷 Carta dei vini','👨‍🍳 Chef Gianni'] },
-      { h2:'<span class="accent">Food</span><br>is the<br>new rock.', p:'Piatti che spaccano, atmosfera che trascina. Il ristorante per chi ama mangiare bene e stare bene. Musica, gusto, divertimento.', features:['🎵 Atmosfera unica','🍔 Menu contemporaneo','📱 IG @ristorante'] },
-      { h2:'La nostra tavola,<br><em>la vostra storia</em>.', p:'Un racconto per immagini della nostra filosofia culinaria. Ogni piatto è un\'esperienza, ogni ingrediente una scelta consapevole.', features:['📸 Food photography','🌱 Filosofia green','📍 Dove trovarci'] },
-      { h2:'CHEF<br>MODELLO.', p:'Cucina che emoziona, servizio che conquista. Non venite per mangiare. Venite per vivere un\'esperienza culinaria unica.', features:['⭐ Stelle e premi','🥇 Chef a domicilio','📱 Seguici su IG'] },
-    ]
+    title: 'Ristorante - Stile Moderno',
+    headline: 'La tua cucina, a portata di click.',
+    sub: 'Menu digitale, prenotazioni online, foto che fanno venire fame. Il tuo ristorante sempre aperto sul web, anche fuori orario.',
+    items: ['Menu digitale sempre aggiornato','Sistema prenotazioni integrato','Galleria piatti e recensioni']
   },
   parrucchiere: {
-    name:'Parrucchiere / Estetica',
-    data:[
-      { h2:'Il tuo <em>stile</em>,<br>la nostra arte.', p:'Taglio, colore, trattamenti. Professionalità e tendenze in un ambiente curato. Il tuo salone, ora anche online con un sito all\'altezza.', features:['💇 Taglio e colore','✨ Trattamenti premium','📍 Dove siamo'] },
-      { h2:'Bellezza <span>autentica</span>,<br>da sempre.', p:'Trattamenti personalizzati, prodotti selezionati, l\'atmosfera accogliente di un salone che mette a proprio agio. Da 40 anni.', features:['🌟 Conservazione','🧴 Prodotti bio','📞 Prenota'] },
-      { h2:'<span class="accent">New</span><br>look<br>alert.', p:'Tendenze, colori audaci, tagli che fanno parlare. Il salone per chi ama osare con stile. Raccontalo con un sito moderno.', features:['🌈 Colorazioni trend','📱 IG gallery','✂️ Tagli moda'] },
-      { h2:'Eleganza<br><em>senza tempo</em>.', p:'Un racconto visivo della nostra filosofia. Taglio, colore, benessere. Ogni servizio è un\'esperienza di stile e cura personale.', features:['📸 Portfolio lavori','💆 Benessere','📍 Contatti'] },
-      { h2:'STILE<br>IN SEDIA.', p:'Look da copertina, trattamento da star. Per chi vuole apparire al meglio, ogni giorno. Salone premium a portata di click.', features:['⭐ Trattamento vip','📱 Seguici','💎 Prodotti esclusivi'] },
-    ]
+    title: 'Parrucchiere / Estetica - Stile POP',
+    headline: 'Il tuo stile, la nostra arte.',
+    sub: 'Taglio, colore, trattamenti. Professionalita e tendenze in un ambiente curato. Il tuo salone, ora anche online.',
+    items: ['Portfolio lavori con before/after','Listino servizi e prezzi','Prenotazione appuntamento online']
   }
 };
 
-function buildCards(catId){
-  const el = document.getElementById('content' + catId.charAt(0).toUpperCase() + catId.slice(1));
-  const data = CONTENT[catId].data;
-  const img = IMGS[catId];
-  let html = '<div class="card-grid">';
-  data.forEach((s, i) => {
-    const sty = STYLES[i];
-    html += `<div class="card" onclick="openOverlay('${catId}', ${i})">
-      <div class="cp">
-        <div class="cp-bg" style="background:url('${img}') center/cover"></div>
-        <div class="cp-overlay"></div>
-        <div class="cp-content">
-          <span class="cp-icon">${CATS[catId].icon}</span>
-          <span class="style-tag ${sty.tagCl}">${sty.label}</span>
-        </div>
-      </div>
-      <div class="cf">
-        <span class="cf-name">${sty.label}</span>
-        <span class="cf-num">${i+1}/5</span>
-      </div>
+function openPort(key) {
+  const d = PORT_DATA[key];
+  if (!d) return;
+  document.getElementById('overlay-title').textContent = d.title;
+  document.getElementById('overlay-body').innerHTML = `
+    <p class="fd text-2xl mb-2" style="color:#eee;font-weight:400">${d.headline}</p>
+    <p class="text-sm leading-relaxed mb-5" style="color:#888">${d.sub}</p>
+    <ul class="space-y-2">
+      ${d.items.map(f => `<li class="flex gap-2 text-sm" style="color:#888">
+        <svg class="mt-0.5 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e04545" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>${f}
+      </li>`).join('')}
+    </ul>
+    <div class="mt-6 pt-5 border-t" style="border-color:#1a1a1a">
+      <a href="https://wa.me/39XXXXXXXXXX" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold text-white"
+         style="background:#e04545">
+        Voglio un sito simile
+      </a>
     </div>`;
-  });
-  html += '</div>';
-  el.innerHTML = html;
-}
-
-function buildMockup(catId, idx){
-  const d = CONTENT[catId].data[idx];
-  const sty = STYLES[idx];
-  const img = IMGS[catId];
-  const catName = CONTENT[catId].name;
-  
-  // Features from data
-  const fts = d.features.map(f => 
-    `<div class="mf-card"><span class="mf-icon">${f.split(' ')[0]}</span><h3>${f.slice(2)}</h3><p>Scopri di più sul nostro servizio.</p></div>`
-  ).join('');
-
-  return `<div class="fm-${sty.id}">
-    <div class="mockup-hero">
-      <div class="mh-bg" style="background-image:url('${img}')"></div>
-      <div class="mh-shade"></div>
-      <div class="mh-content">
-        <h2>${d.h2}</h2>
-        <p>${d.p}</p>
-        <span class="btn">Scopri di più →</span>
-      </div>
-    </div>
-    <div class="mockup-features">
-      ${fts}
-    </div>
-    <div class="mockup-cta">
-      <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px;opacity:.6">📍 [Indirizzo] · 📞 [Telefono] · 📱 @[social]</p>
-      <p style="font-size:0.7rem;opacity:.3">Questo è un esempio di come potrebbe apparire il tuo sito.</p>
-    </div>
-  </div>`;
-}
-
-function buildNav(catId, idx){
-  const sty = STYLES;
-  return sty.map((s, i) => 
-    `<button class="style-nav-btn ${i===idx?'active':''}" onclick="openOverlay('${catId}', ${i})">${s.label}</button>`
-  ).join('');
-}
-
-// Build tabs
-const tabIds = Object.keys(CATS);
-tabIds.forEach((id, i) => {
-  const btn = document.createElement('button');
-  btn.className = 'cat-btn' + (i===0?' active':'');
-  btn.textContent = CATS[id].label;
-  btn.setAttribute('onclick', `showCategory('${id}')`);
-  document.getElementById('catTabs').appendChild(btn);
-});
-
-function showCategory(catId){
-  document.querySelectorAll('.cat-content').forEach(c => c.classList.remove('active'));
-  document.getElementById('content' + catId.charAt(0).toUpperCase() + catId.slice(1)).classList.add('active');
-  document.querySelectorAll('.cat-btn').forEach(b => {
-    const catKey = tabIds.find(id => b.textContent.includes(CATS[id].label.slice(2)));
-    b.classList.toggle('active', catKey === catId);
-  });
-}
-
-function openOverlay(catId, idx){
-  const html = `
-    <div class="overlay-header">
-      <div><h3>${CATS[catId].icon} ${STYLES[idx].label} · ${CONTENT[catId].name}</h3><div class="ol">Stile ${idx+1} di 5</div></div>
-    </div>
-    <div class="om-content">${buildMockup(catId, idx)}</div>
-    <div class="style-nav">${buildNav(catId, idx)}</div>
-  `;
-  document.getElementById('overlayInner').innerHTML = html;
-  document.getElementById('overlay').classList.add('open');
+  const overlay = document.getElementById('port-overlay');
+  overlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
+  overlay.querySelector('button').focus();
 }
 
-function closeOverlay(){
-  document.getElementById('overlay').classList.remove('open');
+function closePort() {
+  document.getElementById('port-overlay').classList.add('hidden');
   document.body.style.overflow = '';
 }
 
-// Init
-Object.keys(CATS).forEach(cat => buildCards(cat));
-showCategory('macelleria');
+document.getElementById('port-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closePort();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePort();
+});
 </script>
+
 </body>
 </html>
