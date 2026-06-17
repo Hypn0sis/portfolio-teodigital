@@ -30,7 +30,7 @@
    Non si inventano servizi custom: no shooting foto/video professionale, no grafica stampa, no campagne email, no SEO tecnico avanzato, no sviluppo app, no e-commerce base (preventivo separato), no trasferte fisiche.
    Se il cliente chiede qualcosa fuori dagli SKU: "non e' nel nostro perimetro standard, per questo facciamo preventivo separato."
 
-7. **Il sito e' proprieta' intellettuale TeoDigital.**
+7. **Il sito e' proprieta' intellettuale CORE.**
    Non si cedono file sorgente del sito ne' codice. Il dominio e' sempre del cliente (trasferibile gratis a chiusura). Il pannello admin del CMS e' sempre accessibile al cliente.
 
 8. **Contratto minimo se include social: 6 mesi.**

@@ -1,3 +1,9 @@
+# [DEPRECATO V1] Revisione Prezzi & Posizionamento
+
+> **ATTENZIONE: documento V1 obsoleto. Prezzi non validi. Source of truth: pricing.html e offerta-servizi-digitali.md**
+
+---
+
 # Revisione Prezzi & Posizionamento — Agenzia Digital AI-Powered
 
 **Prodotto da:** Agente PRICING-MANAGER + PROPOSAL-WRITER (Board SALES)

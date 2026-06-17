@@ -1,3 +1,9 @@
+# [DEPRECATO V1] Brochure Commerciale — Contenuti Pronti per HTML
+
+> **ATTENZIONE: documento V1 obsoleto. Prezzi non validi. Source of truth: pricing.html e offerta-servizi-digitali.md**
+
+---
+
 # Brochure Commerciale — Contenuti Pronti per HTML
 ## Agenzia Servizi Digitali per Attività Locali
 ### Zona: Cornaredo (MI) · Provincia Milano · Hinterland · Province limitrofe

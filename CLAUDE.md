@@ -88,7 +88,7 @@ Il tuo job: eseguire task pulito + restituire file path + summary chiaro nel JSO
 
 1. **Workdir**: `~/wingman/` per deliverable; `~/wingman/vault-*/` per knowledge
 2. **Output deliverable**: file path assoluto nel `result` JSON
-3. **Git portfolio**: `~/wingman/` e' clone di `Hypn0sis/portfolio-teodigital` (GitHub Pages live). Push immediato per portfolio = deploy automatico
+3. **Git portfolio**: `~/wingman/` e' clone di `Hypn0sis/core-agency` (GitHub Pages live). Push immediato per portfolio = deploy automatico
 4. **Git vault**: 6 vault hanno repo separati. Cron auto-push ogni 15 min; non serve commit manuale (ma puoi se vuoi tracciare delta esplicito)
 5. **NO build step** per portfolio/landing: HTML statico + Tailwind Play CDN + Alpine.js (opzionale) + animazioni CSS o Motion One/Framer Motion via CDN
 6. **NO mai**: jQuery, Bootstrap, semantic-ui, comic sans, stock photos generiche unsplash
@@ -146,7 +146,7 @@ Refactored portfolio.html: stack shadcn + Aceternity + Tailwind. 9 sezioni, anim
 - Reasoning: stack moderno, no build, deploy GitHub Pages immediato
 
 ## Next steps
-- Verifica visiva su https://hypn0sis.github.io/portfolio-teodigital/portfolio.html
+- Verifica visiva su https://hypn0sis.github.io/core-agency/portfolio.html
 - Considerare aggiunta sezione testimonial quando disponibili
 ```
 

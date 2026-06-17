@@ -1,4 +1,10 @@
-# 🚀 Bundle Sito + Social — Risparmia fino a €30.462 all'anno
+# [DEPRECATO V1] Bundle Sito + Social
+
+> **ATTENZIONE: documento V1 obsoleto. Prezzi non validi. Source of truth: pricing.html e offerta-servizi-digitali.md**
+
+---
+
+# Bundle Sito + Social — Risparmia fino a €30.462 all'anno
 
 > Proposta commerciale — Board Marketing & Sales combinato
 

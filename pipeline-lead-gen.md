@@ -1,4 +1,4 @@
-# Pipeline Lead Generation v2 — TeoDigital
+# Pipeline Lead Generation v2 — CORE.
 ## Parametri, criteri e processo verificato
 
 ---
