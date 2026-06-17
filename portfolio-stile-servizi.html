@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tecnica Impianti Srl — Demo Stile Professionale | CORE.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#f4f7fb;color:#0d1b2e;font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* DEMO BANNER */
+#demo-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:rgba(8,14,24,.97);backdrop-filter:blur(12px);
+  border-top:1px solid rgba(30,100,220,.2);padding:.75rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+}
+#demo-banner p{color:#4a6a9a;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+#demo-banner strong{color:#e0eaff}
+.demo-back{
+  background:#1e5fc8;color:#fff;
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.5rem 1.2rem;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background .2s;
+}
+.demo-back:hover{background:#1649a0}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(8,22,42,.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(30,95,200,.15);
+  padding:.85rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{
+  display:flex;align-items:center;gap:1rem;
+}
+.nav-logo{
+  width:36px;height:36px;background:linear-gradient(135deg,#1e5fc8,#0a90d0);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:800;letter-spacing:.04em;color:#fff;
+}
+.nav-brand-name{font-size:1rem;font-weight:700;color:#fff;letter-spacing:.02em}
+.nav-brand-sub{font-size:.62rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{
+  background:linear-gradient(135deg,#1e5fc8,#0a90d0);color:#fff;
+  font-size:.75rem;font-weight:700;letter-spacing:.06em;
+  padding:.55rem 1.5rem;border-radius:6px;text-decoration:none;
+  transition:opacity .2s;
+}
+.nav-cta:hover{opacity:.88}
+
+/* HERO */
+#hero{
+  padding-top:4.5rem;
+  background:linear-gradient(150deg,#080e18 0%,#0d1b30 50%,#091520 100%);
+  min-height:100vh;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+}
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 70% 40%,rgba(30,95,200,.16),transparent 55%),
+    radial-gradient(circle at 20% 70%,rgba(10,144,208,.1),transparent 50%);
+}
+#hero::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(30,95,200,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(30,95,200,.04) 1px,transparent 1px);
+  background-size:50px 50px;
+}
+.hero-inner{
+  position:relative;z-index:10;
+  max-width:1200px;margin:0 auto;padding:5rem 3rem 7rem;
+  display:grid;grid-template-columns:1.15fr 1fr;gap:5rem;align-items:center;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(30,95,200,.12);border:1px solid rgba(30,95,200,.25);
+  padding:.35rem .9rem;border-radius:4px;
+  font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(100,160,240,.7);margin-bottom:1.5rem;
+}
+.hero-inner h1{
+  font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:700;line-height:1.05;
+  color:#fff;margin-bottom:1.2rem;letter-spacing:-.02em;
+}
+.hero-inner h1 span{
+  background:linear-gradient(90deg,#1e90ff,#0ac8d0);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-inner p{color:rgba(255,255,255,.45);font-size:.95rem;line-height:1.75;margin-bottom:2rem;max-width:44ch}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:linear-gradient(135deg,#1e5fc8,#0a90d0);color:#fff;
+  font-size:.82rem;font-weight:700;letter-spacing:.04em;
+  padding:.9rem 2.2rem;border-radius:6px;text-decoration:none;
+  transition:opacity .2s;display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-primary:hover{opacity:.88}
+.btn-outline{
+  border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);
+  font-size:.82rem;font-weight:600;padding:.9rem 2.2rem;border-radius:6px;
+  text-decoration:none;transition:all .2s;
+}
+.btn-outline:hover{border-color:rgba(255,255,255,.4);color:#fff}
+.hero-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(30,95,200,.15);border-radius:16px;
+  padding:2rem;position:relative;overflow:hidden;
+}
+.hero-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#1e5fc8,#0ac8d0);
+}
+.certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.cert-badge{
+  background:rgba(255,255,255,.04);border:1px solid rgba(30,95,200,.12);
+  border-radius:8px;padding:.85rem;display:flex;flex-direction:column;gap:.3rem;
+}
+.cert-icon{font-size:1.4rem;line-height:1}
+.cert-name{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.7);line-height:1.2}
+.cert-body{font-size:.62rem;color:rgba(255,255,255,.3);line-height:1.3}
+
+/* METRICS strip */
+.metrics-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:#fff;
+  border-bottom:1px solid #e4ecf6;
+}
+.metric-cell{
+  padding:2rem 2.5rem;text-align:center;
+  border-right:1px solid #e4ecf6;
+}
+.metric-cell:last-child{border-right:none}
+.metric-num{font-size:2rem;font-weight:700;color:#1e5fc8;line-height:1;margin-bottom:.3rem}
+.metric-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#8aa0be}
+
+/* SERVIZI section */
+#servizi{padding:7rem 3rem;background:#f4f7fb}
+.container{max-width:1200px;margin:0 auto}
+.section-eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#1e5fc8;margin-bottom:.6rem}
+.section-title{font-size:2.6rem;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:.8rem;color:#0d1b2e}
+.section-sub{color:#6a80a0;font-size:.92rem;line-height:1.7;max-width:52ch;margin-bottom:3.5rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.service-card{
+  background:#fff;border:1px solid #e4ecf6;border-radius:12px;
+  padding:2rem;transition:all .3s ease;position:relative;
+}
+.service-card:hover{
+  box-shadow:0 12px 48px rgba(30,95,200,.1);
+  border-color:#b4ccf0;transform:translateY(-3px);
+}
+.service-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#1e5fc8,#0ac8d0);border-radius:0 0 12px 12px;
+  opacity:0;transition:opacity .3s;
+}
+.service-card:hover::after{opacity:1}
+.service-icon{
+  width:44px;height:44px;background:linear-gradient(135deg,rgba(30,95,200,.1),rgba(10,144,208,.08));
+  border:1px solid rgba(30,95,200,.15);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.2rem;
+}
+.service-card h3{font-size:1.1rem;font-weight:700;color:#0d1b2e;margin-bottom:.5rem}
+.service-card p{font-size:.82rem;color:#6a80a0;line-height:1.65}
+.service-range{
+  margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid #e4ecf6;
+  font-size:.75rem;font-weight:700;color:#1e5fc8;letter-spacing:.04em;
+}
+
+/* CERTS strip */
+#certificazioni{
+  padding:5rem 3rem;background:#fff;border-top:1px solid #e4ecf6;border-bottom:1px solid #e4ecf6;
+}
+.certs-strip{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+  border:1px solid #e4ecf6;border-radius:12px;padding:2.5rem 3rem;
+}
+.cert-item{
+  display:flex;align-items:center;gap:.8rem;
+}
+.cert-dot{
+  width:8px;height:8px;background:linear-gradient(135deg,#1e5fc8,#0ac8d0);border-radius:50%;flex-shrink:0;
+}
+.cert-item-text{font-size:.78rem;font-weight:600;color:#3a5070}
+.cert-divider{width:1px;height:36px;background:#e4ecf6;flex-shrink:0}
+
+/* PREVENTIVO form */
+#preventivo{
+  padding:7rem 3rem;
+  background:linear-gradient(150deg,#080e18 0%,#0d1b30 100%);
+  position:relative;overflow:hidden;
+}
+#preventivo::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 80% 20%,rgba(30,95,200,.15),transparent 55%),
+    radial-gradient(circle at 15% 80%,rgba(10,144,208,.1),transparent 45%);
+}
+.preventivo-inner{
+  max-width:1200px;margin:0 auto;position:relative;z-index:10;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;
+}
+.preventivo-text .section-eyebrow{color:rgba(100,180,240,.7)}
+.preventivo-text h2{font-size:2.8rem;font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;letter-spacing:-.02em}
+.preventivo-text p{color:rgba(255,255,255,.4);font-size:.9rem;line-height:1.75;margin-bottom:1.5rem}
+.checklist{display:flex;flex-direction:column;gap:.7rem}
+.check-item{
+  display:flex;align-items:center;gap:.75rem;
+  font-size:.82rem;color:rgba(255,255,255,.5);
+}
+.check-icon{
+  width:18px;height:18px;background:rgba(30,95,200,.2);border:1px solid rgba(30,95,200,.3);
+  border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.form-card{
+  background:rgba(255,255,255,.05);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2.5rem;
+}
+.form-title{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+.form-note{font-size:.75rem;color:rgba(255,255,255,.3);margin-bottom:1.8rem}
+.form-row{margin-bottom:1rem}
+.form-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-bottom:.4rem}
+.form-input{
+  width:100%;padding:.7rem 1rem;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:.85rem;
+  outline:none;transition:border-color .2s;
+}
+.form-input:focus{border-color:rgba(30,95,200,.5)}
+.form-input::placeholder{color:rgba(255,255,255,.2)}
+.form-select{
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='rgba(255,255,255,.3)' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .8rem center;background-size:16px;padding-right:2rem;
+}
+option{background:#0d1b30;color:#fff}
+.form-two-col{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.form-submit{
+  width:100%;padding:1rem;margin-top:.5rem;
+  background:linear-gradient(135deg,#1e5fc8,#0a90d0);
+  color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.88rem;
+  letter-spacing:.04em;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer;
+  transition:opacity .2s;
+}
+.form-submit:hover{opacity:.88}
+
+/* TESTIMONIANZE */
+#testimonianze{padding:6rem 3rem;background:#f4f7fb}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.review-card{
+  background:#fff;border:1px solid #e4ecf6;border-radius:12px;padding:2rem;
+}
+.review-stars{color:#1e5fc8;font-size:.9rem;letter-spacing:2px;margin-bottom:.8rem}
+.review-text{font-size:.88rem;color:#3a5070;line-height:1.7;margin-bottom:1.2rem;font-style:italic}
+.review-meta{display:flex;flex-direction:column;gap:.15rem}
+.review-author{font-size:.75rem;font-weight:700;color:#0d1b2e;text-transform:uppercase;letter-spacing:.06em}
+.review-detail{font-size:.7rem;color:#8aa0be}
+
+/* FOOTER */
+footer{
+  background:#080e18;color:rgba(255,255,255,.3);
+  padding:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+footer .brand{font-size:1rem;font-weight:700;color:rgba(255,255,255,.6)}
+footer p{font-size:.72rem}
+footer a{color:#1e90ff;text-decoration:none;font-weight:600}
+
+@media(max-width:900px){
+  nav{padding:.85rem 1.5rem}
+  .nav-links{display:none}
+  .hero-inner{grid-template-columns:1fr;padding:5rem 1.5rem 6rem;gap:3rem}
+  .metrics-strip{grid-template-columns:repeat(2,1fr)}
+  .metric-cell:nth-child(2){border-right:none}
+  .metric-cell:nth-child(3){border-right:1px solid #e4ecf6}
+  #servizi,#preventivo,#testimonianze,#certificazioni{padding:4rem 1.5rem}
+  .services-grid,.reviews-grid{grid-template-columns:1fr}
+  .preventivo-inner{grid-template-columns:1fr;gap:3rem}
+  .certs-strip{flex-direction:column;align-items:flex-start;padding:2rem}
+  .cert-divider{display:none}
+  footer{padding:1.5rem;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- DEMO BANNER -->
+<div id="demo-banner">
+  <p><strong>Demo CORE.</strong> - Stile Professionale &nbsp;·&nbsp; Questo e un mockup interattivo, non un sito reale</p>
+  <a href="portfolio-5-stili.html" class="demo-back">← Torna agli stili</a>
+</div>
+
+<!-- NAV -->
+<nav aria-label="Navigazione principale">
+  <div class="nav-brand">
+    <div class="nav-logo">TI</div>
+    <div>
+      <div class="nav-brand-name">Tecnica Impianti</div>
+      <div class="nav-brand-sub">Torino · Dal 1998</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servizi">Servizi</a></li>
+    <li><a href="#certificazioni">Certificazioni</a></li>
+    <li><a href="#testimonianze">Recensioni</a></li>
+    <li><a href="#preventivo">Preventivo</a></li>
+  </ul>
+  <a href="#preventivo" class="nav-cta">Richiedi preventivo</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" aria-hidden="true"><circle cx="3" cy="3" r="3" fill="#1e90ff"/></svg>
+        Torino e Provincia · Intervento entro 24h
+      </div>
+      <h1>
+        Impianti <span>elettrici</span> e idraulici.<br>
+        Fatti bene. Garantiti.
+      </h1>
+      <p>Oltre 26 anni di esperienza su impianti residenziali e commerciali. Preventivo gratuito entro 24 ore. Personale certificato, lavori a regola d'arte, garanzia scritta su ogni intervento.</p>
+      <div class="hero-ctas">
+        <a href="#preventivo" class="btn-primary">
+          Preventivo gratuito
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="tel:+390110000000" class="btn-outline">Chiamaci ora</a>
+      </div>
+    </div>
+
+    <div class="hero-card" role="complementary" aria-label="Certificazioni">
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.2rem">Certificazioni attive</p>
+      <div class="certs-grid">
+        <div class="cert-badge">
+          <div class="cert-icon">⚡</div>
+          <div class="cert-name">Abilitazione elettrica art. 4</div>
+          <div class="cert-body">D.M. 37/2008 · In regola</div>
+        </div>
+        <div class="cert-badge">
+          <div class="cert-icon">💧</div>
+          <div class="cert-name">Abilitazione idraulica</div>
+          <div class="cert-body">D.M. 37/2008 · In regola</div>
+        </div>
+        <div class="cert-badge">
+          <div class="cert-icon">🔥</div>
+          <div class="cert-name">Gas e termoidraulica</div>
+          <div class="cert-body">UNI 7129 · Libretto impianto</div>
+        </div>
+        <div class="cert-badge">
+          <div class="cert-icon">🛡️</div>
+          <div class="cert-name">ISO 9001:2015</div>
+          <div class="cert-body">Qualita certificata DNV</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS strip -->
+<div class="metrics-strip" role="list">
+  <div class="metric-cell" role="listitem">
+    <div class="metric-num">26+</div>
+    <div class="metric-label">Anni di esperienza</div>
+  </div>
+  <div class="metric-cell" role="listitem">
+    <div class="metric-num">1.800+</div>
+    <div class="metric-label">Interventi completati</div>
+  </div>
+  <div class="metric-cell" role="listitem">
+    <div class="metric-num">4.8</div>
+    <div class="metric-label">Stelle su Google</div>
+  </div>
+  <div class="metric-cell" role="listitem">
+    <div class="metric-num">24h</div>
+    <div class="metric-label">Tempo risposta preventivo</div>
+  </div>
+</div>
+
+<!-- SERVIZI -->
+<section id="servizi">
+  <div class="container">
+    <p class="section-eyebrow">I nostri servizi</p>
+    <h2 class="section-title">Ogni impianto,<br>ogni esigenza.</h2>
+    <p class="section-sub">Lavoriamo su abitazioni private, condomini, uffici e capannoni industriali. Ogni intervento e documentato e garantito per iscritto.</p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Impianti Elettrici</h3>
+        <p>Nuovi impianti, rifacimenti totali e parziali, adeguamento a norma CEI, quadri elettrici, impianti fotovoltaici con allaccio. Dichiarazione di conformita inclusa.</p>
+        <div class="service-range">Da €350 · Sopralluogo gratuito</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">💧</div>
+        <h3>Impianti Idraulici</h3>
+        <p>Rifacimento impianto idrico, sostituzione scarichi, nuovi bagni completi, riparazioni urgenti perdite, allacci contatori. Reperibilita sabato mattina.</p>
+        <div class="service-range">Da €180 · Pronto intervento 4h</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔥</div>
+        <h3>Termoidraulica</h3>
+        <p>Installazione e sostituzione caldaie, riscaldamento a pavimento, radiatori, impianti a pompa di calore. Incentivi fiscali gestiti per voi (Ecobonus, Superbonus).</p>
+        <div class="service-range">Da €1.200 · Finanziamento disponibile</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Pratiche e Certificazioni</h3>
+        <p>Dichiarazioni di conformita impianti, pratiche INAIL, documentazione per mutuo, relazioni tecniche per agenzie immobiliari. Tutto in regola, senza stress.</p>
+        <div class="service-range">Da €120 · Entro 5 giorni lavorativi</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Interventi su Condomini</h3>
+        <p>Impianti comuni, centraline citofoniche, portoni automatici, luci scale con sensori, impianti antincendio e certificazione periodica. Preventivo collettivo.</p>
+        <div class="service-range">Preventivo su misura</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Manutenzione Programmata</h3>
+        <p>Contratti annuali per aziende e condomini. Verifiche periodiche, sostituzione componenti usurati, reperibilita h24 in caso di guasti. Sconto 15% sui contratti pluriennali.</p>
+        <div class="service-range">Da €39/mese · Contratto annuale</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICAZIONI strip -->
+<section id="certificazioni">
+  <div class="container">
+    <p class="section-eyebrow">Le nostre garanzie</p>
+    <h2 class="section-title" style="margin-bottom:2rem">Ogni lavoro documentato e garantito.</h2>
+    <div class="certs-strip">
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div class="cert-item-text">D.M. 37/2008<br>Abilitazione impianti</div>
+      </div>
+      <div class="cert-divider"></div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div class="cert-item-text">ISO 9001:2015<br>Qualita certificata DNV</div>
+      </div>
+      <div class="cert-divider"></div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div class="cert-item-text">Garanzia 5 anni<br>Su tutti i nuovi impianti</div>
+      </div>
+      <div class="cert-divider"></div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div class="cert-item-text">Assicurazione RC<br>Copertura fino a €2M</div>
+      </div>
+      <div class="cert-divider"></div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div class="cert-item-text">CNA Torino<br>Membro associato</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVENTIVO form -->
+<section id="preventivo">
+  <div class="preventivo-inner">
+    <div class="preventivo-text">
+      <p class="section-eyebrow">Preventivo gratuito</p>
+      <h2>Risposta garantita<br>entro 24 ore.</h2>
+      <p>Descrivici il lavoro e ti richiamiamo noi. Sopralluogo gratuito a Torino e provincia. Nessun impegno, nessuna penale.</p>
+      <div class="checklist">
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1e90ff" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Sopralluogo sempre gratuito
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1e90ff" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Preventivo scritto dettagliato
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1e90ff" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Prezzi fissi, nessuna sorpresa
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1e90ff" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Garanzia 5 anni su nuovi impianti
+        </div>
+        <div class="check-item">
+          <div class="check-icon">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1e90ff" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          Dichiarazione di conformita inclusa
+        </div>
+      </div>
+      <div style="margin-top:2rem;padding:1.2rem;background:rgba(30,95,200,.1);border:1px solid rgba(30,95,200,.2);border-radius:8px">
+        <p style="font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:.4rem">Preferisci chiamare?</p>
+        <a href="tel:+390110000000" style="font-size:1.3rem;font-weight:700;color:#fff;text-decoration:none">+39 011 000 0000</a>
+        <p style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.2rem">Lun-Ven 8:00-18:00 · Sab 8:00-12:00</p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-title">Richiedi un preventivo</div>
+      <div class="form-note">Risposta garantita entro il giorno lavorativo successivo</div>
+
+      <div class="form-two-col">
+        <div class="form-row">
+          <label class="form-label" for="pf-nome">Nome</label>
+          <input type="text" id="pf-nome" class="form-input" placeholder="Mario Rossi">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="pf-tel">Telefono</label>
+          <input type="tel" id="pf-tel" class="form-input" placeholder="+39 333 ...">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="pf-email">Email</label>
+        <input type="email" id="pf-email" class="form-input" placeholder="mario@email.com">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="pf-tipo">Tipo di intervento</label>
+        <select id="pf-tipo" class="form-input form-select">
+          <option value="" disabled selected>Seleziona il tipo...</option>
+          <option>Impianto elettrico - nuovo</option>
+          <option>Impianto elettrico - adeguamento</option>
+          <option>Impianto idraulico - bagno completo</option>
+          <option>Impianto idraulico - riparazione</option>
+          <option>Caldaia - sostituzione</option>
+          <option>Riscaldamento a pavimento</option>
+          <option>Pratiche e certificazioni</option>
+          <option>Manutenzione programmata</option>
+          <option>Altro (specifica nel messaggio)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="pf-desc">Descrizione lavoro</label>
+        <textarea id="pf-desc" class="form-input" rows="3" placeholder="Descrivi brevemente cosa occorre fare..." style="resize:vertical;font-family:'Space Grotesk',sans-serif"></textarea>
+      </div>
+
+      <div class="form-two-col">
+        <div class="form-row">
+          <label class="form-label" for="pf-citta">Comune</label>
+          <input type="text" id="pf-citta" class="form-input" placeholder="Torino">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="pf-urgenza">Urgenza</label>
+          <select id="pf-urgenza" class="form-input form-select">
+            <option>Normale (entro 2 settimane)</option>
+            <option>Urgente (entro 3 giorni)</option>
+            <option>Emergenza (entro 24h)</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="button" class="form-submit" onclick="alert('Demo: richiesta inviata! In un sito reale riceveresti una conferma via email.')">
+        Invia richiesta di preventivo
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIANZE -->
+<section id="testimonianze">
+  <div class="container">
+    <p class="section-eyebrow">Cosa dicono i clienti</p>
+    <h2 class="section-title">4.8 stelle su Google.<br>226 recensioni verificate.</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Rifacimento impianto elettrico completo in 3 giorni. Puntuali, puliti, prezzo esattamente come da preventivo. La dichiarazione di conformita era pronta il giorno dopo."</p>
+        <div class="review-meta">
+          <div class="review-author">Roberto B.</div>
+          <div class="review-detail">Impianto elettrico residenziale · Torino</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Chiamata alle 8 di mattina per perdita d'acqua. Erano da me alle 11. Problema risolto in 2 ore. Prezzi onesti, hanno mostrato ogni cosa che facevano. Consigliati senza riserve."</p>
+        <div class="review-meta">
+          <div class="review-author">Giovanna P.</div>
+          <div class="review-detail">Pronto intervento idraulico · Moncalieri</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Gestiscono la manutenzione del condominio da 4 anni. Sempre disponibili, mai un ritardo sulle verifiche periodiche. Il contratto annuale vale ogni euro."</p>
+        <div class="review-meta">
+          <div class="review-author">Stefano M.</div>
+          <div class="review-detail">Contratto manutenzione condominio · Torino</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">Tecnica Impianti Srl</div>
+  <p>Via Nizza 112, Torino · +39 011 000 0000 · info@tecnicaimpianti.it<br>P.IVA 09876543210 · Privacy Policy</p>
+  <p>Sito realizzato da <a href="portfolio.html">CORE.</a></p>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.07});
+  document.querySelectorAll('.service-card,.review-card,.metric-cell,.cert-badge,.cert-item').forEach(el=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(18px)';
+    el.style.transition='opacity .55s ease, transform .55s ease';
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
