@@ -397,6 +397,36 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
         <span>Intervento urgente (no piano): <strong class="text-gray-300">€75/h</strong></span>
       </div>
     </div>
+
+    <!-- Scenario D: Migration CTA -->
+    <div class="mt-8 plan-card rounded-sm p-7 rev">
+      <p class="text-xs text-gray-600 uppercase tracking-wider mb-4">Hai gia' un sito?</p>
+      <h3 class="fd text-2xl font-light text-white mb-3">Valutiamo se possiamo<br>lavorare insieme.</h3>
+      <p class="text-gray-500 text-sm mb-6 max-w-xl">Non gestiamo siti costruiti da terzi: non potremmo garantirti lo stesso standard che mettiamo in ogni nostro progetto. Se sei aperto a valutare un trasferimento, raccontaci la tua situazione — la valutazione e' gratuita, senza impegno, e ti diremo onestamente se ha senso. Se la migrazione funziona, partiamo con <strong class="text-white">Crescita Completa a €121/mese</strong> — sito incluso.</p>
+      <div class="grid sm:grid-cols-2 gap-3 mb-6 text-sm">
+        <div class="plan-card rounded-sm p-3">
+          <p class="text-xs text-gray-600 mb-1">URL del tuo sito attuale</p>
+          <p class="text-gray-600 text-xs">es. www.miosito.it</p>
+        </div>
+        <div class="plan-card rounded-sm p-3">
+          <p class="text-xs text-gray-600 mb-1">Dove e' ospitato</p>
+          <p class="text-gray-600 text-xs">es. Wix, Aruba, altra agenzia</p>
+        </div>
+        <div class="plan-card rounded-sm p-3">
+          <p class="text-xs text-gray-600 mb-1">A cosa ti serve il sito oggi?</p>
+          <p class="text-gray-600 text-xs">max 200 caratteri</p>
+        </div>
+        <div class="plan-card rounded-sm p-3">
+          <p class="text-xs text-gray-600 mb-1">Numero di telefono</p>
+          <p class="text-gray-600 text-xs">per la call di valutazione</p>
+        </div>
+      </div>
+      <a href="mailto:hypnosis.mda@gmail.com?subject=Valutazione%20migrazione%20sito%20-%20CORE.&body=URL%20sito%3A%20%0AHosting%20attuale%3A%20%0AA%20cosa%20serve%20il%20sito%20oggi%3A%20%0ATelefono%3A%20"
+         class="btn-ghost inline-block px-6 py-3 rounded-sm text-sm font-medium">
+        Richiedi valutazione gratuita
+      </a>
+      <p class="text-xs text-gray-700 mt-3">Questo non e' un preventivo. Non offriamo assistenza su siti di terzi: se la migrazione non e' fattibile, non iniziamo il lavoro.</p>
+    </div>
   </div>
 </section>
 
@@ -441,6 +471,7 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
               </div>
               <p class="text-xs text-gray-600">per 6 mesi <span class="price-strike">€474</span></p>
             </div>
+            <p class="text-xs text-gray-600 mt-2">o <span class="text-gray-400 font-medium">€89/mese</span> senza impegno</p>
           </div>
           <span class="badge badge-tier mt-1">per Custodia</span>
         </div>
@@ -470,11 +501,9 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
               <p class="text-xs text-gray-600">per 12 mesi <span class="price-strike">€3.000</span></p>
             </div>
             <div x-show="$store.sp==='6m'" x-cloak>
-              <div class="flex items-end gap-2 mb-1">
-                <span class="price-main text-4xl">€1.250</span>
-              </div>
-              <p class="text-xs text-gray-600">per 6 mesi <span class="price-strike">€1.500</span></p>
+              <p class="text-xs text-gray-600 mt-2">Solo mensile o annuale disponibile</p>
             </div>
+            <p class="text-xs text-gray-600 mt-2">o <span class="text-gray-400 font-medium">€249/mese</span> senza impegno</p>
           </div>
           <span class="badge badge-tier mt-1">per Cura</span>
         </div>
@@ -504,6 +533,7 @@ body{background:#0a0a0a;color:#eee;font-family:'DM Sans',system-ui,sans-serif;li
             <div x-show="$store.sp==='6m'" x-cloak>
               <p class="text-xs text-gray-600 mt-2">Solo piano annuale disponibile</p>
             </div>
+            <p class="text-xs text-gray-600 mt-2">o <span class="text-gray-400 font-medium">€349/mese</span> senza impegno</p>
           </div>
           <span class="badge badge-tier mt-1">per Crescita</span>
         </div>
