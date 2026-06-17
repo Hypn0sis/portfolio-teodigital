@@ -6,8 +6,8 @@
 
 ## COME FUNZIONA (in 10 secondi)
 
-1. **Sito web** — €750 una tantum, live in 48-72h
-2. **Poi scegli un tier sito mensile** (€30/€120/€300) che include manutenzione + **contenuti social IG inclusi per sempre**
+1. **Sito web** — €750 una tantum, live in 48 ore
+2. **Poi scegli un tier sito mensile** (€30/€120/€300) che include manutenzione + **Try & Buy IG per 3 mesi**
 3. **Se vuoi di più** — attivi il Social Management (€79/€250/€500) come servizio separato
 4. **O prendi un Bundle** — sito + social insieme, risparmi fino a €151/mese
 
@@ -43,7 +43,18 @@ Dopo il sito, scegli un tier. Ogni tier include **manutenzione del sito + conten
 
 ### Cos'è il Try & Buy?
 
-È un **assaggio permanente di contenuti social** incluso nel tier sito. **Non è una prova, non scade.** Finché paghi il tier sito, ricevi ogni mese quella quantità di contenuti IG. Se poi attivi il Social Management (servizio separato), i contenuti Try & Buy **si sommano** — non perdi mai nulla.
+Sono **3 mesi di prova** dei contenuti social. Ricevi **1 post IG a settimana** (12 post in totale, 3 mesi × 4 settimane). Abbastanza per vedere i primi risultati. Alla fine del 3° mese, scegli se attivare un piano Social Management dedicato o restare solo sito.
+
+**Come pompiamo la visibilità di quei contenuti:**
+- Hashtag geo-targettizzati sulla zona del cliente
+- Tag di posizione (Google Maps, Instagram location)
+- Cross-posting automatico su Instagram + Facebook
+- Storie con sticker posizione e sondaggi per engagement
+- Prime interazioni bootstrap per innescare il volano organico
+
+L'obiettivo? Che il cliente **veda** che il social funziona. Perché funzionerà. E poi gli offriamo la possibilità di crescere veramente con un piano dedicato.
+
+> **Nota**: il Try & Buy non è rinnovabile. Dopo 3 mesi, se vuoi continuare i contenuti social, attivi un piano Social Management.
 
 ---
 
@@ -58,7 +69,7 @@ Dopo il sito, scegli un tier. Ogni tier include **manutenzione del sito + conten
 | **Landing page extra** | ❌ Non incluso |
 | **SEO** | Base (tag, meta) + report trimestrale |
 | **SLA interventi** | 72 ore lavorative |
-| **Try & Buy IG** | **2 post + 2 storie** a settimana |
+| **Try & Buy IG** | **1 post/settimana (3 mesi, 12 totali)** |
 | **Supporto** | Ticket email |
 
 ### Tier PLUS — €120/mese
@@ -72,7 +83,7 @@ Dopo il sito, scegli un tier. Ogni tier include **manutenzione del sito + conten
 | **Landing page extra** | **1 ogni 3 mesi** |
 | **SEO** | Base + keyword research + report mensile |
 | **SLA interventi** | 48 ore lavorative |
-| **Try & Buy IG** | **4 post + 6 storie + 1 Reel** a settimana |
+| **Try & Buy IG** | **4 post + 6 storie + 1 Reel/sett (3 mesi)** |
 | **Supporto** | Ticket + chat |
 
 ### Tier PREMIUM — €300/mese
@@ -86,7 +97,7 @@ Dopo il sito, scegli un tier. Ogni tier include **manutenzione del sito + conten
 | **Landing page extra** | **1 al mese** |
 | **SEO** | Completo + competitor + report settimanale |
 | **SLA interventi** | 24 ore (festivi inclusi) |
-| **Try & Buy IG** | **6 post + 8 storie + 2 Reel** a settimana |
+| **Try & Buy IG** | **6 post + 8 storie + 2 Reel/sett (3 mesi)** |
 | **Supporto** | Ticket + chat + telefono |
 
 ---
@@ -192,10 +203,10 @@ Include: **16 post + 20 storie + 4 Reel a settimana** su 4 piattaforme, Ads, ges
 
 ## TABELLA UPSELL — Try & Buy + Social si sommano
 
-| Se hai... | Ricevi già | Aggiungi Social | E ottieni TOTALE |
+| Se hai... | Ricevi gia (Try & Buy 3 mesi) | Aggiungi Social | E ottieni TOTALE |
 |---|---|---|---|
-| Sito Lite (€30) | 2 post + 2 storie/sett | + Starter (€79) | **6 post + 6 storie/sett** |
-| Sito Lite (€30) | 2 post + 2 storie/sett | + Pro (€250) | **8 post + 10 storie/sett + 1 Reel** |
+| Sito Lite (€30) | 1 post/sett | + Starter (€79) | **5 post + 4 storie/sett** (poi 4 post) |
+| Sito Lite (€30) | 1 post/sett | + Pro (€250) | **7 post + 8 storie/sett + 1 Reel** (poi 6+8+1) |
 | Sito Plus (€120) | 4 post + 6 storie + 1 Reel/sett | + Pro (€250) | **10 post + 14 storie/sett + 2 Reel** |
 | Sito Premium (€300) | 6 post + 8 storie + 2 Reel/sett | + Elite (€500) | **16 post + 20 storie/sett + 4 Reel** |
 
@@ -233,7 +244,7 @@ Usiamo AI agents invece di team umani per la produzione. I nostri costi fissi so
 ## OBIEZIONI + RISPOSTE (pronte all'uso)
 
 **"€750 per un sito fatto da un computer?"**
-> Il valore non è in 'chi lo fa' ma nel risultato: sito professionale, SEO, mobile-first, consegna in 48-72 ore. Un freelance umano chiederebbe €2.000-€5.000 e 3-6 settimane. L'AI taglia i tempi morti, non la qualità.
+> Il valore non è in 'chi lo fa' ma nel risultato: sito professionale, SEO, mobile-first, consegna in 48 ore. Un freelance umano chiederebbe €2.000-€5.000 e 3-6 settimane. L'AI taglia i tempi morti, non la qualità.
 
 **"Troppo caro" / "Troppo cheap, non mi fido"**
 > Il prezzo è basso perché non abbiamo costi da agenzia tradizionale. I tool sono gli stessi (React, hosting professionale), il risultato è identico. Se vuoi, ti mostro siti già consegnati.
@@ -245,7 +256,7 @@ Usiamo AI agents invece di team umani per la produzione. I nostri costi fissi so
 > Il canone copre hosting, dominio, backup, aggiornamenti sicurezza, monitoraggio e supporto. Senza, il sito resta online ma fermo — come un negozio senza vetrinista.
 
 **"Preferisco Wix / faccio da solo"**
-> Wix funziona se il tuo tempo vale €0. I nostri clienti ci vengono dopo aver perso 2-3 settimane su Wix con risultati mediocri. Con noi in 48-72 ore hai un sito professionale, senza sbatti.
+> Wix funziona se il tuo tempo vale €0. I nostri clienti ci vengono dopo aver perso 2-3 settimane su Wix con risultati mediocri. Con noi in 48 ore hai un sito professionale, senza sbatti.
 
 **"Il social a €500 è tantissimo"**
 > €500/mese per 20-24 post + storie + reel + community management + ads. Un social media manager umano costa €800-1.500/mese per lo stesso volume. Se è troppo, parti da Starter a €79.
