@@ -28,6 +28,10 @@ body{background:#f4f7fb;color:#0d1b2e;font-family:'Space Grotesk',system-ui,sans
   padding:.5rem 1.2rem;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background .2s;
 }
 .demo-back:hover{background:#1649a0}
+.demo-nav{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.demo-style-pill{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .75rem;border-radius:2px;text-decoration:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);transition:all .2s;white-space:nowrap}
+.demo-style-pill:hover{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3)}
+.demo-style-pill.active{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.08)}
 
 /* NAV */
 nav{
@@ -61,7 +65,9 @@ nav{
 /* HERO */
 #hero{
   padding-top:4.5rem;
-  background:linear-gradient(150deg,#080e18 0%,#0d1b30 50%,#091520 100%);
+  background:
+    linear-gradient(150deg,rgba(8,14,24,.9) 0%,rgba(13,27,48,.88) 50%,rgba(9,21,32,.92) 100%),
+    url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80&fit=crop&auto=format') center/cover no-repeat;
   min-height:100vh;
   display:flex;align-items:center;
   position:relative;overflow:hidden;
@@ -299,8 +305,15 @@ footer a{color:#1e90ff;text-decoration:none;font-weight:600}
 
 <!-- DEMO BANNER -->
 <div id="demo-banner">
-  <p><strong>Demo CORE.</strong> - Stile Professionale &nbsp;·&nbsp; Questo e un mockup interattivo, non un sito reale</p>
-  <a href="portfolio-5-stili.html" class="demo-back">← Torna agli stili</a>
+  <p><strong>Demo CORE.</strong> - <strong>Stile Professionale</strong> &nbsp;·&nbsp; Mockup interattivo, non un sito reale</p>
+  <div class="demo-nav">
+    <a href="portfolio-stile-alimentari.html" class="demo-style-pill">Artigianale</a>
+    <a href="portfolio-stile-editoriale.html" class="demo-style-pill">Editoriale</a>
+    <a href="portfolio-stile-vivace.html" class="demo-style-pill">Vivace</a>
+    <a href="portfolio-stile-servizi.html" class="demo-style-pill active">Professionale</a>
+    <a href="portfolio-stile-moda.html" class="demo-style-pill">Luxury</a>
+    <a href="portfolio-5-stili.html" class="demo-back">↗ Tutti gli stili</a>
+  </div>
 </div>
 
 <!-- NAV -->

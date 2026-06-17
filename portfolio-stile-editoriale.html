@@ -27,6 +27,10 @@ body{background:#fafaf8;color:#1a1a1a;font-family:'DM Sans',system-ui,sans-serif
   text-transform:uppercase;padding:.5rem 1.2rem;border-radius:2px;text-decoration:none;
   white-space:nowrap;transition:background .2s}
 .demo-back:hover{background:#c93b3b}
+.demo-nav{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.demo-style-pill{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .75rem;border-radius:2px;text-decoration:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);transition:all .2s;white-space:nowrap}
+.demo-style-pill:hover{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3)}
+.demo-style-pill.active{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.08)}
 
 /* NAV */
 nav{
@@ -70,9 +74,10 @@ nav{
 .hero-right{
   position:relative;overflow:hidden;
   background:
-    radial-gradient(ellipse at 50% 30%,rgba(180,100,20,.15),transparent 60%),
-    radial-gradient(circle at 80% 70%,rgba(150,80,10,.1),transparent 45%),
-    linear-gradient(165deg,#f5ede0 0%,#ede3d4 50%,#e8ddc8 100%);
+    radial-gradient(ellipse at 50% 30%,rgba(255,235,200,.55),transparent 60%),
+    radial-gradient(circle at 80% 70%,rgba(255,245,220,.4),transparent 45%),
+    linear-gradient(165deg,rgba(245,237,224,.62) 0%,rgba(237,227,212,.5) 50%,rgba(232,221,200,.68) 100%),
+    url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80&fit=crop&auto=format') center/cover no-repeat;
 }
 .hero-right::after{
   content:'';position:absolute;inset:0;
@@ -127,8 +132,9 @@ nav{
 }
 .storia-img{
   background:
-    radial-gradient(circle at 30% 60%,rgba(180,100,20,.2),transparent 55%),
-    linear-gradient(145deg,#ede3d4 0%,#ddd0bc 100%);
+    radial-gradient(circle at 30% 60%,rgba(255,235,200,.45),transparent 55%),
+    linear-gradient(145deg,rgba(237,227,212,.55) 0%,rgba(221,208,188,.5) 100%),
+    url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&q=80&fit=crop&auto=format') center/cover no-repeat;
   position:relative;overflow:hidden;min-height:500px;
 }
 .storia-img-label{
@@ -205,8 +211,15 @@ footer{
 
 <!-- DEMO BANNER -->
 <div id="demo-banner">
-  <p><strong>Demo CORE.</strong> — Stile Editoriale &nbsp;·&nbsp; Questo e un mockup interattivo, non un sito reale</p>
-  <a href="portfolio-5-stili.html" class="demo-back">← Torna agli stili</a>
+  <p><strong>Demo CORE.</strong> — <strong>Stile Editoriale</strong> &nbsp;·&nbsp; Mockup interattivo, non un sito reale</p>
+  <div class="demo-nav">
+    <a href="portfolio-stile-alimentari.html" class="demo-style-pill">Artigianale</a>
+    <a href="portfolio-stile-editoriale.html" class="demo-style-pill active">Editoriale</a>
+    <a href="portfolio-stile-vivace.html" class="demo-style-pill">Vivace</a>
+    <a href="portfolio-stile-servizi.html" class="demo-style-pill">Professionale</a>
+    <a href="portfolio-stile-moda.html" class="demo-style-pill">Luxury</a>
+    <a href="portfolio-5-stili.html" class="demo-back">↗ Tutti gli stili</a>
+  </div>
 </div>
 
 <!-- NAV -->

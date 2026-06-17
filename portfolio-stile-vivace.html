@@ -29,6 +29,10 @@ body{background:#f8f9ff;color:#1a1a2e;font-family:'Space Grotesk',system-ui,sans
   padding:.5rem 1.2rem;border-radius:20px;text-decoration:none;white-space:nowrap;transition:opacity .2s;
 }
 .demo-back:hover{opacity:.85}
+.demo-nav{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.demo-style-pill{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .75rem;border-radius:2px;text-decoration:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);transition:all .2s;white-space:nowrap}
+.demo-style-pill:hover{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3)}
+.demo-style-pill.active{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.08)}
 
 /* NAV */
 nav{
@@ -110,9 +114,10 @@ nav{
 .btn-ghost:hover{border-color:rgba(255,255,255,.5);color:#fff}
 .hero-visual{
   background:
-    radial-gradient(circle at 40% 40%,rgba(233,69,96,.25),transparent 55%),
-    radial-gradient(circle at 70% 70%,rgba(120,50,180,.2),transparent 45%),
-    linear-gradient(145deg,#2a1a4a 0%,#1e1040 100%);
+    radial-gradient(circle at 40% 40%,rgba(233,69,96,.45),transparent 55%),
+    radial-gradient(circle at 70% 70%,rgba(120,50,180,.4),transparent 45%),
+    linear-gradient(145deg,rgba(42,26,74,.88) 0%,rgba(30,16,64,.85) 100%),
+    url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=900&q=80&fit=crop&auto=format') center/cover no-repeat;
   border-radius:24px;
   height:420px;display:flex;align-items:center;justify-content:center;
   border:1px solid rgba(255,255,255,.07);
@@ -292,8 +297,15 @@ footer a{color:rgba(233,69,96,.8);text-decoration:none;font-weight:600}
 
 <!-- DEMO BANNER -->
 <div id="demo-banner">
-  <p><strong>Demo CORE.</strong> — Stile Vivace &nbsp;·&nbsp; Questo e un mockup interattivo, non un sito reale</p>
-  <a href="portfolio-5-stili.html" class="demo-back">← Torna agli stili</a>
+  <p><strong>Demo CORE.</strong> — <strong>Stile Vivace</strong> &nbsp;·&nbsp; Mockup interattivo, non un sito reale</p>
+  <div class="demo-nav">
+    <a href="portfolio-stile-alimentari.html" class="demo-style-pill">Artigianale</a>
+    <a href="portfolio-stile-editoriale.html" class="demo-style-pill">Editoriale</a>
+    <a href="portfolio-stile-vivace.html" class="demo-style-pill active">Vivace</a>
+    <a href="portfolio-stile-servizi.html" class="demo-style-pill">Professionale</a>
+    <a href="portfolio-stile-moda.html" class="demo-style-pill">Luxury</a>
+    <a href="portfolio-5-stili.html" class="demo-back">↗ Tutti gli stili</a>
+  </div>
 </div>
 
 <!-- NAV -->
