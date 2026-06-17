@@ -10,8 +10,8 @@
 1. **La manutenzione presuppone un sito CORE. attivo.**
    Non si gestisce manutenzione su siti di terzi. Il sito e' il prerequisito tecnico e contrattuale.
 
-2. **Social solo con piano manutenzione attivo.**
-   Non si vende social senza manutenzione abbinata. Dipendenza tecnica + strategica.
+2. **Social vendibile standalone o abbinato a manutenzione.**
+   Non e' richiesta manutenzione attiva per acquistare social. Puo' essere standalone.
 
 3. **Social: mensile senza impegno, o upfront 6/12 mesi con sconto.**
    Il mensile e' disponibile ma senza sconti. L'upfront 6m o 12m da accesso ai prezzi scontati e al mese gratis (12m).

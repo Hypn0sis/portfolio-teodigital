@@ -15,8 +15,7 @@
 
 **Regole non negoziabili:**
 - Manutenzione solo per siti realizzati da CORE. — non gestiamo siti di terzi
-- Social abbinato a piano manutenzione attivo — non si vende standalone
-- Social: mensile senza impegno, o upfront 6/12 mesi con sconto
+- Social: mensile senza impegno, o upfront 6/12 mesi con sconto (1 mese gratis su 12m)
 - Non compresi: shooting foto/video, grafica stampa, e-commerce (preventivo separato)
 
 ---

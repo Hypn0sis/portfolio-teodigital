@@ -12,31 +12,37 @@ Sei invocato da `claude-delegate` (profile Hermes Agent worker) per task comples
 - Email: hypnosis.mda@gmail.com
 - Zona: lavora dove pagano (no geo target fissa)
 - Settore: freelance digital (siti web + social management)
-- Brand in rebrand (vedere `vault-marketing/wiki/entities/brand-ricerca-iconica.md` per direction)
-- Sito portfolio: `~/wingman/portfolio.html` → live su `https://hypn0sis.github.io/portfolio-teodigital/portfolio.html`
+- Brand: CORE. digital agency (ex TeoDigital)
+- Sito portfolio: `~/wingman/portfolio.html` → live su `https://hypn0sis.github.io/core-agency/portfolio.html`
 
-## Pricing canonical
+## Pricing canonical — V2 (source of truth: pricing.html)
 
 - **Sito web**: €750 una tantum (5-7 pagine, dominio 1a incluso, hosting 1a incluso)
 - **Manutenzione mensile** (3 tier, hosting+dominio sempre inclusi dal mese 13):
-  - Custodia €30/mese: 1 modifica, 1 landing, no blog, Try&Buy 1 post IG/sett (3m)
-  - Cura €59/mese: 2 modifiche, 2 landing, 2 blog, keyword research, Try&Buy 4 post IG+FB/sett (3m)
-  - Crescita €89/mese: 10 modifiche, 4 landing, 4 blog, analytics settimanale, Try&Buy 6 post IG+FB+LI/sett (3m)
-- **Social management** (solo upfront 6m o 12m, abbinato al tier web corrispondente):
-  - Starter €79/mese equiv (6m: €399 | 12m: €749) - abbinato a Custodia
-  - Pro €250/mese equiv (6m: €1.250 | 12m: €2.500) - abbinato a Cura
-  - Elite €500/mese equiv (6m: €2.500 | 12m: €5.000) - abbinato a Crescita
-- **Bundle annuali** (sito + manutenzione 12m, pagamento unico):
-  - Starter Online: €999/anno (Sito + Custodia 12m)
-  - Business Online: €1.299/anno (Sito + Cura 12m)
-  - Premium Online: €1.599/anno (Sito + Crescita 12m)
-- **Garanzia**: disdetta 30 giorni preavviso, money-back primo mese (escluse spese avviamento ~€30)
-- **Social NON si vende mensile**: sempre upfront 6m o 12m, MAI standalone senza piano manutenzione attivo
-- **Proprieta' intellettuale**: sito rimane TeoDigital. Dominio sempre del cliente (trasferibile gratis).
+  - Custodia €30/mese: 1 modifica, 1 landing, no blog, Try&Buy 2 post IG/sett (2 mesi)
+  - Cura €59/mese: 2 modifiche, 2 landing, 2 blog, keyword research, Try&Buy 2 post IG+FB/sett (2 mesi)
+  - Crescita €89/mese: 10 modifiche, 4 landing, 4 blog, analytics settimanale, Try&Buy 2 post IG+FB/sett (2 mesi)
+  - Manutenzione SOLO per siti realizzati da CORE. - non gestiamo siti di terzi
+- **Social management** (standalone o abbinato a manutenzione - NON richiede piano attivo):
+  - Starter: €89/mese | €399/6m | €749/12m (1 mese gratis su 12m)
+  - Pro: €249/mese | €2.500/12m
+  - Elite: €349/mese | €3.600/12m
+  - Mensile disponibile senza impegno (no sconto). Upfront 6m/12m con sconto.
+- **Bundle online** (sito + manutenzione 12m, pagamento unico):
+  - Starter Online: €849 (2 rate: €899) - Sito + Custodia 12m
+  - Business Online: €1.099 (2 rate: €1.199) - Sito + Cura 12m
+  - Premium Online: €1.349 (2 rate: €1.499) - Sito + Crescita 12m
+- **Crescita Completa** (sito + Cura + Social Starter):
+  - Mensile: €121/mese | Upfront: €1.238/anno | 2 rate: €1.311
+  - Impegno minimo 12m. Recesso anticipato: €500 contributo. Sito rimane del cliente.
+  - Dominio Locale: €151/mese | Avvio Completo (no sito): €92/mese
+  - Year-2 loyalty: €109/mese
+- **Non compresi**: shooting foto/video, grafica stampa, e-commerce (preventivo separato)
+- **Proprieta' intellettuale**: sito rimane CORE. Dominio sempre del cliente (trasferibile gratis).
 
 Dettagli completi: `~/wingman/offerta-servizi-digitali.md`
 Regole bundle custom: `~/wingman/offerta-bundle-custom.md`
-Pricing page live: `~/wingman/pricing.html` → https://hypn0sis.github.io/portfolio-teodigital/pricing.html
+Pricing page live: `~/wingman/pricing.html` → https://hypn0sis.github.io/core-agency/pricing.html
 NON inventare prezzi diversi da quelli sopra.
 
 ## Architettura multi-agent (4 board + cross)
@@ -161,7 +167,7 @@ Se task body manca info critica (es. "refactor portfolio" ma non specifica stile
 
 ## Aggiornamenti documentazione
 
-Questa CLAUDE.md aggiornata 2026-06-16T23:XX (consistency audit post elite-squad-rewrite: AGENTS.md header + cross-board section + recruiter profile + CLAUDE.md cross-board table). Per stato corrente:
+Questa CLAUDE.md aggiornata 2026-06-17 (V2 pricing: social standalone OK + mensile OK + prezzi aggiornati + brand CORE.). Per stato corrente:
 ```bash
 ls -lt ~/wingman/vault-global-knowledge/wiki/stack/
 cat ~/wingman/AGENTS.md | head -50
