@@ -31,7 +31,7 @@ body{background:#1a0f02;color:#e8d5b0;font-family:'DM Sans',system-ui,sans-serif
 .demo-nav{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
 .demo-style-pill{font-size:.73rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.4rem 1rem;border-radius:4px;text-decoration:none;border:1.5px solid rgba(255,255,255,.4);color:rgba(255,255,255,.8);transition:all .2s;white-space:nowrap}
 .demo-style-pill:hover{color:#fff;border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.1)}
-.demo-style-pill.active{color:#fff;border-color:#e04545;background:#e04545;animation:sfBounce .65s ease-out 1.2s 2}
+.demo-style-pill.active{color:#fff;border-color:#e04545;background:#e04545;animation:sfBounce .9s ease-out 1s 3}
 
 /* NAV */
 nav{
@@ -213,7 +213,15 @@ footer{
   .info-strip{grid-template-columns:1fr}
   footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem}
 }
-@keyframes sfBounce{0%,100%{transform:translateY(0)}35%{transform:translateY(-4px)}70%{transform:translateY(-2px)}}
+@keyframes sfBounce{0%,100%{transform:translateY(0) scale(1)}20%{transform:translateY(-9px) scale(1.07)}45%{transform:translateY(-2px) scale(1.02)}65%{transform:translateY(-7px) scale(1.05)}85%{transform:translateY(-1px) scale(1.01)}}
+
+/* Demo tip strip (bottom) */
+#demo-tip{position:fixed;bottom:0;left:0;right:0;z-index:210;background:rgba(8,8,12,.94);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.09);padding:.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;font-size:.67rem;letter-spacing:.04em;color:rgba(255,255,255,.62);transform:translateY(100%);transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
+/* Demo arrow badge near active pill */
+#demo-pill-badge{position:fixed;z-index:210;background:#e04545;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.32rem .7rem;border-radius:3px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .4s;cursor:default;}
+#demo-pill-badge::before{content:'';position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid #e04545;}
+@keyframes tipFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
+
 </style>
 </head>
 <body>
@@ -474,5 +482,43 @@ footer{
   }
 })();
 </script>
+
+<script>
+(function(){
+  /* -- TIP STRIP -- */
+  var tipKey='core-tip-v1';
+  if(!sessionStorage.getItem(tipKey)){
+    var ts=document.createElement('div');
+    ts.id='demo-tip';
+    ts.innerHTML='<span>✦ &nbsp;Vedi il sito in stili diversi — usa i pulsanti in alto per cambiare<\/span>'
+      +'<button id="demo-tip-x" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-size:1.1rem;line-height:1;padding:0 .25rem;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">&#215;<\/button>';
+    document.body.appendChild(ts);
+    var showT=setTimeout(function(){ts.style.transform='translateY(0)'},1500);
+    var hideT=setTimeout(function(){ts.style.transform='translateY(100%)'},12000);
+    document.getElementById('demo-tip-x').addEventListener('click',function(){
+      ts.style.transform='translateY(100%)';
+      clearTimeout(hideT);
+      sessionStorage.setItem(tipKey,'1');
+    });
+  }
+  /* -- ARROW BADGE near active pill -- */
+  var badgeKey='core-badge-v1';
+  if(!sessionStorage.getItem(badgeKey)){
+    var pill=document.querySelector('.demo-style-pill.active');
+    if(pill){
+      var badge=document.createElement('div');
+      badge.id='demo-pill-badge';
+      badge.textContent='cambia stile';
+      document.body.appendChild(badge);
+      function pos(){var r=pill.getBoundingClientRect();badge.style.top=(r.bottom+10)+'px';badge.style.left=(r.left+r.width/2)+'px';}
+      pos();
+      badge.style.animation='tipFloat 1.8s ease-in-out 1s infinite';
+      var showB=setTimeout(function(){badge.style.opacity='1'},1000);
+      var hideB=setTimeout(function(){badge.style.opacity='0'},9000);
+    }
+  }
+})();
+</script>
+
 </body>
 </html>
