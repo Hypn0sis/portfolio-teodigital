@@ -9,8 +9,8 @@
 
 1. **Sito web** — €750 una tantum, live in 48 ore
 2. **Scegli manutenzione** (Custodia €30 / Cura €59 / Crescita €89) — include hosting, modifiche e **Try & Buy social 2 mesi**
-3. **Aggiungi social** se vuoi (Starter €749/12m, Pro €2.500/12m, Elite €3.600/12m — o mensile senza impegno)
-4. **Oppure prendi un bundle upfront** (Starter Online €849 / Business Online €1.099 / Premium Online €1.349)
+3. **Aggiungi social** se vuoi (Starter €749/12m, Pro €2.500/12m, Elite €2.500/6m / €5.000/12m — o mensile senza impegno)
+4. **Oppure prendi un bundle upfront** (Starter Online €999 / Business Online €1.299 / Premium Online €1.599)
 5. **O il nostro prodotto hero**: Crescita Completa — sito + manutenzione + social da **€121/mese** (sito incluso gratis)
 
 **Regole non negoziabili:**
@@ -133,10 +133,10 @@ Opzioni di pagamento: **6 mesi**, **12 mesi**, o **mensile senza impegno** (prez
 
 ### Social Elite
 
-| | 12 mesi | Mensile |
-|---|---|---|
-| **Prezzo** | **€3.600** | **€349/mese** |
-| **Equiv./mese** | €300 | €349 |
+| | 12 mesi | 6 mesi | Mensile |
+|---|---|---|---|
+| **Prezzo** | **€5.000** | **€2.500** | **€349/mese** |
+| **Equiv./mese** | €416 | €416 | €349 |
 
 | Cosa include | |
 |---|---|
@@ -160,9 +160,9 @@ Sito + manutenzione 12 mesi pagamento unico. Dal mese 13 si rinnova mensile al p
 
 | Bundle | Contenuto | Upfront | 2 rate |
 |---|---|---|---|
-| **Starter Online** | Sito + Custodia 12m | **€849** | €899 |
-| **Business Online** | Sito + Cura 12m | **€1.099** | €1.199 |
-| **Premium Online** | Sito + Crescita 12m | **€1.349** | €1.499 |
+| **Starter Online** | Sito + Custodia 12m | **€999** | €899 |
+| **Business Online** | Sito + Cura 12m | **€1.299** | €1.199 |
+| **Premium Online** | Sito + Crescita 12m | **€1.599** | €1.499 |
 
 Risparmi vs componenti separati: €261 / €359 / €469.
 
@@ -200,9 +200,9 @@ Risparmi vs componenti separati: €261 / €359 / €469.
 | Scenario | Una tantum | Canone | Totale anno 1 |
 |---|---|---|---|
 | Solo sito | €750 | Custodia €30/mese | €1.110 |
-| Starter Online | — | **€849** | €849 |
-| Business Online | — | **€1.099** | €1.099 |
-| Premium Online | — | **€1.349** | €1.349 |
+| Starter Online | - | **€999** | €999 |
+| Business Online | - | **€1.299** | €1.299 |
+| Premium Online | - | **€1.599** | €1.599 |
 | Crescita Completa mensile | — | **€121/mese** | €1.452 |
 | Crescita Completa upfront | — | **€1.238** | €1.238 |
 
@@ -218,7 +218,7 @@ Risparmi vs componenti separati: €261 / €359 / €469.
 | Crescita/mese | €89 | €250-500/mese | €500-1.000/mese |
 | Social Starter/anno | €749 | €3.600+ | €9.600+ |
 | Social Pro/anno | €2.500 | €7.200+ | €14.400+ |
-| Social Elite/anno | €3.600 | €10.000+ | €24.000+ |
+| Social Elite/anno | €5.000 | €10.000+ | €24.000+ |
 
 **Come facciamo:** AI agents per produzione contenuti e siti. Costi marginali vicini a zero. Nessun overhead agenzia tradizionale.
 
