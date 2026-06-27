@@ -167,6 +167,14 @@ Se deploy fallisce: continua comunque, segnala nel Mini-Report finale.
 
 ### STEP 7 — Hookmail
 ```bash
+# DEDUPLICATION: lead gia contattato? → skip
+if [ -f ~/wingman/vault-sales/{lead_id}/outreach_log.md ]; then
+  if grep -q "status: sent" ~/wingman/vault-sales/{lead_id}/outreach_log.md; then
+    echo "SKIP: lead gia contattato — procedi a STEP 8"
+    exit 0
+  fi
+fi
+
 # Determina destinatario
 # Se mock_email nel task body → usa mock_email (SEMPRE in modalita test)
 # Se mock_email assente → usa email del lead (da profile.md), o skip se non disponibile
@@ -210,6 +218,16 @@ EOF
 ```
 
 ### STEP 8 — kanban_complete
+```bash
+# VALIDATION: email inviata?
+if [ ! -f ~/wingman/vault-sales/{lead_id}/outreach_log.md ]; then
+  kanban_block "pipeline incompleta: outreach_log.md assente — email non inviata"
+  exit 1
+fi
+# MARK CONTACTED: aggiorna CSV
+python3 ~/wingman/scripts/mark-lead.py --lead-id {numero} --status CONTATTATO
+```
+
 ```
 kanban_complete(summary="## Mini-Report pipeline-runner
 - lead_id: {lead_id}
