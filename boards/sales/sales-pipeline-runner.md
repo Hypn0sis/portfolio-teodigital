@@ -204,56 +204,51 @@ echo "Preview URL: $PREVIEW_URL"
 Se deploy fallisce: continua comunque, segnala nel Mini-Report finale.
 
 ### STEP 7 — Hookmail
+
+> **STILE EMAIL — OBBLIGATORIO. NON deviare.**
+> - Usa ESATTAMENTE il body template qui sotto. NON generare testo alternativo.
+> - NO em dash (—). Se serve pausa: virgola o punto.
+> - NO frasi robotiche ("Mi permetto", "Ho avuto il piacere", "La contatto per").
+> - NO a capo dopo ogni frase. Il testo scorre continuo per paragrafo.
+> - NO markdown, NO asterischi, NO elenchi puntati nel body email.
+> - Tono: persona reale, diretto, breve. Max 4-5 righe di corpo.
+> - Sostituisci i token con valori reali da profile.md, NON placeholder letterali.
+
 ```bash
-# DEDUPLICATION: lead gia contattato? → skip
+# DEDUPLICATION: lead gia contattato? -> skip
 if [ -f ~/wingman/vault-sales/{lead_id}/outreach_log.md ]; then
   if grep -q "status: sent" ~/wingman/vault-sales/{lead_id}/outreach_log.md; then
-    echo "SKIP: lead gia contattato — procedi a STEP 8"
+    echo "SKIP: lead gia contattato, procedi a STEP 8"
     exit 0
   fi
 fi
 
 # Determina destinatario
-# Se mock_email nel task body → usa mock_email (SEMPRE in modalita test)
-# Se mock_email assente → usa email del lead (da profile.md), o skip se non disponibile
+# Se mock_email nel task body -> usa mock_email (SEMPRE in modalita test)
+# Se mock_email assente -> usa email del lead (da profile.md), o skip se non disponibile
 
 PREVIEW_URL=$(cat ~/wingman/vault-sales/{lead_id}/preview_url.txt 2>/dev/null || echo "")
 
 if [ -n "$PREVIEW_URL" ]; then
-  BODY_PREVIEW="Ho preparato una demo del tuo sito:
-$PREVIEW_URL
-
-E gia online, personalizzata per la tua attivita. Basta che mi dici di si e diventa tua in 48 ore."
+  BODY_PREVIEW="Ti ho preparato una demo del tuo sito, gia online: $PREVIEW_URL. Personalizzata per {NOME}. Basta un si e diventa tua in 48 ore."
 else
-  BODY_PREVIEW="Sto preparando una demo personalizzata del tuo sito — te la mando entro oggi."
+  BODY_PREVIEW="Sto preparando una demo personalizzata per {NOME}, te la mando in giornata."
 fi
 
 gws gmail +send \
   --from "COREFLUX STUDIO <info@coreflux.studio>" \
   --to "{mock_email_o_lead_email}" \
-  --subject "Ho preparato qualcosa per {NOME}" \
-  --body "Ciao,
-
-ho visto che gestisci {NOME} a {CITTA}.
+  --subject "ho preparato una cosa per {NOME}" \
+  --body "Ciao, ho visto {NOME} su Google e mi ha colpito {DETTAGLIO_SPECIFICO_REALE}.
 
 $BODY_PREVIEW
 
-Possiamo fare una chiamata veloce questa settimana?
+Ti va di fare due chiacchiere questa settimana?
 
-Matteo
-COREFLUX STUDIO — siti per attivita locali"
+Matteo"
 ```
 
-Salva log:
-```bash
-cat > ~/wingman/vault-sales/{lead_id}/outreach_log.md << EOF
-data: $(date -u +%Y-%m-%dT%H:%M:%SZ)
-canale: email
-mock: {mock_email}
-preview_url: $PREVIEW_URL
-status: sent
-EOF
-```
+> {DETTAGLIO_SPECIFICO_REALE}: dato reale dallo scraping (es. "che siete aperti dal 1943", "il rating 4.7 stelle su Maps", "la vostra specialita X"). MAI inventare. Se nessun dato disponibile, usa "la vostra attivita".
 
 ### STEP 8 — kanban_complete
 ```bash
