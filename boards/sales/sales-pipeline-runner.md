@@ -262,8 +262,7 @@ if [ ! -f ~/wingman/vault-sales/{lead_id}/outreach_log.md ]; then
   kanban_block "pipeline incompleta: outreach_log.md assente — email non inviata"
   exit 1
 fi
-# MARK CONTACTED: aggiorna CSV
-python3 ~/wingman/scripts/mark-lead.py --lead-id {numero} --status CONTATTATO
+# MARK CONTACTED: gestito da sync-vault-to-csv.py (script esterno, non chiamare qui)
 ```
 
 ```
