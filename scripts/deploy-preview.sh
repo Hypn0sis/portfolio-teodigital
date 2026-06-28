@@ -1,44 +1,45 @@
 #!/usr/bin/env bash
-# deploy-preview.sh — Deploy preview site to GitHub Pages (UC10)
+# deploy-preview.sh — Deploy preview site to Cloudflare Pages
 # Usage: deploy-preview.sh <lead_id> [<slug>]
 set -euo pipefail
 
 LEAD_ID="${1:?Usage: deploy-preview.sh <lead_id> [slug]}"
 SLUG="${2:-$LEAD_ID}"
 PREVIEW_DIR="/tmp/preview-${SLUG}"
-REPO="Hypn0sis/${SLUG}"
 VAULT_DIR="$HOME/wingman/vault-sales/${LEAD_ID}"
+CF_ENV="$HOME/.hermes/cloudflare.env"
 
 if [ ! -f "${PREVIEW_DIR}/index.html" ]; then
     echo "ERROR: ${PREVIEW_DIR}/index.html not found" >&2
     exit 1
 fi
 
-echo "Deploying ${SLUG} to GitHub Pages..."
+if [ ! -f "$CF_ENV" ]; then
+    echo "ERROR: $CF_ENV not found" >&2
+    exit 1
+fi
 
-# Create repo if not exists
-gh repo create "${REPO}" --public --description "Preview site COREFLUX STUDIO" 2>/dev/null || true
+source "$CF_ENV"
 
-# Init git and push
-cd "${PREVIEW_DIR}"
-[ -d .git ] && rm -rf .git
-git init -q
-git add index.html
-git -c user.email="wingman@coreflux.studio" -c user.name="Wingman" \
-    commit -q -m "preview"
-git branch -M main
-git remote add origin "https://github.com/${REPO}.git"
-git push -f origin main
+PROJECT_NAME="${SLUG}"
+SUBDOMAIN="${SLUG}.coreflux.studio"
+ZONE_ID="2f6176c9af7dd3670cc83287f18f5f57"
 
-# Enable GitHub Pages
-gh api "repos/${REPO}/pages" \
-    --method POST \
-    -f source='{"branch":"main","path":"/"}' 2>/dev/null || \
-gh api "repos/${REPO}/pages" \
-    --method PUT \
-    -f source='{"branch":"main","path":"/"}' 2>/dev/null || true
+echo "Deploying ${SLUG} to Cloudflare Pages..."
 
-PREVIEW_URL="https://hypn0sis.github.io/${SLUG}/"
+# Deploy to CF Pages (creates project on first run)
+CLOUDFLARE_API_TOKEN="$CF_TOKEN" CLOUDFLARE_ACCOUNT_ID="$CF_ACCOUNT_ID" npx wrangler pages deploy "${PREVIEW_DIR}/"     --project-name "${PROJECT_NAME}"     --branch main     --commit-dirty true 2>&1
+
+# Add custom subdomain DNS record if not exists
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records"     -H "Authorization: Bearer $CF_TOKEN"     -H "Content-Type: application/json"     --data "{
+        \"type\": \"CNAME\",
+        \"name\": \"${SLUG}\",
+        \"content\": \"${PROJECT_NAME}.pages.dev\",
+        \"proxied\": true,
+        \"ttl\": 1
+    }" > /dev/null 2>&1 || true
+
+PREVIEW_URL="https://${SUBDOMAIN}/"
 mkdir -p "${VAULT_DIR}"
 echo "${PREVIEW_URL}" > "${VAULT_DIR}/preview_url.txt"
 echo "Preview live: ${PREVIEW_URL}"

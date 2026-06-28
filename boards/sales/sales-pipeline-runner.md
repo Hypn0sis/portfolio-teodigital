@@ -288,9 +288,9 @@ fi
 PREVIEW_URL=$(cat ~/wingman/vault-sales/{lead_id}/preview_url.txt 2>/dev/null || echo "")
 
 if [ -n "$PREVIEW_URL" ]; then
-  BODY_PREVIEW="Ti ho preparato una demo del tuo sito, gia online: $PREVIEW_URL. Personalizzata per {NOME}. Basta un si e diventa tua in 48 ore."
+  BODY_PREVIEW="Il sito e gia online: $PREVIEW_URL. E una prima versione: tutto personalizzabile con le tue foto, i tuoi testi e il design che vuoi. Altri esempi su coreflux.studio."
 else
-  BODY_PREVIEW="Sto preparando una demo personalizzata per {NOME}, te la mando in giornata."
+  BODY_PREVIEW="Sto preparando una demo per {NOME}, te la mando in giornata. Altri lavori su coreflux.studio."
 fi
 
 gws gmail +send \
