@@ -156,7 +156,7 @@ grep -c '{{' /tmp/preview-{slug}/index.html
 # Deve ritornare 0. Se >0: sostituisci manualmente i token rimasti con placeholder.
 ```
 
-### STEP 6 — Deploy GitHub Pages
+### STEP 6 — Deploy Cloudflare Pages
 ```bash
 bash ~/wingman/scripts/deploy-preview.sh "{lead_id}" "{slug}"
 PREVIEW_URL=$(cat ~/wingman/vault-sales/{lead_id}/preview_url.txt)
@@ -182,12 +182,12 @@ fi
 PREVIEW_URL=$(cat ~/wingman/vault-sales/{lead_id}/preview_url.txt 2>/dev/null || echo "")
 
 if [ -n "$PREVIEW_URL" ]; then
-  BODY_PREVIEW="Ho preparato una demo del tuo sito:
+  BODY_PREVIEW="Il sito e gia online: $PREVIEW_URL. E una prima versione: tutto personalizzabile con le tue foto, i tuoi testi e il design che vuoi. Altri esempi su coreflux.studio."
 $PREVIEW_URL
 
 E gia online, personalizzata per la tua attivita. Basta che mi dici di si e diventa tua in 48 ore."
 else
-  BODY_PREVIEW="Sto preparando una demo personalizzata del tuo sito — te la mando entro oggi."
+  BODY_PREVIEW="Sto preparando una demo per {NOME}, te la mando in giornata. Altri lavori su coreflux.studio."
 fi
 
 gws gmail +send \
@@ -243,7 +243,7 @@ kanban_complete(summary="## Mini-Report pipeline-runner
 - Non inventare numeri di telefono o P.IVA reali
 - Non mandare email a indirizzo reale del lead se mock_email e' presente
 - Non saltare step o cambiare ordine
-- Non deployare su dominio custom (solo GitHub Pages per preview)
+- Preview su Cloudflare Pages con dominio coreflux.studio ({slug}.coreflux.studio)
 - Non fare kanban_complete prima che gws send abbia risposto con successo
 
 ## OBBLIGATORIO — PROTOCOLLO KANBAN
@@ -253,3 +253,25 @@ kanban_complete(summary="## Mini-Report pipeline-runner
 - Chiamare `kanban_block` se il task e' bloccato o incompleto
 
 **MAI uscire senza chiamare uno dei due. Se non sai cosa fare: `kanban_block("motivo")`.**
+
+### STEP 9 — Archivio Preview (trigger esterno)
+
+> Questo step NON viene eseguito dall'agente autonomamente. Si attiva su trigger manuale o cron.
+
+**Trigger manuale** (lead ha risposto positivamente):
+```bash
+bash ~/wingman/scripts/archive-preview.sh {lead_id} risposta_lead
+```
+
+**Trigger automatico** (cron ore 03:00):
+```bash
+python3 ~/wingman/scripts/auto-archive-previews.py
+# TTL: 30 giorni senza risposta → archivio automatico
+```
+
+**Azioni di archive-preview.sh**:
+1. Copia HTML `/tmp/preview-{slug}/` → `vault-sales/{lead_id}/site-archive/` (sorgente conservato)
+2. `npx wrangler pages project delete {slug}` → rimuove CF Pages project
+3. Rimuove CNAME `{slug}.coreflux.studio` da DNS Cloudflare via API
+4. Appende `archived_at` + `archive_reason` in `outreach_log.md`
+5. Rimuove `preview_url.txt` (non piu raggiungibile)

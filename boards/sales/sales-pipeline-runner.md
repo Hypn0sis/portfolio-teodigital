@@ -329,11 +329,34 @@ kanban_complete(summary="## Mini-Report pipeline-runner
 - stato: COMPLETATO")
 ```
 
+### STEP 9 — Archivio Preview (trigger esterno)
+
+> Questo step NON viene eseguito dall'agente autonomamente. Si attiva su trigger manuale o cron.
+
+**Trigger manuale** (lead ha risposto positivamente):
+```bash
+bash ~/wingman/scripts/archive-preview.sh {lead_id} risposta_lead
+```
+
+**Trigger automatico** (cron ore 03:00):
+```bash
+python3 ~/wingman/scripts/auto-archive-previews.py
+# TTL: 30 giorni senza risposta → archivio automatico
+```
+
+**Azioni di archive-preview.sh**:
+1. Copia HTML da `/tmp/preview-{slug}/` a `vault-sales/{lead_id}/site-archive/` (sorgente conservato)
+2. `npx wrangler pages project delete {slug}` — rimuove CF Pages project
+3. Rimuove CNAME `{slug}.coreflux.studio` da DNS Cloudflare via API
+4. Appende `archived_at` + `archive_reason` in `outreach_log.md`
+5. Rimuove `preview_url.txt` (non piu raggiungibile)
+
+
 ## Anti-Patterns (NON fare)
 - Non inventare numeri di telefono o P.IVA reali
 - Non mandare email a indirizzo reale del lead se mock_email e' presente
 - Non saltare step o cambiare ordine
-- Non deployare su dominio custom (solo GitHub Pages per preview)
+- Preview su Cloudflare Pages: {slug}.coreflux.studio (wrangler pages deploy)
 - Non fare kanban_complete prima che gws send abbia risposto con successo
 
 ## OBBLIGATORIO — PROTOCOLLO KANBAN
