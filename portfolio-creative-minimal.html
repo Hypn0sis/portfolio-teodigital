@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{NOME_ATTIVITÀ}}</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family={{FONT_DISPLAY}}:wght@400;500;700&family={{FONT_BODY}}:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --color-bg: {{COLOR_BG}}; --color-text: {{COLOR_TEXT}}; --color-accent: {{COLOR_ACCENT}}; --color-secondary: {{COLOR_SECONDARY}}; }
+  body { font-family: '{{FONT_BODY}}', sans-serif; color: var(--color-text); background: var(--color-bg); margin: 0; padding: 0; }
+  h1, h2, h3 { font-family: '{{FONT_DISPLAY}}', serif; }
+  .hero { background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-accent) 100%); padding: 120px 40px; text-align: center; color: white; }
+  .hero h1 { font-size: 48px; margin: 0 0 20px; }
+  .section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-title { font-size: 36px; margin: 0 0 40px; text-align: center; }
+  .card { background: white; padding: 30px; border-radius: 12px; margin: 20px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .cta { background: var(--color-accent); color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 500; display: inline-block; }
+  footer { background: var(--color-text); color: var(--color-bg); padding: 40px; text-align: center; margin-top: 60px; }
+  @media (max-width: 768px) { .hero { padding: 60px 20px; } .hero h1 { font-size: 32px; } .section { padding: 40px 20px; } }
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Minimalist Design</h1>
+  <p style="font-size: 18px; margin: 0;">{{HERO_SUBTITLE}}</p>
+</div>
+<div class="section">
+  <h2 class="section-title">Chi Siamo</h2>
+  <div class="card"><p>{{ABOUT_TEXT}}</p></div>
+</div>
+<div class="section" style="background: var(--color-secondary); border-radius: 12px;">
+  <h2 class="section-title" style="color: var(--color-text);">Offerte</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">{{SERVICES_GRID}}</div>
+</div>
+<div class="section">
+  <h2 class="section-title">Contattaci</h2>
+  <div style="text-align: center;">
+    <p>{{CITTÀ}} • 📞 {{PHONE}} • ✉️ {{EMAIL}}</p>
+    <a href="https://wa.me/{{PHONE_WHATSAPP}}" class="cta">📲 WhatsApp</a>
+  </div>
+</div>
+<footer><p>&copy; 2026 {{NOME_ATTIVITÀ}}. {{FOOTER_TEXT}}</p></footer>
+</body>
+</html>
