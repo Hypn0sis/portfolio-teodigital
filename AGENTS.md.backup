@@ -93,7 +93,7 @@ Ogni board ha:
 | reporter | Report finanziari, KPI business | custom |
 | docs-writer | Procedure, policy, template | awesome-claude-code-toolkit (technical-writer) |
 
-## Board SALES (14 agenti)
+## Board SALES (13 agenti)
 
 | Agente | Ruolo | Ispirato da |
 |--------|-------|-------------|
@@ -109,7 +109,6 @@ Ogni board ha:
 | revenue-tracker | MRR/ARR, forecast, trend | custom |
 | collections-agent | Solleciti, morosi, piani di rientro | custom |
 | account-manager | Post-vendita, retention, upsell, QBR | awesome-claude-code-toolkit (customer-success) |
-| sales-pipeline-runner | Orchestrator pipeline lead-to-hookmail; scrape, build preview, deploy, email (autonomo) | custom
 | docs-writer | Playbook, script, battle cards, pricing history | awesome-claude-code-toolkit (technical-writer) |
 
 ## Cross-Board Profiles (5)
