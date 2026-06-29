@@ -267,10 +267,11 @@ Se deploy fallisce: continua comunque, segnala nel Mini-Report finale.
 > - Usa ESATTAMENTE il body template qui sotto. NON generare testo alternativo.
 > - NO em dash (—). Se serve pausa: virgola o punto.
 > - NO frasi robotiche ("Mi permetto", "Ho avuto il piacere", "La contatto per").
-> - NO a capo dopo ogni frase. Il testo scorre continuo per paragrafo.
+> - Paragrafi fluidi: NO a capo forzati dentro un paragrafo. Ogni paragrafo e una singola riga continua. Riga vuota tra paragrafi.
 > - NO markdown, NO asterischi, NO elenchi puntati nel body email.
-> - Tono: persona reale, diretto, breve. Max 4-5 righe di corpo.
-> - Sostituisci i token con valori reali da profile.md, NON placeholder letterali.
+> - Subject: lowercase, corto (3-5 parole max), NON descrittivo — crea curiosita.
+> - Firma: "Teo\nCoreFlux Studio" — non "Matteo", non "COREFLUX STUDIO".
+> - Sostituisci tutti i token con valori reali da profile.md, NON placeholder letterali.
 
 ```bash
 # DEDUPLICATION: lead gia contattato? -> skip
@@ -287,26 +288,31 @@ fi
 
 PREVIEW_URL=$(cat ~/wingman/vault-sales/{lead_id}/preview_url.txt 2>/dev/null || echo "")
 
-if [ -n "$PREVIEW_URL" ]; then
-  BODY_PREVIEW="Il sito e gia online: $PREVIEW_URL. E una prima versione: tutto personalizzabile con le tue foto, i tuoi testi e il design che vuoi. Altri esempi su coreflux.studio."
-else
-  BODY_PREVIEW="Sto preparando una demo per {NOME}, te la mando in giornata. Altri lavori su coreflux.studio."
-fi
-
 gws gmail +send \
   --from "COREFLUX STUDIO <info@coreflux.studio>" \
   --to "{mock_email_o_lead_email}" \
-  --subject "ho preparato una cosa per {NOME}" \
-  --body "Ciao, ho visto {NOME} su Google e mi ha colpito {DETTAGLIO_SPECIFICO_REALE}.
+  --subject "ho fatto il vostro sito" \
+  --body "Ciao,
 
-$BODY_PREVIEW
+cercavo {TIPO_ATTIVITA_GENERICA} a {CITTA} su Google e non vi ho trovati. Brutta cosa per voi, buona scusa per me.
 
-Ti va di fare due chiacchiere questa settimana?
+E quello che capita ogni settimana a centinaia di attivita con un ottimo lavoro alle spalle ma senza visibilita online — le persone cercano, non vi trovano, vanno dalla concorrenza.
 
-Matteo"
+Abbiamo appena lanciato il sito delle Macellerie Bergamaschi a Cornaredo. Zero pubblicita. 300 visite in due settimane.
+
+Ho costruito la stessa cosa per {NOME} — e gia online:
+
+$PREVIEW_URL
+
+Vale una chiacchierata?
+
+Teo
+CoreFlux Studio"
 ```
 
-> {DETTAGLIO_SPECIFICO_REALE}: dato reale dallo scraping (es. "che siete aperti dal 1943", "il rating 4.7 stelle su Maps", "la vostra specialita X"). MAI inventare. Se nessun dato disponibile, usa "la vostra attivita".
+> - {TIPO_ATTIVITA_GENERICA}: categoria generica del lead (es. "un parrucchiere", "una macelleria", "un panificio") — da profile.md campo `categoria`.
+> - {NOME}: nome attivita reale da profile.md.
+> - Se PREVIEW_URL vuoto: sostituisci l'intera riga URL con "Sto preparando la demo per {NOME}, te la mando in giornata."
 
 ### STEP 8 — kanban_complete
 ```bash
