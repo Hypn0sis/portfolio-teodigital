@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{NOME_ATTIVITÀ}}</title>
+<title>Business Name</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Lato:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -26,35 +26,48 @@
 
 <div class="hero">
   <h1>High-End Salon</h1>
-  <p>{{HERO_SUBTITLE}}</p>
+  <p>Scopri i nostri servizi e prodotti esclusivi</p>
 </div>
 
 <div class="section">
   <h2 class="section-title">Chi Siamo</h2>
   <div class="card">
-    <p>{{ABOUT_TEXT}}</p>
+    <p>Con oltre 20 anni di esperienza nel settore, offriamo soluzioni di qualità superiore. Il nostro team è dedicato alla soddisfazione del cliente e all'eccellenza in tutto ciò che facciamo.</p>
   </div>
 </div>
 
 <div class="section" style="background: var(--color-secondary); border-radius: 12px;">
   <h2 class="section-title" style="color: var(--color-text);">Servizi & Offerte</h2>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-    {{SERVICES_GRID}}
+    
+    <div class="p-6 bg-gray-50 rounded-lg">
+        <h3 class="font-bold mb-2">Servizio Premium</h3>
+        <p class="text-sm text-gray-600">Esperienza di lusso con attenzione ai dettagli</p>
+    </div>
+    <div class="p-6 bg-gray-50 rounded-lg">
+        <h3 class="font-bold mb-2">Consulenza Gratuita</h3>
+        <p class="text-sm text-gray-600">Parla con i nostri esperti senza impegno</p>
+    </div>
+    <div class="p-6 bg-gray-50 rounded-lg">
+        <h3 class="font-bold mb-2">Qualità Garantita</h3>
+        <p class="text-sm text-gray-600">Garanzia di soddisfazione su tutti i servizi</p>
+    </div>
+    
   </div>
 </div>
 
 <div class="section">
   <h2 class="section-title">Contattaci</h2>
   <div style="text-align: center;">
-    <p style="font-size: 18px;">{{CITTÀ}}</p>
-    <p style="font-size: 18px;">📞 {{PHONE}}</p>
-    <p style="font-size: 18px;">✉️ {{EMAIL}}</p>
-    <a href="https://wa.me/{{PHONE_WHATSAPP}}" class="cta">📲 WhatsApp</a>
+    <p style="font-size: 18px;">Bergamo</p>
+    <p style="font-size: 18px;">📞 +39 035 123 4567</p>
+    <p style="font-size: 18px;">✉️ info@example.it</p>
+    <a href="https://wa.me/393512345678" class="cta">📲 WhatsApp</a>
   </div>
 </div>
 
 <footer>
-  <p>&copy; 2026 {{NOME_ATTIVITÀ}}. {{FOOTER_TEXT}}</p>
+  <p>&copy; 2026 Business Name. Realizzato da CoreFlux Studio</p>
 </footer>
 
 </body>
